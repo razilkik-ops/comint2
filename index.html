@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COMINT - дизайн, реклама, печать</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+
+    <header class="site-header">
+      <a class="logo" href="#" aria-label="COMINT">
+        <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
+      </a>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="#services">Услуги</a>
+        <a href="#products">Продукция</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#company">О компании</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <a class="quick-order" href="#contacts" data-open-order-modal>Быстрый заказ</a>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Главный экран">
+        <div class="hero-copy">
+          <h1>Качество<br />в деталях</h1>
+          <p>Типография полного цикла для бизнеса, который ценит качество и стиль</p>
+        </div>
+
+        <div class="showcase" aria-hidden="true">
+          <img class="hero-products" src="assets/hero-products.png" alt="" />
+        </div>
+      </section>
+
+      <section class="service-strip" id="services" aria-label="Популярные направления">
+        <a class="service-card" href="souvenirs.html">
+          <img class="service-image" src="assets/service-souvenirs.png" alt="" />
+          <span class="service-copy">
+            <strong>Сувениры</strong>
+            <small>Стильная и современная сувенирная продукция</small>
+          </span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="service-card" href="#products">
+          <img class="service-image" src="assets/service-print.png" alt="" />
+          <span class="service-copy">
+            <strong>Полиграфия</strong>
+            <small>Профессиональная печать любых форматов</small>
+          </span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="service-card" href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer">
+          <img class="service-image" src="assets/service-bot.png" alt="" />
+          <span class="service-copy">
+            <strong>Бот автопродаж</strong>
+            <small>Принимает заявки и помогает оформить заказ</small>
+          </span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </section>
+
+      <section class="search-area" id="products" aria-label="Поиск услуг">
+        <h2 class="search-heading">Найдите необходимую услугу</h2>
+        <form class="search-bar">
+          <label class="visually-hidden" for="product-search">Поиск услуг</label>
+          <span class="search-icon" aria-hidden="true"></span>
+          <input
+            id="product-search"
+            type="search"
+            placeholder="Например, визитки"
+            autocomplete="off"
+          />
+          <button type="button" class="clear-search" aria-label="Очистить поиск">×</button>
+        </form>
+
+        <article class="result-card" hidden>
+          <img class="result-image" src="assets/result-business-cards.png" alt="" />
+          <div class="result-copy">
+            <h2>Визитки</h2>
+            <p>Стильные визитки, которые работают на ваш имидж.</p>
+            <p>Премиальная типография, качественные материалы и внимание к деталям.</p>
+          </div>
+          <a class="result-button" href="#contacts">Перейти</a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+      <div class="footer-brand">
+        <a class="logo" href="#" aria-label="COMINT">
+          <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
+        </a>
+        <p>Качество в деталях.<br />Доверие в каждом заказе.</p>
+        <div class="socials" aria-label="Социальные сети">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="5" width="14" height="14" rx="4"></rect>
+              <circle cx="12" cy="12" r="3.2"></circle>
+              <circle cx="16.8" cy="7.4" r="1"></circle>
+            </svg>
+          </a>
+          <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.8 5.6 4.9 11.1c-.6.2-.6 1 0 1.2l3.6 1.2 1.4 4.2c.2.6 1 .7 1.4.2l2-2.4 3.9 2.9c.5.4 1.2.1 1.3-.5l1.8-11c.1-.8-.6-1.4-1.3-1.1Z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="VK"><span>vk</span></a>
+        </div>
+        <small>© COMINT 2025. Все права защищены.</small>
+      </div>
+
+      <div class="footer-column">
+        <h3>Услуги</h3>
+        <a href="#">Полиграфия</a>
+        <a href="#">Сувенирная продукция</a>
+        <a href="#">Широкоформатная печать</a>
+        <a href="#">Упаковка и этикетки</a>
+        <a href="#">Дизайн и верстка</a>
+        <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer">Бот автопродаж</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Продукция</h3>
+        <a href="#">Визитки</a>
+        <a href="#">Листовки и флаеры</a>
+        <a href="#">Буклеты и брошюры</a>
+        <a href="#">Плакаты и постеры</a>
+        <a href="#">Баннеры и вывески</a>
+        <a href="#">Подарочная продукция</a>
+      </div>
+
+      <div class="footer-column" id="company">
+        <h3>О компании</h3>
+        <a href="#">О нас</a>
+        <a href="#">Производство</a>
+        <a href="#">Почему мы сейчас</a>
+        <a href="#">Качество</a>
+        <a href="#">Вакансии</a>
+        <a href="#">Документы</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Контакты</h3>
+        <a href="tel:+375293214547">+375 29 321-45-47</a>
+        <a href="mailto:info@comint.by">info@comint.by</a>
+        <span>г. Минск, ул. Тимирязева,<br />д. 3, офис 200</span>
+        <span>Пн-Пт: 9:00 - 18:00</span>
+      </div>
+
+      <div class="telegram-card">
+        <h3>Бот автопродаж</h3>
+        <p>Поможет выбрать продукцию и оформить заявку в Telegram</p>
+        <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer">
+          <img src="assets/telegram-icon.png" alt="" />
+          Открыть бота
+        </a>
+      </div>
+    </footer>
+
+    <div class="modal-backdrop" id="order-modal" hidden>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
+        <button class="modal-close" type="button" aria-label="Закрыть форму">×</button>
+        <div class="modal-copy">
+          <p class="modal-kicker">Быстрый заказ</p>
+          <h2 id="order-modal-title">Расскажите, что нужно напечатать</h2>
+          <p>
+            Оставьте контакты и короткое описание задачи. Мы свяжемся с вами,
+            уточним детали и предложим подходящий формат.
+          </p>
+        </div>
+
+        <form class="order-form">
+          <label class="order-field">
+            <span>Ваше имя</span>
+            <input type="text" name="name" placeholder="Иван" autocomplete="name" />
+          </label>
+
+          <label class="order-field">
+            <span>Телефон</span>
+            <input type="tel" name="phone" placeholder="+375 (29) 123-45-67" autocomplete="tel" />
+          </label>
+
+          <label class="order-field order-field-full">
+            <span>Комментарий</span>
+            <textarea
+              name="comment"
+              rows="4"
+              placeholder="Тираж, формат, сроки или любые пожелания"
+            ></textarea>
+          </label>
+
+          <div class="order-actions">
+            <button class="order-submit" type="submit">Отправить заявку</button>
+            <p>Мы ответим в рабочее время: Пн-Пт, 9:00 - 18:00.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

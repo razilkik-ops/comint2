@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COMINT - Сувениры</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="souvenirs-page">
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+
+    <header class="site-header">
+      <a class="logo" href="index.html" aria-label="COMINT">
+        <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
+      </a>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="index.html#services">Услуги</a>
+        <a href="index.html#products">Продукция</a>
+        <a href="index.html#portfolio">Портфолио</a>
+        <a href="index.html#company">О компании</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <a class="quick-order" href="#contacts" data-open-order-modal>Быстрый заказ</a>
+    </header>
+
+    <main class="souvenirs-main">
+      <section class="souvenirs-hero">
+        <div class="souvenirs-hero-copy">
+          <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a href="index.html">Главная</a>
+            <span>›</span>
+            <span>Сувениры</span>
+          </nav>
+          <h1>Сувениры</h1>
+          <p>Стильные и современные сувениры<br />с вашим логотипом</p>
+        </div>
+
+        <div class="souvenirs-hero-visual" aria-hidden="true">
+          <img src="assets/souvenirs-hero.png" alt="" />
+        </div>
+      </section>
+
+      <section class="catalog-shell" aria-label="Каталог сувениров">
+        <aside class="catalog-sidebar">
+          <h2>Категории</h2>
+          <div class="category-list" data-category-list>
+            <button class="category-item is-active" type="button" data-category="all">
+              <span>Все сувениры</span>
+              <strong>128</strong>
+            </button>
+            <button class="category-item" type="button" data-category="mugs">
+              <span>Чашки и кружки</span><strong>24</strong>
+            </button>
+            <button class="category-item" type="button" data-category="bottles">
+              <span>Бутылки и термосы</span><strong>18</strong>
+            </button>
+            <button class="category-item" type="button" data-category="office">
+              <span>Офисные принадлежности</span><strong>26</strong>
+            </button>
+            <button class="category-item" type="button" data-category="textile">
+              <span>Одежда и текстиль</span><strong>20</strong>
+            </button>
+            <button class="category-item" type="button" data-category="tech">
+              <span>Технологичные</span><strong>16</strong>
+            </button>
+            <button class="category-item" type="button" data-category="keychains">
+              <span>Брелоки</span><strong>12</strong>
+            </button>
+            <button class="category-item" type="button" data-category="eco">
+              <span>Эко-сувениры</span><strong>12</strong>
+            </button>
+          </div>
+          <a class="catalog-download" href="assets/comint-souvenirs-catalog.pdf" download>
+            Скачать каталог
+          </a>
+        </aside>
+
+        <div class="catalog-content">
+          <div class="catalog-toolbar">
+            <form class="catalog-search" data-catalog-search>
+              <span class="search-icon" aria-hidden="true"></span>
+              <input
+                type="search"
+                placeholder="Поиск сувениров"
+                aria-label="Поиск сувениров"
+                data-catalog-search-input
+              />
+              <button type="button" aria-label="Очистить поиск" data-catalog-search-clear>×</button>
+            </form>
+
+            <div class="catalog-actions">
+              <div class="catalog-sort-wrap">
+                <button class="catalog-sort" type="button" data-sort-trigger aria-haspopup="true" aria-expanded="false">
+                  <span data-sort-label>По популярности</span>
+                  <span class="catalog-sort-chevron" aria-hidden="true">⌄</span>
+                </button>
+                <div class="catalog-sort-menu" data-sort-menu hidden>
+                  <button type="button" data-sort="popular">По популярности</button>
+                  <button type="button" data-sort="price-asc">Сначала дешевле</button>
+                  <button type="button" data-sort="price-desc">Сначала дороже</button>
+                  <button type="button" data-sort="name">По названию</button>
+                </div>
+              </div>
+
+              <div class="catalog-view" role="tablist" aria-label="Режим отображения каталога">
+                <button class="is-active" type="button" aria-label="Сетка" data-view="grid" aria-pressed="true">
+                  ◫
+                </button>
+                <button type="button" aria-label="Список" data-view="list" aria-pressed="false">☷</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-grid" data-catalog-grid aria-live="polite"></div>
+          <div class="catalog-empty" data-catalog-empty hidden>
+            <h3>Ничего не найдено</h3>
+            <p>Попробуйте изменить категорию, запрос или сортировку.</p>
+          </div>
+
+          <div class="catalog-pagination" aria-label="Пагинация" data-catalog-pagination></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+      <div class="footer-brand">
+        <a class="logo" href="#" aria-label="COMINT">
+          <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
+        </a>
+        <p>Качество в деталях.<br />Доверие в каждом заказе.</p>
+        <div class="socials" aria-label="Социальные сети">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="5" width="14" height="14" rx="4"></rect>
+              <circle cx="12" cy="12" r="3.2"></circle>
+              <circle cx="16.8" cy="7.4" r="1"></circle>
+            </svg>
+          </a>
+          <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.8 5.6 4.9 11.1c-.6.2-.6 1 0 1.2l3.6 1.2 1.4 4.2c.2.6 1 .7 1.4.2l2-2.4 3.9 2.9c.5.4 1.2.1 1.3-.5l1.8-11c.1-.8-.6-1.4-1.3-1.1Z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="VK"><span>vk</span></a>
+        </div>
+        <small>© COMINT 2025. Все права защищены.</small>
+      </div>
+
+      <div class="footer-column">
+        <h3>Услуги</h3>
+        <a href="#">Полиграфия</a>
+        <a href="#">Сувенирная продукция</a>
+        <a href="#">Широкоформатная печать</a>
+        <a href="#">Упаковка и этикетки</a>
+        <a href="#">Дизайн и верстка</a>
+        <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer">Бот автопродаж</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Продукция</h3>
+        <a href="#">Визитки</a>
+        <a href="#">Листовки и флаеры</a>
+        <a href="#">Буклеты и брошюры</a>
+        <a href="#">Плакаты и постеры</a>
+        <a href="#">Баннеры и вывески</a>
+        <a href="#">Подарочная продукция</a>
+      </div>
+
+      <div class="footer-column" id="company">
+        <h3>О компании</h3>
+        <a href="#">О нас</a>
+        <a href="#">Производство</a>
+        <a href="#">Почему мы сейчас</a>
+        <a href="#">Качество</a>
+        <a href="#">Вакансии</a>
+        <a href="#">Документы</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Контакты</h3>
+        <a href="tel:+375293214547">+375 29 321-45-47</a>
+        <a href="mailto:info@comint.by">info@comint.by</a>
+        <span>г. Минск, ул. Тимирязева,<br />д. 3, офис 200</span>
+        <span>Пн-Пт: 9:00 - 18:00</span>
+      </div>
+
+      <div class="telegram-card">
+        <h3>Бот автопродаж</h3>
+        <p>Поможет выбрать продукцию и оформить заявку в Telegram</p>
+        <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer">
+          <img src="assets/telegram-icon.png" alt="" />
+          Открыть бота
+        </a>
+      </div>
+    </footer>
+
+    <div class="modal-backdrop" id="order-modal" hidden>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
+        <button class="modal-close" type="button" aria-label="Закрыть форму">×</button>
+        <div class="modal-copy">
+          <p class="modal-kicker">Быстрый заказ</p>
+          <h2 id="order-modal-title">Расскажите, что нужно напечатать</h2>
+          <p>
+            Оставьте контакты и короткое описание задачи. Мы свяжемся с вами,
+            уточним детали и предложим подходящий формат.
+          </p>
+        </div>
+
+        <form class="order-form">
+          <label class="order-field">
+            <span>Ваше имя</span>
+            <input type="text" name="name" placeholder="Иван" autocomplete="name" />
+          </label>
+
+          <label class="order-field">
+            <span>Телефон</span>
+            <input type="tel" name="phone" placeholder="+375 (29) 123-45-67" autocomplete="tel" />
+          </label>
+
+          <label class="order-field order-field-full">
+            <span>Комментарий</span>
+            <textarea
+              name="comment"
+              rows="4"
+              placeholder="Тираж, формат, сроки или любые пожелания"
+            ></textarea>
+          </label>
+
+          <div class="order-actions">
+            <button class="order-submit" type="submit">Отправить заявку</button>
+            <p>Мы ответим в рабочее время: Пн-Пт, 9:00 - 18:00.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
