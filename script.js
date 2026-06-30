@@ -1,46 +1,58 @@
-const productCopy = {
+const catalogApi = window.ComintCatalogData || null;
+
+const fallbackSearchCopy = {
   визитки: [
     "Визитки",
     "Стильные визитки, которые работают на ваш имидж.",
-    "Премиальная типография, качественные материалы и внимание к деталям.",
+    "Подберем бумагу, тираж и отделку под ваш сценарий.",
   ],
   листовки: [
     "Листовки",
     "Яркая печать для акций, презентаций и ежедневных задач бизнеса.",
-    "Подберем бумагу, тираж и отделку под ваш сценарий.",
+    "Подготовим материалы и макет под ваши сроки.",
   ],
-  буклеты: [
-    "Буклеты",
-    "Аккуратная подача информации в удобном печатном формате.",
-    "Верстка, печать и постпечатная обработка в одном месте.",
-  ],
-  баннеры: [
-    "Баннеры",
-    "Широкоформатная печать для наружной рекламы и мероприятий.",
-    "Четкие цвета, прочные материалы и быстрый запуск в производство.",
+  сувениры: [
+    "Сувениры",
+    "Брендированная продукция для подарков, промо и корпоративных наборов.",
+    "Подберем основу, нанесение и тираж под ваш формат.",
   ],
 };
 
-const categoryLabels = {
-  all: "Все сувениры",
-  mugs: "Чашки и кружки",
-  bottles: "Бутылки и термосы",
-  office: "Офисные принадлежности",
-  textile: "Одежда и текстиль",
-  tech: "Технологичные",
-  keychains: "Брелоки",
-  eco: "Эко-сувениры",
-};
-
-const sortLabels = {
-  popular: "По популярности",
-  "price-asc": "Сначала дешевле",
-  "price-desc": "Сначала дороже",
+const sortLabels = catalogApi?.sortLabels || {
+  popular: "Сначала основные",
   name: "По названию",
+  section: "По разделу",
 };
 
 function normalize(value) {
   return value.trim().toLowerCase();
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function buildCatalogItemLink(service) {
+  const params = new URLSearchParams({
+    title: service.title,
+    section: service.section,
+    kind: service.catalogKind,
+    slug: service.slug,
+  });
+
+  return `catalog-item.html?${params.toString()}`;
+}
+
+function findCatalogService(query) {
+  if (!catalogApi) {
+    return null;
+  }
+
+  return catalogApi.search(query);
 }
 
 function initHomeSearch() {
@@ -49,9 +61,11 @@ function initHomeSearch() {
   const resultCard = document.querySelector(".result-card");
   const resultTitle = document.querySelector(".result-copy h2");
   const resultText = document.querySelectorAll(".result-copy p");
+  const resultImage = document.querySelector(".result-image");
+  const resultButton = document.querySelector(".result-button");
 
   function updateResult() {
-    if (!input || !resultCard || !resultTitle || resultText.length < 2) {
+    if (!input || !resultCard || !resultTitle || resultText.length < 2 || !resultButton) {
       return;
     }
 
@@ -62,8 +76,25 @@ function initHomeSearch() {
       return;
     }
 
-    const key = Object.keys(productCopy).find((item) => value.includes(item));
-    const copy = productCopy[key] || [
+    const matchedService = findCatalogService(value);
+
+    if (matchedService) {
+      resultTitle.textContent = matchedService.title;
+      resultText[0].textContent = matchedService.section;
+      resultText[1].textContent = matchedService.lead;
+      resultButton.href = buildCatalogItemLink(matchedService);
+      resultButton.textContent = "Открыть карточку";
+
+      if (resultImage) {
+        resultImage.src = matchedService.image;
+        resultImage.alt = matchedService.title;
+      }
+
+      return;
+    }
+
+    const key = Object.keys(fallbackSearchCopy).find((item) => value.includes(item));
+    const copy = fallbackSearchCopy[key] || [
       input.value.trim(),
       "Подготовим услугу под ваши задачи и сроки.",
       "Поможем с материалами, дизайном, тиражом и финальной отделкой.",
@@ -72,6 +103,8 @@ function initHomeSearch() {
     resultTitle.textContent = copy[0];
     resultText[0].textContent = copy[1];
     resultText[1].textContent = copy[2];
+    resultButton.href = "#contacts";
+    resultButton.textContent = "Оставить заявку";
   }
 
   if (clearButton && input) {
@@ -137,7 +170,7 @@ function initOrderModal() {
     }
 
     if (modalKicker) {
-      modalKicker.textContent = "Заявка по товару";
+      modalKicker.textContent = "Заявка по услуге";
     }
 
     if (modalTitle) {
@@ -146,7 +179,7 @@ function initOrderModal() {
 
     if (modalDescription) {
       modalDescription.textContent =
-        "Мы уже подставили выбранный товар и параметры. Оставьте контакты, и мы подтвердим стоимость, сроки и запуск в работу.";
+        "Мы уже подставили выбранную услугу и параметры. Оставьте контакты, и мы уточним материалы, сроки и финальный расчет.";
     }
 
     if (modalSummary) {
@@ -154,16 +187,16 @@ function initOrderModal() {
     }
 
     if (modalSummaryMedia && trigger.dataset.orderImageFrame) {
-      modalSummaryMedia.className = `modal-order-media ${trigger.dataset.orderImageFrame} ${trigger.dataset.orderColorClass || "is-black"}`;
+      modalSummaryMedia.className = `modal-order-media ${trigger.dataset.orderImageFrame} ${trigger.dataset.orderColorClass || ""}`.trim();
     }
 
     if (modalSummaryImage && trigger.dataset.orderImage) {
       modalSummaryImage.src = trigger.dataset.orderImage;
-      modalSummaryImage.alt = trigger.dataset.orderTitle || "Товар";
+      modalSummaryImage.alt = trigger.dataset.orderTitle || "Услуга";
     }
 
     if (modalSummaryTitle) {
-      modalSummaryTitle.textContent = trigger.dataset.orderTitle || "Товар";
+      modalSummaryTitle.textContent = trigger.dataset.orderTitle || "Услуга";
     }
 
     if (modalSummaryOptions) {
@@ -228,125 +261,6 @@ function initOrderModal() {
   resetModalContent();
 }
 
-function formatPrice(value) {
-  return `${new Intl.NumberFormat("ru-RU").format(value)} бел. руб.`;
-}
-
-function formatBelPrice(value) {
-  return `${new Intl.NumberFormat("ru-RU").format(value)} бел. руб.`;
-}
-
-function createCatalogProducts() {
-  const imagePool = [
-    "assets/catalog-mug.png",
-    "assets/catalog-thermos.png",
-    "assets/catalog-bag.png",
-    "assets/catalog-pen.png",
-  ];
-
-  const baseItems = [
-    {
-      title: "Кружка матовая",
-      subtitle: "Объем 320 мл",
-      price: 890,
-      image: "assets/catalog-mug.png",
-      category: "mugs",
-      popularity: 99,
-      slug: "matovaya-kruzhka",
-    },
-    {
-      title: "Термос",
-      subtitle: "Объем 500 мл",
-      price: 1490,
-      image: "assets/catalog-thermos.png",
-      category: "bottles",
-      popularity: 96,
-      slug: "termos",
-    },
-    {
-      title: "Ежедневник",
-      subtitle: "Формат A5",
-      price: 950,
-      image: "assets/catalog-bag.png",
-      category: "office",
-      popularity: 93,
-      slug: "ezhednevnik",
-    },
-    {
-      title: "Ручка металлическая",
-      subtitle: "С логотипом",
-      price: 550,
-      image: "assets/catalog-pen.png",
-      category: "office",
-      popularity: 90,
-      slug: "metallicheskaya-ruchka",
-    },
-    {
-      title: "Худи",
-      subtitle: "Размеры S-XXL",
-      price: 2990,
-      image: "assets/catalog-bag.png",
-      category: "textile",
-      popularity: 95,
-      slug: "hudi",
-    },
-    {
-      title: "Шоппер",
-      subtitle: "100% хлопок",
-      price: 790,
-      image: "assets/catalog-bag.png",
-      category: "eco",
-      popularity: 89,
-      slug: "shopper",
-    },
-    {
-      title: "Брелок",
-      subtitle: "Металл",
-      price: 390,
-      image: "assets/catalog-mug.png",
-      category: "keychains",
-      popularity: 88,
-      slug: "brelok",
-    },
-    {
-      title: "Пауэрбанк",
-      subtitle: "Емкость 10000 mAh",
-      price: 1890,
-      image: "assets/catalog-thermos.png",
-      category: "tech",
-      popularity: 91,
-      slug: "powerbank",
-    },
-  ];
-
-  const collections = [
-    { suffix: "Core", priceShift: 0, popularityShift: 0 },
-    { suffix: "Studio", priceShift: 60, popularityShift: -1 },
-    { suffix: "Urban", priceShift: 90, popularityShift: -2 },
-    { suffix: "Prime", priceShift: 120, popularityShift: -3 },
-    { suffix: "Lite", priceShift: -40, popularityShift: -4 },
-    { suffix: "Select", priceShift: 170, popularityShift: -5 },
-    { suffix: "Smart", priceShift: 110, popularityShift: -6 },
-    { suffix: "Black", priceShift: 140, popularityShift: -7 },
-  ];
-
-  return collections.flatMap((collection, collectionIndex) =>
-    baseItems.map((item, itemIndex) => {
-      const isBaseName = collectionIndex === 0;
-      return {
-        id: `${item.slug}-${collectionIndex + 1}`,
-        slug: `${item.slug}-${collection.suffix.toLowerCase()}`,
-        title: isBaseName ? item.title : `${item.title} ${collection.suffix}`,
-        subtitle: isBaseName ? item.subtitle : `${item.subtitle} • серия ${collection.suffix}`,
-        price: Math.max(290, item.price + collection.priceShift + itemIndex * 10),
-        image: imagePool[(collectionIndex + itemIndex) % imagePool.length] || item.image,
-        category: item.category,
-        popularity: item.popularity + collection.popularityShift - itemIndex,
-      };
-    }),
-  );
-}
-
 function buildPagination(currentPage, totalPages) {
   if (totalPages <= 1) {
     return [1];
@@ -367,14 +281,16 @@ function buildPagination(currentPage, totalPages) {
   return [1, "...", currentPage, "...", totalPages];
 }
 
-function initSouvenirsCatalog() {
-  const page = document.querySelector(".souvenirs-page");
+function initCatalogPage() {
+  const page = document.querySelector(".catalog-page[data-catalog-kind]");
 
-  if (!page) {
+  if (!page || !catalogApi) {
     return;
   }
 
-  const categoryButtons = [...document.querySelectorAll("[data-category]")];
+  const kind = page.dataset.catalogKind;
+  const catalog = catalogApi.getCatalog(kind);
+  const categoryList = document.querySelector("[data-category-list]");
   const searchInput = document.querySelector("[data-catalog-search-input]");
   const searchClearButton = document.querySelector("[data-catalog-search-clear]");
   const grid = document.querySelector("[data-catalog-grid]");
@@ -385,9 +301,51 @@ function initSouvenirsCatalog() {
   const sortLabel = document.querySelector("[data-sort-label]");
   const sortOptions = [...document.querySelectorAll("[data-sort-menu] [data-sort]")];
   const viewButtons = [...document.querySelectorAll("[data-view]")];
+  const heroTitle = document.querySelector("[data-catalog-title]");
+  const heroDescription = document.querySelector("[data-catalog-description]");
+  const breadcrumbCurrent = document.querySelector("[data-catalog-breadcrumb-current]");
+  const downloadLink = document.querySelector("[data-catalog-download]");
 
-  if (!grid || !pagination || !searchInput || !searchClearButton || !sortTrigger || !sortMenu || !sortLabel) {
+  if (
+    !catalog ||
+    !categoryList ||
+    !searchInput ||
+    !searchClearButton ||
+    !grid ||
+    !emptyState ||
+    !pagination ||
+    !sortTrigger ||
+    !sortMenu ||
+    !sortLabel
+  ) {
     return;
+  }
+
+  document.title = `COMINT - ${catalog.label}`;
+
+  if (heroTitle) {
+    heroTitle.textContent = catalog.heroTitle;
+  }
+
+  if (heroDescription) {
+    heroDescription.innerHTML = escapeHtml(catalog.heroDescription).replaceAll("\n", "<br />");
+  }
+
+  if (breadcrumbCurrent) {
+    breadcrumbCurrent.textContent = catalog.label;
+  }
+
+  searchInput.placeholder = catalog.searchPlaceholder;
+  searchInput.setAttribute("aria-label", catalog.searchPlaceholder);
+
+  if (downloadLink) {
+    if (catalog.downloadHref) {
+      downloadLink.href = catalog.downloadHref;
+      downloadLink.textContent = catalog.downloadLabel;
+      downloadLink.hidden = false;
+    } else {
+      downloadLink.hidden = true;
+    }
   }
 
   const state = {
@@ -400,48 +358,50 @@ function initSouvenirsCatalog() {
   };
 
   const itemsPerPage = 8;
-  const allProducts = createCatalogProducts();
+
+  function renderCategories() {
+    categoryList.innerHTML = catalog.categories
+      .map((category) => {
+        const isActive = category.id === state.category;
+        return `
+          <button
+            class="category-item ${isActive ? "is-active" : ""}"
+            type="button"
+            data-category="${escapeHtml(category.id)}"
+            aria-pressed="${String(isActive)}"
+          >
+            <span>${escapeHtml(category.label)}</span>
+            <strong>${category.count}</strong>
+          </button>
+        `;
+      })
+      .join("");
+  }
 
   function getVisibleProducts() {
     const query = normalize(state.query);
 
-    return allProducts
-      .filter((product) => state.category === "all" || product.category === state.category)
+    return catalog.items
+      .filter((product) => state.category === "all" || product.sectionId === state.category)
       .filter((product) => {
         if (!query) {
           return true;
         }
 
-        const haystack = normalize(
-          [product.title, product.subtitle, categoryLabels[product.category] || ""].join(" "),
-        );
+        const haystack = normalize([product.title, product.section, product.label].join(" "));
         return haystack.includes(query);
       })
       .sort((left, right) => {
-        if (state.sort === "price-asc") {
-          return left.price - right.price;
-        }
-
-        if (state.sort === "price-desc") {
-          return right.price - left.price;
-        }
-
         if (state.sort === "name") {
           return left.title.localeCompare(right.title, "ru");
         }
 
+        if (state.sort === "section") {
+          return left.section.localeCompare(right.section, "ru") || left.title.localeCompare(right.title, "ru");
+        }
+
         return right.popularity - left.popularity;
       });
-  }
-
-  function getProductLink(product) {
-    const params = new URLSearchParams({
-      title: product.title,
-      category: categoryLabels[product.category] || "Сувениры",
-      slug: product.slug,
-    });
-
-    return `catalog-item.html?${params.toString()}`;
   }
 
   function renderProducts(products) {
@@ -466,19 +426,19 @@ function initSouvenirsCatalog() {
               class="product-favorite ${isFavorite ? "is-active" : ""}"
               type="button"
               aria-label="${label}"
-              data-favorite-id="${product.id}"
+              data-favorite-id="${escapeHtml(product.id)}"
             >
               ${isFavorite ? "♥" : "♡"}
             </button>
-            <a class="product-visual" href="${getProductLink(product)}" aria-label="Открыть ${product.title}">
-              <img src="${product.image}" alt="${product.title}" />
+            <a class="product-visual" href="${buildCatalogItemLink(product)}" aria-label="Открыть ${escapeHtml(product.title)}">
+              <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" />
             </a>
             <div class="product-info">
-              <h3>${product.title}</h3>
-              <p>${product.subtitle}</p>
+              <h3>${escapeHtml(product.title)}</h3>
+              <p>${escapeHtml(product.section)}</p>
               <div class="product-meta">
-                <strong>${formatPrice(product.price)}</strong>
-                <a href="${getProductLink(product)}" aria-label="Открыть товар">→</a>
+                <strong>${escapeHtml(product.estimateLabel)}</strong>
+                <a href="${buildCatalogItemLink(product)}" aria-label="Открыть карточку">→</a>
               </div>
             </div>
           </article>
@@ -522,14 +482,9 @@ function initSouvenirsCatalog() {
   }
 
   function renderControls() {
-    categoryButtons.forEach((button) => {
-      const isActive = button.dataset.category === state.category;
-      button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-pressed", String(isActive));
-    });
-
+    renderCategories();
     searchClearButton.hidden = state.query.length === 0;
-    sortLabel.textContent = sortLabels[state.sort];
+    sortLabel.textContent = sortLabels[state.sort] || sortLabels.popular;
 
     sortOptions.forEach((option) => {
       option.classList.toggle("is-active", option.dataset.sort === state.sort);
@@ -570,12 +525,15 @@ function initSouvenirsCatalog() {
     sortTrigger.parentElement?.classList.add("is-open");
   }
 
-  categoryButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      state.category = button.dataset.category || "all";
-      state.page = 1;
-      renderCatalog();
-    });
+  categoryList.addEventListener("click", (event) => {
+    const target = event.target.closest("[data-category]");
+    if (!target) {
+      return;
+    }
+
+    state.category = target.dataset.category || "all";
+    state.page = 1;
+    renderCatalog();
   });
 
   searchInput.addEventListener("input", () => {
@@ -612,19 +570,14 @@ function initSouvenirsCatalog() {
   viewButtons.forEach((button) => {
     button.addEventListener("click", () => {
       state.view = button.dataset.view || "grid";
-      renderControls();
-      renderProducts(getVisibleProducts().slice((state.page - 1) * itemsPerPage, state.page * itemsPerPage));
+      renderCatalog();
     });
   });
 
   pagination.addEventListener("click", (event) => {
     const target = event.target.closest("[data-page], [data-page-shift]");
 
-    if (!target) {
-      return;
-    }
-
-    if (target.hasAttribute("disabled")) {
+    if (!target || target.hasAttribute("disabled")) {
       return;
     }
 
@@ -677,37 +630,40 @@ function initSouvenirsCatalog() {
 
 const productPagePresets = {
   pen: {
-    trail: "Ручки",
-    title: "Ручка металлическая",
-    description:
-      "Стильная металлическая ручка с логотипом — элегантный аксессуар для клиентов и сотрудников премиум-класса.",
+    headings: {
+      colors: "Вариант изделия",
+      methods: "Нанесение",
+      quantity: "Тираж",
+      quantityUnit: "шт",
+      tiers: "Рекомендуемый тираж",
+    },
     colors: [
-      { id: "black", label: "Черный", className: "is-black" },
-      { id: "blue", label: "Синий", className: "is-blue" },
-      { id: "silver", label: "Серебристый", className: "is-silver" },
+      { id: "black", label: "Черный", className: "is-black", swatch: true },
+      { id: "blue", label: "Синий", className: "is-blue", swatch: true },
+      { id: "silver", label: "Серебристый", className: "is-silver", swatch: true },
     ],
     methods: [
       { id: "print", label: "Печать", icon: "print" },
       { id: "engraving", label: "Гравировка", icon: "engraving" },
     ],
-    prices: [
-      { qty: 50, price: 690 },
-      { qty: 100, price: 620 },
-      { qty: 300, price: 580 },
-      { qty: 500, price: 550 },
-      { qty: 1000, price: 510 },
+    tiers: [
+      { qty: 50, note: "минимальный тираж" },
+      { qty: 100, note: "для промо-наборов" },
+      { qty: 300, note: "для корпоративной раздачи" },
+      { qty: 500, note: "стандартный тираж" },
+      { qty: 1000, note: "для масштабных кампаний" },
     ],
+    quantityStep: 50,
     specs: [
-      ["Материал", "Металл"],
-      ["Механизм", "Поворотный"],
-      ["Нанесение", "УФ-печать, гравировка"],
-      ["Срок изготовления", "3-5 рабочих дней"],
-      ["Минимальный тираж", "50 шт"],
+      ["Основа", "Сувенирная продукция"],
+      ["Подходит для", "ручек, брелоков, зажигалок и небольших сувениров"],
+      ["Подготовка", "подбор модели и проверка макета перед нанесением"],
+      ["Срок запуска", "после согласования тиража и нанесения"],
     ],
     gallery: [
       { src: "assets/catalog-pen.png", frame: "product-frame-pen-hero", label: "Основной вид" },
-      { src: "assets/catalog-pen.png", frame: "product-frame-pen-logo", label: "Логотип крупно" },
-      { src: "assets/catalog-pen.png", frame: "product-frame-pen-tip", label: "Наконечник" },
+      { src: "assets/catalog-pen.png", frame: "product-frame-pen-logo", label: "Нанесение" },
+      { src: "assets/catalog-pen.png", frame: "product-frame-pen-tip", label: "Деталь" },
     ],
     examples: [
       { src: "assets/catalog-pen.png", frame: "product-frame-pen-logo", tone: "" },
@@ -717,37 +673,40 @@ const productPagePresets = {
     ],
   },
   mug: {
-    trail: "Кружки",
-    title: "Кружка матовая",
-    description:
-      "Матовая кружка с фирменным логотипом для подарков, welcome-pack наборов и корпоративных мероприятий.",
+    headings: {
+      colors: "Вариант изделия",
+      methods: "Нанесение",
+      quantity: "Тираж",
+      quantityUnit: "шт",
+      tiers: "Рекомендуемый тираж",
+    },
     colors: [
-      { id: "black", label: "Черный", className: "is-black" },
-      { id: "blue", label: "Синий", className: "is-blue" },
-      { id: "silver", label: "Серый", className: "is-silver" },
+      { id: "black", label: "Темный", className: "is-black", swatch: true },
+      { id: "blue", label: "Синий", className: "is-blue", swatch: true },
+      { id: "silver", label: "Светлый", className: "is-silver", swatch: true },
     ],
     methods: [
       { id: "print", label: "Печать", icon: "print" },
-      { id: "engraving", label: "Гравировка", icon: "engraving" },
+      { id: "engraving", label: "Деколь", icon: "engraving" },
     ],
-    prices: [
-      { qty: 50, price: 990 },
-      { qty: 100, price: 940 },
-      { qty: 300, price: 910 },
-      { qty: 500, price: 890 },
-      { qty: 1000, price: 850 },
+    tiers: [
+      { qty: 24, note: "малый тираж" },
+      { qty: 50, note: "подарочные наборы" },
+      { qty: 100, note: "корпоративный заказ" },
+      { qty: 300, note: "массовое брендирование" },
+      { qty: 500, note: "для акций и мероприятий" },
     ],
+    quantityStep: 25,
     specs: [
-      ["Материал", "Керамика"],
-      ["Объем", "320 мл"],
-      ["Нанесение", "УФ-печать, деколь"],
-      ["Срок изготовления", "4-6 рабочих дней"],
-      ["Минимальный тираж", "50 шт"],
+      ["Основа", "Сувенирная продукция"],
+      ["Подходит для", "кружек, тарелок и аксессуаров для кухни и офиса"],
+      ["Подготовка", "проверка цвета и зоны нанесения перед запуском"],
+      ["Срок запуска", "после подтверждения тиража и макета"],
     ],
     gallery: [
       { src: "assets/catalog-mug.png", frame: "product-frame-mug-front", label: "Основной вид" },
       { src: "assets/catalog-mug.png", frame: "product-frame-mug-angle", label: "Под углом" },
-      { src: "assets/catalog-mug.png", frame: "product-frame-mug-detail", label: "Логотип" },
+      { src: "assets/catalog-mug.png", frame: "product-frame-mug-detail", label: "Деталь" },
     ],
     examples: [
       { src: "assets/catalog-mug.png", frame: "product-frame-mug-front", tone: "" },
@@ -757,37 +716,40 @@ const productPagePresets = {
     ],
   },
   thermos: {
-    trail: "Термосы",
-    title: "Термос",
-    description:
-      "Лаконичный термос для брендированных наборов и ежедневного использования в офисе, дороге и на встречах.",
+    headings: {
+      colors: "Вариант изделия",
+      methods: "Нанесение",
+      quantity: "Тираж",
+      quantityUnit: "шт",
+      tiers: "Рекомендуемый тираж",
+    },
     colors: [
-      { id: "black", label: "Черный", className: "is-black" },
-      { id: "blue", label: "Синий", className: "is-blue" },
-      { id: "silver", label: "Серебристый", className: "is-silver" },
+      { id: "black", label: "Темный", className: "is-black", swatch: true },
+      { id: "blue", label: "Синий", className: "is-blue", swatch: true },
+      { id: "silver", label: "Светлый", className: "is-silver", swatch: true },
     ],
     methods: [
       { id: "print", label: "Печать", icon: "print" },
       { id: "engraving", label: "Гравировка", icon: "engraving" },
     ],
-    prices: [
-      { qty: 50, price: 1590 },
-      { qty: 100, price: 1540 },
-      { qty: 300, price: 1510 },
-      { qty: 500, price: 1490 },
-      { qty: 1000, price: 1450 },
+    tiers: [
+      { qty: 25, note: "малый тираж" },
+      { qty: 50, note: "welcome-pack наборы" },
+      { qty: 100, note: "корпоративные подарки" },
+      { qty: 300, note: "массовый заказ" },
+      { qty: 500, note: "промо-кампания" },
     ],
+    quantityStep: 25,
     specs: [
-      ["Материал", "Металл"],
-      ["Объем", "500 мл"],
-      ["Нанесение", "УФ-печать, гравировка"],
-      ["Срок изготовления", "4-6 рабочих дней"],
-      ["Минимальный тираж", "50 шт"],
+      ["Основа", "Сувенирная продукция"],
+      ["Подходит для", "термосов, флешек, ковриков для мыши и функциональных сувениров"],
+      ["Подготовка", "подбор модели и проверка логотипа под нанесение"],
+      ["Срок запуска", "после согласования тиража и комплектации"],
     ],
     gallery: [
       { src: "assets/catalog-thermos.png", frame: "product-frame-thermos-full", label: "Основной вид" },
       { src: "assets/catalog-thermos.png", frame: "product-frame-thermos-angle", label: "Под углом" },
-      { src: "assets/catalog-thermos.png", frame: "product-frame-thermos-detail", label: "Логотип" },
+      { src: "assets/catalog-thermos.png", frame: "product-frame-thermos-detail", label: "Деталь" },
     ],
     examples: [
       { src: "assets/catalog-thermos.png", frame: "product-frame-thermos-angle", tone: "" },
@@ -797,37 +759,40 @@ const productPagePresets = {
     ],
   },
   bag: {
-    trail: "Пакеты",
-    title: "Пакет брендированный",
-    description:
-      "Плотный пакет с логотипом для премиальной упаковки подарков, презентационных материалов и сувенирных наборов.",
+    headings: {
+      colors: "Вариант изделия",
+      methods: "Нанесение",
+      quantity: "Тираж",
+      quantityUnit: "шт",
+      tiers: "Рекомендуемый тираж",
+    },
     colors: [
-      { id: "black", label: "Черный", className: "is-black" },
-      { id: "blue", label: "Синий", className: "is-blue" },
-      { id: "silver", label: "Белый", className: "is-silver" },
+      { id: "black", label: "Темный", className: "is-black", swatch: true },
+      { id: "blue", label: "Цветной", className: "is-blue", swatch: true },
+      { id: "silver", label: "Светлый", className: "is-silver", swatch: true },
     ],
     methods: [
       { id: "print", label: "Печать", icon: "print" },
-      { id: "engraving", label: "Тиснение", icon: "engraving" },
+      { id: "engraving", label: "Тиснение / шеврон", icon: "engraving" },
     ],
-    prices: [
-      { qty: 50, price: 890 },
-      { qty: 100, price: 840 },
-      { qty: 300, price: 810 },
-      { qty: 500, price: 790 },
-      { qty: 1000, price: 740 },
+    tiers: [
+      { qty: 25, note: "пробный тираж" },
+      { qty: 50, note: "подарочная упаковка" },
+      { qty: 100, note: "корпоративный заказ" },
+      { qty: 300, note: "для мероприятий" },
+      { qty: 500, note: "для постоянной выдачи" },
     ],
+    quantityStep: 25,
     specs: [
-      ["Материал", "Плотная бумага"],
-      ["Ручки", "Шнуровые"],
-      ["Нанесение", "УФ-печать, тиснение"],
-      ["Срок изготовления", "4-6 рабочих дней"],
-      ["Минимальный тираж", "50 шт"],
+      ["Основа", "Сувенирная продукция"],
+      ["Подходит для", "пакетов, коробок, сумок, текстиля, флажков и подарочных наборов"],
+      ["Подготовка", "подбор материала и проверка зоны брендирования"],
+      ["Срок запуска", "после утверждения формата и тиража"],
     ],
     gallery: [
       { src: "assets/catalog-bag.png", frame: "product-frame-bag-front", label: "Основной вид" },
       { src: "assets/catalog-bag.png", frame: "product-frame-bag-angle", label: "Под углом" },
-      { src: "assets/catalog-bag.png", frame: "product-frame-bag-detail", label: "Логотип" },
+      { src: "assets/catalog-bag.png", frame: "product-frame-bag-detail", label: "Деталь" },
     ],
     examples: [
       { src: "assets/catalog-bag.png", frame: "product-frame-bag-front", tone: "" },
@@ -836,26 +801,203 @@ const productPagePresets = {
       { src: "assets/catalog-bag.png", frame: "product-frame-bag-angle", tone: "" },
     ],
   },
+  "print-flat": {
+    headings: {
+      colors: "Основа",
+      methods: "Технология",
+      quantity: "Тираж",
+      quantityUnit: "шт",
+      tiers: "Рекомендуемый тираж",
+    },
+    colors: [
+      { id: "paper", label: "Бумага" },
+      { id: "cardboard", label: "Картон" },
+      { id: "designer", label: "Дизайнерская бумага" },
+    ],
+    methods: [
+      { id: "digital", label: "Цифровая печать", icon: "print" },
+      { id: "offset", label: "Офсет / постпечатка", icon: "engraving" },
+    ],
+    tiers: [
+      { qty: 100, note: "оперативный тираж" },
+      { qty: 300, note: "оптимально для промо" },
+      { qty: 500, note: "для регулярных заказов" },
+      { qty: 1000, note: "для крупных тиражей" },
+      { qty: 3000, note: "для массового распространения" },
+    ],
+    quantityStep: 100,
+    specs: [
+      ["Основа", "Полиграфическая продукция"],
+      ["Подходит для", "визиток, листовок, буклетов, меню, брошюр, конвертов и бланков"],
+      ["Подготовка", "проверка макета, размеров и цветового профиля"],
+      ["Срок запуска", "после утверждения макета и тиража"],
+    ],
+    gallery: [
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat", label: "Основной вид" },
+      { src: "assets/service-print.png", frame: "product-frame-flat-detail", label: "Деталь" },
+      { src: "assets/hero-products.png", frame: "product-frame-flat-wide", label: "В подборке" },
+    ],
+    examples: [
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat", tone: "" },
+      { src: "assets/service-print.png", frame: "product-frame-flat-detail", tone: "is-dark" },
+      { src: "assets/hero-products.png", frame: "product-frame-flat-wide", tone: "" },
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat", tone: "is-metal" },
+    ],
+  },
+  "print-display": {
+    headings: {
+      colors: "Основа",
+      methods: "Технология",
+      quantity: "Количество",
+      quantityUnit: "шт",
+      tiers: "Типовой объем",
+    },
+    colors: [
+      { id: "banner", label: "Баннер / пленка" },
+      { id: "plastic", label: "Пластик / ПВХ" },
+      { id: "composite", label: "Композит / каркас" },
+    ],
+    methods: [
+      { id: "wide", label: "Широкоформатная печать", icon: "print" },
+      { id: "assembly", label: "Сборка / монтаж", icon: "engraving" },
+    ],
+    tiers: [
+      { qty: 1, note: "единичный проект" },
+      { qty: 3, note: "небольшая серия" },
+      { qty: 5, note: "для сети точек" },
+      { qty: 10, note: "для кампании или выставки" },
+      { qty: 20, note: "для масштабного оформления" },
+    ],
+    quantityStep: 1,
+    specs: [
+      ["Основа", "Рекламные конструкции и оформление"],
+      ["Подходит для", "баннеров, стендов, вывесок, витрин и выставочных решений"],
+      ["Подготовка", "замеры, подбор материала и схема монтажа"],
+      ["Срок запуска", "после согласования конструкции и макета"],
+    ],
+    gallery: [
+      { src: "assets/hero-products.png", frame: "product-frame-display", label: "Основной вид" },
+      { src: "assets/service-print.png", frame: "product-frame-flat-wide", label: "Концепт" },
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat-detail", label: "Деталь" },
+    ],
+    examples: [
+      { src: "assets/hero-products.png", frame: "product-frame-display", tone: "" },
+      { src: "assets/service-print.png", frame: "product-frame-flat-wide", tone: "is-dark" },
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat-detail", tone: "" },
+      { src: "assets/hero-products.png", frame: "product-frame-display", tone: "is-metal" },
+    ],
+  },
+  "print-sticker": {
+    headings: {
+      colors: "Основа",
+      methods: "Технология",
+      quantity: "Тираж",
+      quantityUnit: "шт",
+      tiers: "Рекомендуемый тираж",
+    },
+    colors: [
+      { id: "film", label: "Самоклеящаяся пленка" },
+      { id: "paper", label: "Самоклеящаяся бумага" },
+      { id: "durable", label: "Износостойкий материал" },
+    ],
+    methods: [
+      { id: "print", label: "Печать", icon: "print" },
+      { id: "cut", label: "Плоттерная резка", icon: "engraving" },
+    ],
+    tiers: [
+      { qty: 50, note: "малый тираж" },
+      { qty: 100, note: "для маркировки" },
+      { qty: 300, note: "для промо и упаковки" },
+      { qty: 500, note: "для поточного использования" },
+      { qty: 1000, note: "для крупных партий" },
+    ],
+    quantityStep: 50,
+    specs: [
+      ["Основа", "Самоклеящаяся продукция"],
+      ["Подходит для", "наклеек, этикеток, пломб, трафаретов и автонаклеек"],
+      ["Подготовка", "проверка контура, размера и способа резки"],
+      ["Срок запуска", "после согласования материала и макета"],
+    ],
+    gallery: [
+      { src: "assets/service-print.png", frame: "product-frame-sticker", label: "Основной вид" },
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat-detail", label: "Деталь" },
+      { src: "assets/service-print.png", frame: "product-frame-flat", label: "Лист" },
+    ],
+    examples: [
+      { src: "assets/service-print.png", frame: "product-frame-sticker", tone: "" },
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat-detail", tone: "is-dark" },
+      { src: "assets/service-print.png", frame: "product-frame-flat", tone: "" },
+      { src: "assets/service-print.png", frame: "product-frame-sticker", tone: "is-metal" },
+    ],
+  },
+  "print-sign": {
+    headings: {
+      colors: "Основа",
+      methods: "Технология",
+      quantity: "Количество",
+      quantityUnit: "шт",
+      tiers: "Типовой объем",
+    },
+    colors: [
+      { id: "plastic", label: "Пластик" },
+      { id: "composite", label: "Композит" },
+      { id: "acrylic", label: "Акрил" },
+    ],
+    methods: [
+      { id: "print", label: "Печать / аппликация", icon: "print" },
+      { id: "mount", label: "Резка / монтаж", icon: "engraving" },
+    ],
+    tiers: [
+      { qty: 1, note: "индивидуальное изделие" },
+      { qty: 5, note: "для одного офиса или точки" },
+      { qty: 10, note: "для нескольких кабинетов" },
+      { qty: 20, note: "для сети помещений" },
+      { qty: 50, note: "для комплексной навигации" },
+    ],
+    quantityStep: 1,
+    specs: [
+      ["Основа", "Навигация и таблички"],
+      ["Подходит для", "стендов, офисных табличек, указателей и внутренней навигации"],
+      ["Подготовка", "согласование размеров, крепления и читаемости"],
+      ["Срок запуска", "после утверждения макета и материала"],
+    ],
+    gallery: [
+      { src: "assets/service-print.png", frame: "product-frame-flat-wide", label: "Основной вид" },
+      { src: "assets/hero-products.png", frame: "product-frame-display", label: "В интерьере" },
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat-detail", label: "Деталь" },
+    ],
+    examples: [
+      { src: "assets/service-print.png", frame: "product-frame-flat-wide", tone: "" },
+      { src: "assets/hero-products.png", frame: "product-frame-display", tone: "is-dark" },
+      { src: "assets/result-business-cards.png", frame: "product-frame-flat-detail", tone: "" },
+      { src: "assets/service-print.png", frame: "product-frame-flat-wide", tone: "is-metal" },
+    ],
+  },
 };
 
-function resolveProductPreset(params) {
-  const title = normalize(params.get("title") || "");
-  const slug = normalize(params.get("slug") || "");
-  const key = `${title} ${slug}`;
+function buildFallbackService(params) {
+  const kind = params.get("kind") || "souvenirs";
+  const title = params.get("title") || "Услуга";
+  const section = params.get("section") || (kind === "print" ? "Полиграфия" : "Сувениры");
+  const catalogConfig = catalogApi?.catalogConfigs?.[kind];
 
-  if (key.includes("термос")) {
-    return "thermos";
-  }
+  return {
+    title,
+    section,
+    slug: params.get("slug") || catalogApi?.slugify?.(title) || "usluga",
+    catalogKind: kind,
+    label: catalogConfig?.label || (kind === "print" ? "Полиграфия" : "Сувениры"),
+    image: kind === "print" ? "assets/service-print.png" : "assets/souvenir-pen.png",
+    presetKey: kind === "print" ? "print-flat" : "pen",
+    lead:
+      kind === "print"
+        ? `${title} в разделе «${section}». Подберем материалы и технологию под ваш проект.`
+        : `${title} с фирменным нанесением и подбором подходящего тиража под вашу задачу.`,
+  };
+}
 
-  if (key.includes("круж")) {
-    return "mug";
-  }
-
-  if (key.includes("шоппер") || key.includes("пакет") || key.includes("ежедневник") || key.includes("худи")) {
-    return "bag";
-  }
-
-  return "pen";
+function buildProductDescription(service) {
+  return service.lead;
 }
 
 function initCatalogItemPage() {
@@ -866,15 +1008,29 @@ function initCatalogItemPage() {
   }
 
   const params = new URLSearchParams(window.location.search);
-  const presetKey = resolveProductPreset(params);
-  const preset = productPagePresets[presetKey];
-  const title = params.get("title") || preset.title;
-  const trail = preset.trail;
+  const kind = params.get("kind") || "souvenirs";
+  const service =
+    catalogApi?.findService({
+      kind,
+      slug: params.get("slug") || "",
+      title: params.get("title") || "",
+    }) || buildFallbackService(params);
+
+  const preset = productPagePresets[service.presetKey] || productPagePresets.pen;
+  const title = service.title;
+  const catalogConfig = catalogApi?.catalogConfigs?.[service.catalogKind];
 
   const titleNode = document.querySelector("[data-product-title]");
   const trailNode = document.querySelector("[data-product-trail]");
   const descriptionNode = document.querySelector("[data-product-description]");
   const priceNode = document.querySelector("[data-product-price]");
+  const pricePrefixNode = document.querySelector("[data-product-price-prefix]");
+  const priceSuffixNode = document.querySelector("[data-product-price-suffix]");
+  const colorsHeadingNode = document.querySelector("[data-product-colors-heading]");
+  const methodsHeadingNode = document.querySelector("[data-product-methods-heading]");
+  const quantityHeadingNode = document.querySelector("[data-product-quantity-heading]");
+  const quantityUnitNode = document.querySelector("[data-product-quantity-unit]");
+  const tiersHeadingNode = document.querySelector("[data-product-tiers-heading]");
   const colorsNode = document.querySelector("[data-product-colors]");
   const methodsNode = document.querySelector("[data-product-methods]");
   const quantityInput = document.querySelector("[data-product-quantity]");
@@ -886,6 +1042,7 @@ function initCatalogItemPage() {
   const thumbnailsNode = document.querySelector("[data-product-thumbnails]");
   const orderTrigger = document.querySelector("[data-product-order-trigger]");
   const orderComment = document.querySelector(".order-form textarea[name='comment']");
+  const catalogLinkNode = document.querySelector("[data-product-catalog-link]");
 
   if (
     !titleNode ||
@@ -907,55 +1064,109 @@ function initCatalogItemPage() {
 
   document.title = `COMINT - ${title}`;
   titleNode.textContent = title;
-  trailNode.textContent = trail;
-  descriptionNode.textContent = preset.description;
+  trailNode.textContent = service.section;
+  descriptionNode.textContent = buildProductDescription(service);
+
+  if (catalogLinkNode && catalogConfig) {
+    catalogLinkNode.href = catalogConfig.pagePath;
+    catalogLinkNode.textContent = catalogConfig.label;
+  }
+
+  if (pricePrefixNode) {
+    pricePrefixNode.textContent = "Стоимость";
+  }
+
+  if (priceNode) {
+    priceNode.textContent = "по запросу";
+  }
+
+  if (priceSuffixNode) {
+    priceSuffixNode.textContent = "после уточнения тиража, материалов и сроков";
+  }
+
+  if (colorsHeadingNode) {
+    colorsHeadingNode.textContent = preset.headings.colors;
+  }
+
+  if (methodsHeadingNode) {
+    methodsHeadingNode.textContent = preset.headings.methods;
+  }
+
+  if (quantityHeadingNode) {
+    quantityHeadingNode.textContent = preset.headings.quantity;
+  }
+
+  if (quantityUnitNode) {
+    quantityUnitNode.textContent = preset.headings.quantityUnit;
+  }
+
+  if (tiersHeadingNode) {
+    tiersHeadingNode.textContent = preset.headings.tiers;
+  }
 
   const state = {
     color: preset.colors[0].id,
     method: preset.methods[0].id,
-    quantity: 500,
+    quantity: preset.tiers[Math.min(3, preset.tiers.length - 1)].qty,
     galleryIndex: 0,
   };
 
-  const colorClassById = Object.fromEntries(preset.colors.map((color) => [color.id, color.className]));
+  const colorClassById = Object.fromEntries(preset.colors.map((color) => [color.id, color.className || ""]));
 
   function getCurrentTier() {
-    return preset.prices.find((tier) => state.quantity <= tier.qty) || preset.prices[preset.prices.length - 1];
+    return preset.tiers.find((tier) => state.quantity <= tier.qty) || preset.tiers[preset.tiers.length - 1];
+  }
+
+  function renderThumbnails() {
+    const colorClass = colorClassById[state.color] || "";
+
+    thumbnailsNode.innerHTML = preset.gallery
+      .map((item, index) => {
+        const isActive = index === state.galleryIndex;
+        return `
+          <button
+            class="product-thumb ${isActive ? "is-active" : ""}"
+            type="button"
+            data-thumb-index="${index}"
+            aria-label="${escapeHtml(item.label)}"
+            aria-pressed="${String(isActive)}"
+          >
+            <span class="product-thumb-media ${item.frame} ${colorClass}">
+              <img src="${escapeHtml(item.src)}" alt="" />
+            </span>
+          </button>
+        `;
+      })
+      .join("");
   }
 
   function renderStage() {
     const item = preset.gallery[state.galleryIndex] || preset.gallery[0];
-    const colorClass = colorClassById[state.color] || "is-black";
+    const colorClass = colorClassById[state.color] || "";
 
     stageImageNode.src = item.src;
     stageImageNode.alt = title;
-    stageMediaNode.className = `product-stage-media ${item.frame} ${colorClass}`;
-
-    [...thumbnailsNode.querySelectorAll(".product-thumb")].forEach((button, index) => {
-      const isActive = index === state.galleryIndex;
-      button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-pressed", String(isActive));
-
-      const media = button.querySelector(".product-thumb-media");
-      if (media) {
-        media.className = `product-thumb-media ${preset.gallery[index].frame} ${colorClass}`;
-      }
-    });
+    stageMediaNode.className = `product-stage-media ${item.frame} ${colorClass}`.trim();
+    renderThumbnails();
   }
 
-  function renderColors() {
+  function renderFirstOptions() {
     colorsNode.innerHTML = preset.colors
       .map((color) => {
         const activeClass = color.id === state.color ? "is-active" : "";
+        const swatch = color.swatch
+          ? `<span class="product-color-swatch ${color.className || ""}"></span>`
+          : "";
+
         return `
           <button
             type="button"
             class="product-option-button ${activeClass}"
-            data-color-id="${color.id}"
+            data-color-id="${escapeHtml(color.id)}"
             aria-pressed="${String(color.id === state.color)}"
           >
-            <span class="product-color-swatch ${color.className}"></span>
-            ${color.label}
+            ${swatch}
+            ${escapeHtml(color.label)}
           </button>
         `;
       })
@@ -972,23 +1183,22 @@ function initCatalogItemPage() {
           <button
             type="button"
             class="product-option-button ${activeClass}"
-            data-method-id="${method.id}"
+            data-method-id="${escapeHtml(method.id)}"
             aria-pressed="${String(method.id === state.method)}"
           >
             <span class="product-method-icon ${iconClass}"></span>
-            ${method.label}
+            ${escapeHtml(method.label)}
           </button>
         `;
       })
       .join("");
   }
 
-  function renderPriceTable() {
+  function renderTiers() {
     const currentTier = getCurrentTier();
-    priceNode.textContent = new Intl.NumberFormat("ru-RU").format(currentTier.price);
     quantityInput.value = String(state.quantity);
 
-    priceTableNode.innerHTML = preset.prices
+    priceTableNode.innerHTML = preset.tiers
       .map((tier) => {
         const activeClass = tier.qty === currentTier.qty ? "is-active" : "";
         return `
@@ -998,8 +1208,8 @@ function initCatalogItemPage() {
             data-tier-qty="${tier.qty}"
             aria-pressed="${String(tier.qty === currentTier.qty)}"
           >
-            <span>${tier.qty} шт</span>
-            <span>${formatBelPrice(tier.price)}</span>
+            <span>${tier.qty} ${escapeHtml(preset.headings.quantityUnit)}</span>
+            <span>${escapeHtml(tier.note)}</span>
           </button>
         `;
       })
@@ -1007,20 +1217,24 @@ function initCatalogItemPage() {
   }
 
   function renderSpecs() {
-    specsNode.innerHTML = preset.specs
-      .map(([label, value]) => `<dt>${label}</dt><dd>${value}</dd>`)
-      .join("");
+    const specs = [
+      ["Категория", service.label],
+      ["Раздел", service.section],
+      ...preset.specs,
+    ];
+
+    specsNode.innerHTML = specs.map(([label, value]) => `<dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd>`).join("");
   }
 
   function renderExamples() {
-    const colorClass = colorClassById[state.color] || "is-black";
+    const colorClass = colorClassById[state.color] || "";
 
     examplesNode.innerHTML = preset.examples
       .map((item) => {
         return `
           <article class="product-example-card ${item.tone}">
             <div class="product-example-media ${item.frame} ${colorClass}">
-              <img src="${item.src}" alt="${title}" />
+              <img src="${escapeHtml(item.src)}" alt="${escapeHtml(title)}" />
             </div>
           </article>
         `;
@@ -1033,19 +1247,22 @@ function initCatalogItemPage() {
       return;
     }
 
-    const color = preset.colors.find((item) => item.id === state.color)?.label || "";
+    const firstOption = preset.colors.find((item) => item.id === state.color)?.label || "";
     const method = preset.methods.find((item) => item.id === state.method)?.label || "";
-    orderComment.value = `${title}, цвет: ${color}, нанесение: ${method}, тираж: ${state.quantity} шт`;
+    orderComment.value = `${title}, раздел: ${service.section}, параметр: ${firstOption}, технология: ${method}, ${preset.headings.quantity.toLowerCase()}: ${state.quantity} ${preset.headings.quantityUnit}`;
   }
 
   function commitQuantityInput() {
     const parsed = Number(quantityInput.value.replace(/[^\d]/g, ""));
+    const minimum = preset.tiers[0].qty;
+    const maximum = preset.tiers[preset.tiers.length - 1].qty;
+
     if (!Number.isFinite(parsed) || parsed <= 0) {
       quantityInput.value = String(state.quantity);
       return;
     }
 
-    state.quantity = Math.max(50, Math.min(1000, parsed));
+    state.quantity = Math.max(minimum, Math.min(maximum, parsed));
   }
 
   function syncOrderTrigger() {
@@ -1053,26 +1270,24 @@ function initCatalogItemPage() {
       return;
     }
 
-    const color = preset.colors.find((item) => item.id === state.color)?.label || "";
+    const firstOption = preset.colors.find((item) => item.id === state.color)?.label || "";
     const method = preset.methods.find((item) => item.id === state.method)?.label || "";
-    const currentTier = getCurrentTier();
     const currentGallery = preset.gallery[state.galleryIndex] || preset.gallery[0];
-    const total = currentTier.price * state.quantity;
 
     orderTrigger.dataset.orderTitle = title;
     orderTrigger.dataset.orderImage = currentGallery.src;
     orderTrigger.dataset.orderImageFrame = currentGallery.frame;
-    orderTrigger.dataset.orderColorClass = colorClassById[state.color] || "is-black";
-    orderTrigger.dataset.orderOptions = `${color} корпус • ${method} • ${state.quantity} шт`;
-    orderTrigger.dataset.orderUnit = `${formatBelPrice(currentTier.price)} / шт`;
-    orderTrigger.dataset.orderTotal = formatBelPrice(total);
+    orderTrigger.dataset.orderColorClass = colorClassById[state.color] || "";
+    orderTrigger.dataset.orderOptions = `${firstOption} • ${method} • ${state.quantity} ${preset.headings.quantityUnit}`;
+    orderTrigger.dataset.orderUnit = "Стоимость: по запросу";
+    orderTrigger.dataset.orderTotal = `${preset.headings.quantity}: ${state.quantity} ${preset.headings.quantityUnit}`;
   }
 
   function renderPage() {
-    renderColors();
+    renderFirstOptions();
     renderMethods();
     renderStage();
-    renderPriceTable();
+    renderTiers();
     renderSpecs();
     renderExamples();
     syncOrderComment();
@@ -1113,9 +1328,13 @@ function initCatalogItemPage() {
   document.querySelectorAll("[data-qty-change]").forEach((button) => {
     button.addEventListener("click", () => {
       commitQuantityInput();
-      const nextValue = state.quantity + Number(button.dataset.qtyChange || 0);
-      state.quantity = Math.max(50, Math.min(1000, nextValue));
-      renderPriceTable();
+      const direction = Math.sign(Number(button.dataset.qtyChange || 0));
+      const step = preset.quantityStep || 50;
+      const minimum = preset.tiers[0].qty;
+      const maximum = preset.tiers[preset.tiers.length - 1].qty;
+      const nextValue = state.quantity + direction * step;
+      state.quantity = Math.max(minimum, Math.min(maximum, nextValue));
+      renderTiers();
       syncOrderComment();
       syncOrderTrigger();
     });
@@ -1123,7 +1342,7 @@ function initCatalogItemPage() {
 
   quantityInput.addEventListener("change", () => {
     commitQuantityInput();
-    renderPriceTable();
+    renderTiers();
     syncOrderComment();
     syncOrderTrigger();
   });
@@ -1135,22 +1354,26 @@ function initCatalogItemPage() {
     }
 
     state.quantity = Number(target.dataset.tierQty || state.quantity);
-    renderPriceTable();
+    renderTiers();
     syncOrderComment();
     syncOrderTrigger();
   });
 
-  orderTrigger?.addEventListener("click", () => {
-    commitQuantityInput();
-    renderPriceTable();
-    syncOrderComment();
-    syncOrderTrigger();
-  }, { capture: true });
+  orderTrigger?.addEventListener(
+    "click",
+    () => {
+      commitQuantityInput();
+      renderTiers();
+      syncOrderComment();
+      syncOrderTrigger();
+    },
+    { capture: true },
+  );
 
   renderPage();
 }
 
 initHomeSearch();
 initOrderModal();
-initSouvenirsCatalog();
+initCatalogPage();
 initCatalogItemPage();

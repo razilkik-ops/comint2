@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMINT - Сувениры</title>
+    <title>COMINT - Полиграфия</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="souvenirs-page catalog-page" data-catalog-kind="souvenirs">
+  <body class="souvenirs-page catalog-page" data-catalog-kind="print">
     <div class="page-glow page-glow-left"></div>
     <div class="page-glow page-glow-right"></div>
 
@@ -38,24 +38,22 @@
           <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a href="index.html">Главная</a>
             <span>›</span>
-            <span data-catalog-breadcrumb-current>Сувениры</span>
+            <span data-catalog-breadcrumb-current>Полиграфия</span>
           </nav>
-          <h1 data-catalog-title>Сувениры</h1>
-          <p data-catalog-description>Стильные и современные сувениры<br />с вашим логотипом</p>
+          <h1 data-catalog-title>Полиграфия</h1>
+          <p data-catalog-description>Печать, реклама и оформление для бизнеса в одном каталоге</p>
         </div>
 
         <div class="souvenirs-hero-visual" aria-hidden="true">
-          <img src="assets/souvenirs-hero.png" alt="" />
+          <img src="assets/hero-products.png" alt="" />
         </div>
       </section>
 
-      <section class="catalog-shell" aria-label="Каталог сувениров">
+      <section class="catalog-shell" aria-label="Каталог полиграфии">
         <aside class="catalog-sidebar">
           <h2>Категории</h2>
           <div class="category-list" data-category-list></div>
-          <a class="catalog-download" href="assets/comint-souvenirs-catalog.pdf" download data-catalog-download>
-            Скачать каталог
-          </a>
+          <a class="catalog-download" href="#" hidden data-catalog-download>Скачать каталог</a>
         </aside>
 
         <div class="catalog-content">
@@ -64,8 +62,8 @@
               <span class="search-icon" aria-hidden="true"></span>
               <input
                 type="search"
-                placeholder="Поиск сувениров"
-                aria-label="Поиск сувениров"
+                placeholder="Поиск услуг полиграфии"
+                aria-label="Поиск услуг полиграфии"
                 data-catalog-search-input
               />
               <button type="button" aria-label="Очистить поиск" data-catalog-search-clear>×</button>
@@ -74,7 +72,7 @@
             <div class="catalog-actions">
               <div class="catalog-sort-wrap">
                 <button class="catalog-sort" type="button" data-sort-trigger aria-haspopup="true" aria-expanded="false">
-                  <span data-sort-label>По популярности</span>
+                  <span data-sort-label>Сначала основные</span>
                   <span class="catalog-sort-chevron" aria-hidden="true">⌄</span>
                 </button>
                 <div class="catalog-sort-menu" data-sort-menu hidden>
@@ -96,7 +94,7 @@
           <div class="product-grid" data-catalog-grid aria-live="polite"></div>
           <div class="catalog-empty" data-catalog-empty hidden>
             <h3>Ничего не найдено</h3>
-            <p>Попробуйте изменить категорию, запрос или сортировку.</p>
+            <p>Попробуйте изменить раздел или поисковый запрос.</p>
           </div>
 
           <div class="catalog-pagination" aria-label="Пагинация" data-catalog-pagination></div>

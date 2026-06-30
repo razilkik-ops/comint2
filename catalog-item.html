@@ -36,7 +36,7 @@
       <nav class="breadcrumbs product-breadcrumbs" aria-label="Хлебные крошки">
         <a href="index.html">Главная</a>
         <span>›</span>
-        <a href="souvenirs.html">Сувениры</a>
+        <a href="souvenirs.html" data-product-catalog-link>Сувениры</a>
         <span>›</span>
         <span data-product-trail>Ручки</span>
       </nav>
@@ -49,28 +49,7 @@
             </div>
           </div>
 
-          <div class="product-thumbnails" data-product-thumbnails>
-            <button
-              class="product-thumb is-active"
-              type="button"
-              data-thumb-index="0"
-              aria-label="Основной вид"
-            >
-              <span class="product-thumb-media product-frame-pen-hero">
-                <img src="assets/catalog-pen.png" alt="" />
-              </span>
-            </button>
-            <button type="button" class="product-thumb" data-thumb-index="1" aria-label="Логотип крупно">
-              <span class="product-thumb-media product-frame-pen-logo">
-                <img src="assets/catalog-pen.png" alt="" />
-              </span>
-            </button>
-            <button type="button" class="product-thumb" data-thumb-index="2" aria-label="Наконечник">
-              <span class="product-thumb-media product-frame-pen-tip">
-                <img src="assets/catalog-pen.png" alt="" />
-              </span>
-            </button>
-          </div>
+          <div class="product-thumbnails" data-product-thumbnails></div>
         </div>
 
         <div class="product-info-card">
@@ -81,23 +60,23 @@
           </p>
 
           <p class="product-price-line">
-            <span>от</span>
-            <strong data-product-price>550</strong>
-            <em>бел. руб. / шт</em>
+            <span data-product-price-prefix>Стоимость</span>
+            <strong data-product-price>по запросу</strong>
+            <em data-product-price-suffix>после уточнения параметров</em>
           </p>
 
           <div class="product-option-group">
-            <h2>Цвет корпуса</h2>
+            <h2 data-product-colors-heading>Цвет корпуса</h2>
             <div class="product-option-grid product-option-grid-colors" data-product-colors></div>
           </div>
 
           <div class="product-option-group">
-            <h2>Нанесение</h2>
+            <h2 data-product-methods-heading>Нанесение</h2>
             <div class="product-option-grid product-option-grid-methods" data-product-methods></div>
           </div>
 
           <div class="product-option-group">
-            <h2>Тираж</h2>
+            <h2 data-product-quantity-heading>Тираж</h2>
             <div class="product-quantity-control">
               <button type="button" class="product-qty-button" data-qty-change="-50" aria-label="Уменьшить">
                 −
@@ -106,7 +85,7 @@
               <button type="button" class="product-qty-button" data-qty-change="50" aria-label="Увеличить">
                 +
               </button>
-              <span>шт</span>
+              <span data-product-quantity-unit>шт</span>
             </div>
           </div>
 
@@ -124,7 +103,7 @@
 
       <section class="product-secondary">
         <article class="product-panel">
-          <h2>Цены за единицу продукции</h2>
+          <h2 data-product-tiers-heading>Рекомендуемый тираж</h2>
           <div class="product-price-table" data-product-price-table></div>
         </article>
 
@@ -234,8 +213,8 @@
               <p data-modal-order-options>Черный корпус • Печать • 500 шт</p>
             </div>
             <div class="modal-order-prices">
-              <span data-modal-order-unit>550 бел. руб. / шт</span>
-              <strong data-modal-order-total>275 000 бел. руб.</strong>
+              <span data-modal-order-unit>Стоимость: по запросу</span>
+              <strong data-modal-order-total>Тираж: 500 шт</strong>
             </div>
           </div>
         </section>
@@ -268,6 +247,7 @@
       </div>
     </div>
 
+    <script src="catalog-data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
