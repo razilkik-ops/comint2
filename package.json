@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test:search": "node scripts/search-quality-check.js"
   }
 }

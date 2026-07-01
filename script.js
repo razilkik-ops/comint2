@@ -380,28 +380,49 @@ function initCatalogPage() {
 
   function getVisibleProducts() {
     const query = normalize(state.query);
+    const baseProducts =
+      state.category === "all"
+        ? catalog.items
+        : catalog.items.filter((product) => product.sectionId === state.category);
 
-    return catalog.items
-      .filter((product) => state.category === "all" || product.sectionId === state.category)
-      .filter((product) => {
-        if (!query) {
-          return true;
-        }
+    let products = baseProducts;
 
+    if (query && catalogApi.searchAll) {
+      const rankedIds = new Map(
+        catalogApi
+          .searchAll(query, {
+            kind,
+            limit: catalog.items.length,
+            minScore: 10,
+          })
+          .map((product, index) => [product.id, index]),
+      );
+
+      products = baseProducts
+        .filter((product) => rankedIds.has(product.id))
+        .sort((left, right) => rankedIds.get(left.id) - rankedIds.get(right.id));
+    } else if (query) {
+      products = baseProducts.filter((product) => {
         const haystack = normalize([product.title, product.section, product.label].join(" "));
         return haystack.includes(query);
-      })
-      .sort((left, right) => {
-        if (state.sort === "name") {
-          return left.title.localeCompare(right.title, "ru");
-        }
-
-        if (state.sort === "section") {
-          return left.section.localeCompare(right.section, "ru") || left.title.localeCompare(right.title, "ru");
-        }
-
-        return right.popularity - left.popularity;
       });
+    }
+
+    if (query) {
+      return products;
+    }
+
+    return products.sort((left, right) => {
+      if (state.sort === "name") {
+        return left.title.localeCompare(right.title, "ru");
+      }
+
+      if (state.sort === "section") {
+        return left.section.localeCompare(right.section, "ru") || left.title.localeCompare(right.title, "ru");
+      }
+
+      return right.popularity - left.popularity;
+    });
   }
 
   function renderProducts(products) {
