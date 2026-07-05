@@ -667,12 +667,25 @@ main {
   top: 18px;
   right: 18px;
   width: 40px;
+  min-width: 40px;
+  max-width: 40px;
   height: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  padding: 0;
   border: 0;
   border-radius: 50%;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 40px;
   color: #5f6a8c;
   font-size: 32px;
   line-height: 1;
+  text-align: center;
   background: rgba(239, 243, 255, 0.88);
   cursor: pointer;
 }
@@ -2358,9 +2371,17 @@ main {
 .product-qty-button {
   width: 42px;
   height: 46px;
+  padding: 0;
   border: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
   color: #6249f0;
   font-size: 28px;
+  line-height: 1;
+  text-align: center;
   box-shadow: var(--soft-shadow);
   cursor: pointer;
 }
