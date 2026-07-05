@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMINT - Ручка металлическая</title>
+    <title>COMINT - О компании</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="product-page">
+  <body class="company-page">
     <div class="page-glow page-glow-left"></div>
     <div class="page-glow page-glow-right"></div>
 
@@ -40,104 +40,108 @@
           <a href="index.html#products">Продукция</a>
           <a href="index.html#portfolio">Портфолио</a>
           <a href="company.html">О компании</a>
-          <a href="#contacts">Контакты</a>
+          <a href="#company-contacts">Контакты</a>
         </nav>
 
-        <a class="quick-order" href="#contacts" data-open-order-modal>Быстрый заказ</a>
+        <a class="quick-order" href="#company-contacts" data-open-order-modal>Быстрый заказ</a>
       </div>
     </header>
 
-    <main class="product-main" data-product-page>
-      <nav class="breadcrumbs product-breadcrumbs" aria-label="Хлебные крошки">
+    <main class="company-main" data-company-page>
+      <nav class="breadcrumbs company-breadcrumbs" aria-label="Хлебные крошки">
         <a href="index.html">Главная</a>
         <span>›</span>
-        <a href="souvenirs.html" data-product-catalog-link>Сувениры</a>
-        <span>›</span>
-        <span data-product-trail>Ручки</span>
+        <span>О компании</span>
       </nav>
 
-      <section class="product-layout" aria-label="Карточка товара">
-        <div class="product-gallery-card">
-          <div class="product-stage">
-            <div class="product-stage-media product-frame-pen-hero is-black" data-product-stage-media>
-              <img src="assets/catalog-pen.png" alt="Ручка металлическая" data-product-stage-image />
-            </div>
-          </div>
-
-          <div class="product-thumbnails" data-product-thumbnails></div>
+      <section class="company-hero-card">
+        <div class="company-hero-copy">
+          <p class="company-kicker">COMINT</p>
+          <h1 data-company-hero-title>О компании</h1>
+          <p data-company-hero-subtitle>
+            Ознакомьтесь с нашей командой и культурой внутри нашей компании.
+          </p>
         </div>
 
-        <div class="product-info-card">
-          <h1 data-product-title>Ручка металлическая</h1>
-          <p class="product-description" data-product-description>
-            Стильная металлическая ручка с логотипом — элегантный аксессуар для клиентов и
-            сотрудников премиум-класса.
-          </p>
-
-          <p class="product-price-line">
-            <span data-product-price-prefix>Стоимость</span>
-            <strong data-product-price>по запросу</strong>
-            <em data-product-price-suffix>после уточнения параметров</em>
-          </p>
-
-          <div class="product-option-group">
-            <h2 data-product-colors-heading>Цвет корпуса</h2>
-            <div class="product-option-grid product-option-grid-colors" data-product-colors></div>
-          </div>
-
-          <div class="product-option-group">
-            <h2 data-product-methods-heading>Нанесение</h2>
-            <div class="product-option-grid product-option-grid-methods" data-product-methods></div>
-          </div>
-
-          <div class="product-option-group">
-            <h2 data-product-quantity-heading>Тираж</h2>
-            <div class="product-quantity-control">
-              <button type="button" class="product-qty-button" data-qty-change="-50" aria-label="Уменьшить">
-                −
-              </button>
-              <input type="text" value="500" inputmode="numeric" data-product-quantity aria-label="Тираж" />
-              <button type="button" class="product-qty-button" data-qty-change="50" aria-label="Увеличить">
-                +
-              </button>
-              <span data-product-quantity-unit>шт</span>
-            </div>
-          </div>
-
-          <button
-            class="product-order-button"
-            type="button"
-            data-open-order-modal
-            data-order-mode="product"
-            data-product-order-trigger
-          >
-            Оформить заявку
-          </button>
+        <div class="company-hero-visual">
+          <img src="" alt="О компании COMINT" data-company-hero-image />
         </div>
       </section>
 
-      <section class="product-secondary">
-        <article class="product-panel">
-          <h2 data-product-tiers-heading>Рекомендуемый тираж</h2>
-          <div class="product-price-table" data-product-price-table></div>
-        </article>
+      <section class="company-section" id="about-story">
+        <div class="company-section-heading">
+          <p class="company-kicker">История</p>
+          <h2>О компании</h2>
+        </div>
 
-        <article class="product-panel">
-          <h2>Характеристики</h2>
-          <dl class="product-specs" data-product-specs></dl>
-        </article>
+        <div class="company-story-layout">
+          <article class="company-panel company-prose" data-company-intro></article>
+
+          <article class="company-panel company-today-card" id="about-today">
+            <h3 data-company-today-lead>Компания сегодня</h3>
+            <ul class="company-list" data-company-today-items></ul>
+          </article>
+        </div>
+
+        <article class="company-panel company-prose" data-company-closing></article>
       </section>
 
-      <section class="product-examples">
-        <h2>Примеры работ</h2>
-        <div class="product-example-grid" data-product-examples></div>
+      <section class="company-section" id="certificates">
+        <div class="company-section-heading">
+          <p class="company-kicker">Подтверждение качества</p>
+          <h2>Наши сертификаты</h2>
+        </div>
+
+        <div class="company-certificate-grid" data-company-certificates></div>
+      </section>
+
+      <section class="company-section" id="equipment">
+        <div class="company-section-heading">
+          <p class="company-kicker">Производство</p>
+          <h2>Наше оборудование</h2>
+        </div>
+
+        <article class="company-panel company-equipment-intro">
+          <p data-company-equipment-lead></p>
+          <a class="company-inline-link" href="#" target="_blank" rel="noreferrer" data-company-equipment-watch>
+            Смотреть оборудование в работе
+          </a>
+        </article>
+
+        <div class="company-equipment-groups" data-company-equipment-groups></div>
+      </section>
+
+      <section class="company-section" id="company-videos">
+        <div class="company-section-heading">
+          <p class="company-kicker">Видео</p>
+          <h2>Видео нашей работы</h2>
+        </div>
+
+        <article class="company-panel company-video-intro">
+          <p data-company-videos-lead></p>
+          <div class="company-prose company-prose-compact" data-company-videos-intro></div>
+          <a class="company-inline-link" href="#" target="_blank" rel="noreferrer" data-company-videos-channel>
+            Открыть YouTube-канал
+          </a>
+        </article>
+
+        <div class="company-video-grid" data-company-videos></div>
+      </section>
+
+      <section class="company-section" id="company-contacts">
+        <div class="company-section-heading">
+          <p class="company-kicker">Контакты</p>
+          <h2>Связаться с нами</h2>
+        </div>
+
+        <div class="company-contact-grid" data-company-contacts></div>
       </section>
     </main>
 
-    <div class="photo-modal-backdrop" id="example-photo-modal" hidden>
-      <div class="photo-modal-dialog" role="dialog" aria-modal="true" aria-label="Пример работы">
+    <div class="photo-modal-backdrop" id="company-photo-modal" hidden>
+      <div class="photo-modal-dialog" role="dialog" aria-modal="true" aria-label="Изображение">
         <button class="photo-modal-close" type="button" aria-label="Закрыть фото">×</button>
-        <img src="" alt="" data-example-modal-image />
+        <img src="" alt="" data-company-modal-image />
       </div>
     </div>
 
@@ -205,22 +209,6 @@
           </p>
         </div>
 
-        <section class="modal-order-summary" data-modal-order-summary hidden>
-          <div class="modal-order-item">
-            <div class="modal-order-media product-frame-pen-hero is-black" data-modal-order-media>
-              <img src="assets/catalog-pen.png" alt="" data-modal-order-image />
-            </div>
-            <div class="modal-order-copy">
-              <strong data-modal-order-title>Ручка металлическая</strong>
-              <p data-modal-order-options>Черный корпус • Печать • 500 шт</p>
-            </div>
-            <div class="modal-order-prices">
-              <span data-modal-order-unit>Стоимость: по запросу</span>
-              <strong data-modal-order-total>Тираж: 500 шт</strong>
-            </div>
-          </div>
-        </section>
-
         <form class="order-form">
           <label class="order-field">
             <span>Ваше имя</span>
@@ -249,7 +237,7 @@
       </div>
     </div>
 
-    <script src="catalog-data.js"></script>
+    <script src="company-data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

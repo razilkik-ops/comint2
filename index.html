@@ -17,19 +17,34 @@
     <div class="page-glow page-glow-right"></div>
 
     <header class="site-header">
-      <a class="logo" href="#" aria-label="COMINT">
+      <a class="logo" href="index.html" aria-label="COMINT">
         <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
       </a>
 
-      <nav class="main-nav" aria-label="Основная навигация">
-        <a href="#services">Услуги</a>
-        <a href="#products">Продукция</a>
-        <a href="#portfolio">Портфолио</a>
-        <a href="#company">О компании</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-      <a class="quick-order" href="#contacts" data-open-order-modal>Быстрый заказ</a>
+      <div class="site-menu" id="site-menu" data-site-menu>
+        <nav class="main-nav" aria-label="Основная навигация">
+          <a href="#services">Услуги</a>
+          <a href="#products">Продукция</a>
+          <a href="#portfolio">Портфолио</a>
+          <a href="company.html">О компании</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+
+        <a class="quick-order" href="#contacts" data-open-order-modal>Быстрый заказ</a>
+      </div>
     </header>
 
     <main>
@@ -101,7 +116,7 @@
 
     <footer class="site-footer" id="contacts">
       <div class="footer-brand">
-        <a class="logo" href="#" aria-label="COMINT">
+        <a class="logo" href="index.html" aria-label="COMINT">
           <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
         </a>
         <p>Качество в деталях.<br />Доверие в каждом заказе.</p>
@@ -123,34 +138,14 @@
         <small>© COMINT 2025. Все права защищены.</small>
       </div>
 
-      <div class="footer-column">
-        <h3>Услуги</h3>
-        <a href="#">Полиграфия</a>
-        <a href="#">Сувенирная продукция</a>
-        <a href="#">Широкоформатная печать</a>
-        <a href="#">Упаковка и этикетки</a>
-        <a href="#">Дизайн и верстка</a>
-        <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer">Бот автопродаж</a>
-      </div>
-
-      <div class="footer-column">
-        <h3>Продукция</h3>
-        <a href="#">Визитки</a>
-        <a href="#">Листовки и флаеры</a>
-        <a href="#">Буклеты и брошюры</a>
-        <a href="#">Плакаты и постеры</a>
-        <a href="#">Баннеры и вывески</a>
-        <a href="#">Подарочная продукция</a>
-      </div>
-
       <div class="footer-column" id="company">
         <h3>О компании</h3>
-        <a href="#">О нас</a>
-        <a href="#">Производство</a>
-        <a href="#">Почему мы сейчас</a>
-        <a href="#">Качество</a>
-        <a href="#">Вакансии</a>
-        <a href="#">Документы</a>
+        <a href="company.html#about-story">О нас</a>
+        <a href="company.html#about-today">Компания сегодня</a>
+        <a href="company.html#certificates">Сертификаты</a>
+        <a href="company.html#equipment">Оборудование</a>
+        <a href="company.html#company-videos">Видео работы</a>
+        <a href="company.html#company-contacts">Контакты</a>
       </div>
 
       <div class="footer-column">

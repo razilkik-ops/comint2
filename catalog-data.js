@@ -123,10 +123,30 @@
       heroTitle: "Сувениры",
       heroDescription: "Все услуги по сувенирной продукции и упаковке в одном каталоге",
       allLabel: "Все сувениры",
+      categories: [
+        {
+          id: "packaging",
+          label: "Упаковка и пакеты",
+        },
+        {
+          id: "textile",
+          label: "Флаги и текстиль",
+        },
+        {
+          id: "office",
+          label: "Офисные сувениры",
+        },
+        {
+          id: "tableware",
+          label: "Посуда",
+        },
+        {
+          id: "promo",
+          label: "Промо-аксессуары",
+        },
+      ],
       pagePath: "souvenirs.html",
       searchPlaceholder: "Поиск сувениров",
-      downloadHref: "assets/comint-souvenirs-catalog.pdf",
-      downloadLabel: "Скачать каталог",
     },
     print: {
       label: "Полиграфия",
@@ -135,8 +155,6 @@
       allLabel: "Вся полиграфия",
       pagePath: "polygraphy.html",
       searchPlaceholder: "Поиск услуг полиграфии",
-      downloadHref: "",
-      downloadLabel: "",
     },
   };
 
@@ -844,14 +862,43 @@
     return `${title} в разделе «${section}». Подберем материал, формат, технологию изготовления и подготовим решение под нужный тираж и сроки.`;
   }
 
+  function inferSouvenirCategory(title) {
+    const haystack = normalize(title);
+
+    if (includesAny(haystack, ["короб", "пакет", "набор"])) {
+      return "packaging";
+    }
+
+    if (includesAny(haystack, ["флаг", "вымпел", "знамен", "ткан", "кеп", "флажк"])) {
+      return "textile";
+    }
+
+    if (includesAny(haystack, ["ручк", "ежеднев", "планинг", "флеш", "час", "зажигал"])) {
+      return "office";
+    }
+
+    if (includesAny(haystack, ["круж", "тарел", "подставк"])) {
+      return "tableware";
+    }
+
+    return "promo";
+  }
+
   const services = rawServices.map((row, index) => {
     const catalogKind = row.kind === "Сувениры" ? "souvenirs" : "print";
+    const categoryId = catalogKind === "souvenirs" ? inferSouvenirCategory(row.title) : slugify(row.section);
+    const categoryLabel =
+      catalogKind === "souvenirs"
+        ? catalogConfigs.souvenirs.categories.find((item) => item.id === categoryId)?.label || row.section
+        : row.section;
     const service = {
       id: `${catalogKind}-${index + 1}`,
       slug: slugify(row.title),
       title: row.title,
       section: row.section,
       sectionId: slugify(row.section),
+      categoryId,
+      categoryLabel,
       catalogKind,
       label: catalogConfigs[catalogKind].label,
       image: inferImage(catalogKind, row.title, row.section),
@@ -873,27 +920,38 @@
     }
 
     const items = services.filter((item) => item.catalogKind === kind);
-    const sectionCounts = items.reduce((acc, item) => {
-      acc[item.section] = (acc[item.section] || 0) + 1;
-      return acc;
-    }, {});
+    const sectionCategories = config.categories?.length
+      ? config.categories
+          .map((category) => ({
+            id: category.id,
+            label: category.label,
+            count: items.filter((item) => item.categoryId === category.id).length,
+          }))
+          .filter((category) => category.count > 0)
+      : Object.entries(
+          items.reduce((acc, item) => {
+            acc[item.section] = (acc[item.section] || 0) + 1;
+            return acc;
+          }, {}),
+        )
+          .sort((left, right) => left[0].localeCompare(right[0], "ru"))
+          .map(([label, count]) => ({
+            id: slugify(label),
+            label,
+            count,
+          }));
 
-    const categories = [
-      { id: "all", label: config.allLabel, count: items.length },
-      ...Object.entries(sectionCounts)
-        .sort((left, right) => left[0].localeCompare(right[0], "ru"))
-        .map(([label, count]) => ({
-          id: slugify(label),
-          label,
-          count,
-        })),
-    ];
+    const categories =
+      sectionCategories.length === 1 && sectionCategories[0].count === items.length
+        ? sectionCategories
+        : [{ id: "all", label: config.allLabel, count: items.length }, ...sectionCategories];
 
     return {
       ...config,
       kind,
       items,
       categories,
+      defaultCategory: categories[0]?.id || "all",
     };
   }
 

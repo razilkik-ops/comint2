@@ -1,4 +1,5 @@
 const catalogApi = window.ComintCatalogData || null;
+const companyApi = window.ComintCompanyData || null;
 
 const fallbackSearchCopy = {
   визитки: [
@@ -30,10 +31,10 @@ function normalize(value) {
 
 function escapeHtml(value) {
   return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function buildCatalogItemLink(service) {
@@ -53,6 +54,63 @@ function findCatalogService(query) {
   }
 
   return catalogApi.search(query);
+}
+
+function initSiteHeaderMenu() {
+  const headers = [...document.querySelectorAll(".site-header")];
+
+  headers.forEach((header) => {
+    const toggle = header.querySelector("[data-menu-toggle]");
+    const menu = header.querySelector("[data-site-menu]");
+    const links = [...header.querySelectorAll(".main-nav a, .quick-order")];
+
+    if (!toggle || !menu) {
+      return;
+    }
+
+    function closeMenu() {
+      header.classList.remove("is-menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    function openMenu() {
+      header.classList.add("is-menu-open");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+
+    toggle.addEventListener("click", () => {
+      if (header.classList.contains("is-menu-open")) {
+        closeMenu();
+        return;
+      }
+
+      openMenu();
+    });
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!header.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 760) {
+        closeMenu();
+      }
+    });
+  });
 }
 
 function initHomeSearch() {
@@ -122,7 +180,7 @@ function initHomeSearch() {
 function initOrderModal() {
   const orderModalTriggers = [...document.querySelectorAll("[data-open-order-modal]")];
   const orderModal = document.querySelector("#order-modal");
-  const orderModalClose = document.querySelector(".modal-close");
+  const orderModalClose = orderModal?.querySelector(".modal-close");
   const orderForm = document.querySelector(".order-form");
   const modalKicker = orderModal?.querySelector(".modal-kicker");
   const modalTitle = orderModal?.querySelector("#order-modal-title");
@@ -296,15 +354,10 @@ function initCatalogPage() {
   const grid = document.querySelector("[data-catalog-grid]");
   const emptyState = document.querySelector("[data-catalog-empty]");
   const pagination = document.querySelector("[data-catalog-pagination]");
-  const sortTrigger = document.querySelector("[data-sort-trigger]");
-  const sortMenu = document.querySelector("[data-sort-menu]");
-  const sortLabel = document.querySelector("[data-sort-label]");
-  const sortOptions = [...document.querySelectorAll("[data-sort-menu] [data-sort]")];
   const viewButtons = [...document.querySelectorAll("[data-view]")];
   const heroTitle = document.querySelector("[data-catalog-title]");
   const heroDescription = document.querySelector("[data-catalog-description]");
   const breadcrumbCurrent = document.querySelector("[data-catalog-breadcrumb-current]");
-  const downloadLink = document.querySelector("[data-catalog-download]");
 
   if (
     !catalog ||
@@ -313,10 +366,7 @@ function initCatalogPage() {
     !searchClearButton ||
     !grid ||
     !emptyState ||
-    !pagination ||
-    !sortTrigger ||
-    !sortMenu ||
-    !sortLabel
+    !pagination
   ) {
     return;
   }
@@ -328,7 +378,7 @@ function initCatalogPage() {
   }
 
   if (heroDescription) {
-    heroDescription.innerHTML = escapeHtml(catalog.heroDescription).replaceAll("\n", "<br />");
+    heroDescription.innerHTML = escapeHtml(catalog.heroDescription).replace(/\n/g, "<br />");
   }
 
   if (breadcrumbCurrent) {
@@ -338,23 +388,12 @@ function initCatalogPage() {
   searchInput.placeholder = catalog.searchPlaceholder;
   searchInput.setAttribute("aria-label", catalog.searchPlaceholder);
 
-  if (downloadLink) {
-    if (catalog.downloadHref) {
-      downloadLink.href = catalog.downloadHref;
-      downloadLink.textContent = catalog.downloadLabel;
-      downloadLink.hidden = false;
-    } else {
-      downloadLink.hidden = true;
-    }
-  }
-
   const state = {
-    category: "all",
+    category: catalog.defaultCategory || "all",
     query: "",
     page: 1,
     sort: "popular",
     view: "grid",
-    favorites: new Set(),
   };
 
   const itemsPerPage = 8;
@@ -383,7 +422,7 @@ function initCatalogPage() {
     const baseProducts =
       state.category === "all"
         ? catalog.items
-        : catalog.items.filter((product) => product.sectionId === state.category);
+        : catalog.items.filter((product) => (product.categoryId || product.sectionId) === state.category);
 
     let products = baseProducts;
 
@@ -403,7 +442,7 @@ function initCatalogPage() {
         .sort((left, right) => rankedIds.get(left.id) - rankedIds.get(right.id));
     } else if (query) {
       products = baseProducts.filter((product) => {
-        const haystack = normalize([product.title, product.section, product.label].join(" "));
+        const haystack = normalize([product.title, product.section, product.categoryLabel, product.label].join(" "));
         return haystack.includes(query);
       });
     }
@@ -438,19 +477,8 @@ function initCatalogPage() {
 
     grid.innerHTML = products
       .map((product) => {
-        const isFavorite = state.favorites.has(product.id);
-        const label = isFavorite ? "Убрать из избранного" : "В избранное";
-
         return `
           <article class="product-card">
-            <button
-              class="product-favorite ${isFavorite ? "is-active" : ""}"
-              type="button"
-              aria-label="${label}"
-              data-favorite-id="${escapeHtml(product.id)}"
-            >
-              ${isFavorite ? "♥" : "♡"}
-            </button>
             <a class="product-visual" href="${buildCatalogItemLink(product)}" aria-label="Открыть ${escapeHtml(product.title)}">
               <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" />
             </a>
@@ -459,7 +487,9 @@ function initCatalogPage() {
               <p>${escapeHtml(product.section)}</p>
               <div class="product-meta">
                 <strong>${escapeHtml(product.estimateLabel)}</strong>
-                <a href="${buildCatalogItemLink(product)}" aria-label="Открыть карточку">→</a>
+                <a class="product-open-link" href="${buildCatalogItemLink(product)}" aria-label="Открыть карточку">
+                  Открыть
+                </a>
               </div>
             </div>
           </article>
@@ -505,11 +535,6 @@ function initCatalogPage() {
   function renderControls() {
     renderCategories();
     searchClearButton.hidden = state.query.length === 0;
-    sortLabel.textContent = sortLabels[state.sort] || sortLabels.popular;
-
-    sortOptions.forEach((option) => {
-      option.classList.toggle("is-active", option.dataset.sort === state.sort);
-    });
 
     viewButtons.forEach((button) => {
       const isActive = button.dataset.view === state.view;
@@ -532,18 +557,6 @@ function initCatalogPage() {
     renderControls();
     renderProducts(currentProducts);
     renderPagination(totalPages);
-  }
-
-  function closeSortMenu() {
-    sortMenu.hidden = true;
-    sortTrigger.setAttribute("aria-expanded", "false");
-    sortTrigger.parentElement?.classList.remove("is-open");
-  }
-
-  function openSortMenu() {
-    sortMenu.hidden = false;
-    sortTrigger.setAttribute("aria-expanded", "true");
-    sortTrigger.parentElement?.classList.add("is-open");
   }
 
   categoryList.addEventListener("click", (event) => {
@@ -570,24 +583,6 @@ function initCatalogPage() {
     renderCatalog();
   });
 
-  sortTrigger.addEventListener("click", () => {
-    if (sortMenu.hidden) {
-      openSortMenu();
-      return;
-    }
-
-    closeSortMenu();
-  });
-
-  sortOptions.forEach((option) => {
-    option.addEventListener("click", () => {
-      state.sort = option.dataset.sort || "popular";
-      state.page = 1;
-      closeSortMenu();
-      renderCatalog();
-    });
-  });
-
   viewButtons.forEach((button) => {
     button.addEventListener("click", () => {
       state.view = button.dataset.view || "grid";
@@ -610,40 +605,6 @@ function initCatalogPage() {
 
     state.page += Number(target.dataset.pageShift || 0);
     renderCatalog();
-  });
-
-  grid.addEventListener("click", (event) => {
-    const favoriteButton = event.target.closest("[data-favorite-id]");
-
-    if (!favoriteButton) {
-      return;
-    }
-
-    const { favoriteId } = favoriteButton.dataset;
-
-    if (!favoriteId) {
-      return;
-    }
-
-    if (state.favorites.has(favoriteId)) {
-      state.favorites.delete(favoriteId);
-    } else {
-      state.favorites.add(favoriteId);
-    }
-
-    renderCatalog();
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!sortTrigger.parentElement?.contains(event.target)) {
-      closeSortMenu();
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeSortMenu();
-    }
   });
 
   renderCatalog();
@@ -1021,6 +982,239 @@ function buildProductDescription(service) {
   return service.lead;
 }
 
+function initCompanyPage() {
+  const page = document.querySelector("[data-company-page]");
+
+  if (!page || !companyApi) {
+    return;
+  }
+
+  const heroTitleNode = document.querySelector("[data-company-hero-title]");
+  const heroSubtitleNode = document.querySelector("[data-company-hero-subtitle]");
+  const heroImageNode = document.querySelector("[data-company-hero-image]");
+  const introNode = document.querySelector("[data-company-intro]");
+  const todayLeadNode = document.querySelector("[data-company-today-lead]");
+  const todayItemsNode = document.querySelector("[data-company-today-items]");
+  const closingNode = document.querySelector("[data-company-closing]");
+  const certificatesNode = document.querySelector("[data-company-certificates]");
+  const equipmentLeadNode = document.querySelector("[data-company-equipment-lead]");
+  const equipmentWatchNode = document.querySelector("[data-company-equipment-watch]");
+  const equipmentGroupsNode = document.querySelector("[data-company-equipment-groups]");
+  const videosLeadNode = document.querySelector("[data-company-videos-lead]");
+  const videosIntroNode = document.querySelector("[data-company-videos-intro]");
+  const videosChannelNode = document.querySelector("[data-company-videos-channel]");
+  const videosNode = document.querySelector("[data-company-videos]");
+  const contactsNode = document.querySelector("[data-company-contacts]");
+  const photoModal = document.querySelector("#company-photo-modal");
+  const photoModalImage = photoModal?.querySelector("[data-company-modal-image]");
+  const photoModalClose = photoModal?.querySelector(".photo-modal-close");
+
+  if (
+    !heroTitleNode ||
+    !heroSubtitleNode ||
+    !heroImageNode ||
+    !introNode ||
+    !todayLeadNode ||
+    !todayItemsNode ||
+    !closingNode ||
+    !certificatesNode ||
+    !equipmentLeadNode ||
+    !equipmentWatchNode ||
+    !equipmentGroupsNode ||
+    !videosLeadNode ||
+    !videosIntroNode ||
+    !videosChannelNode ||
+    !videosNode ||
+    !contactsNode
+  ) {
+    return;
+  }
+
+  function buildParagraphs(items) {
+    return items.map((item) => `<p>${escapeHtml(item)}</p>`).join("");
+  }
+
+  function buildPhoneHref(phone) {
+    return `tel:${phone.replace(/[^\d+]/g, "")}`;
+  }
+
+  function openPhotoModal(src, alt) {
+    if (!photoModal || !photoModalImage) {
+      return;
+    }
+
+    photoModalImage.src = src;
+    photoModalImage.alt = alt;
+    photoModal.hidden = false;
+    document.body.classList.add("modal-open");
+    photoModalClose?.focus();
+  }
+
+  function closePhotoModal() {
+    if (!photoModal || photoModal.hidden) {
+      return;
+    }
+
+    photoModal.hidden = true;
+
+    if (!document.querySelector(".modal-backdrop:not([hidden])")) {
+      document.body.classList.remove("modal-open");
+    }
+  }
+
+  document.title = `COMINT - ${companyApi.hero.title}`;
+  heroTitleNode.textContent = companyApi.hero.title;
+  heroSubtitleNode.textContent = companyApi.hero.subtitle;
+  heroImageNode.src = companyApi.hero.image;
+  heroImageNode.alt = companyApi.hero.title;
+
+  introNode.innerHTML = buildParagraphs(companyApi.intro);
+  todayLeadNode.textContent = companyApi.todayLead;
+  todayItemsNode.innerHTML = companyApi.todayItems
+    .map((item) => `<li>${escapeHtml(item)}</li>`)
+    .join("");
+  closingNode.innerHTML = buildParagraphs(companyApi.closing);
+
+  certificatesNode.innerHTML = companyApi.certificates
+    .map((src, index) => {
+      return `
+        <button
+          class="company-media-card company-certificate-card"
+          type="button"
+          data-company-media-src="${escapeHtml(src)}"
+          data-company-media-alt="Сертификат COMINT ${index + 1}"
+          aria-label="Открыть сертификат ${index + 1}"
+        >
+          <img src="${escapeHtml(src)}" alt="Сертификат COMINT ${index + 1}" loading="lazy" />
+        </button>
+      `;
+    })
+    .join("");
+
+  equipmentLeadNode.textContent = companyApi.equipmentLead;
+  equipmentWatchNode.textContent = companyApi.equipmentWatch;
+  equipmentWatchNode.href = companyApi.equipmentWatchUrl;
+
+  equipmentGroupsNode.innerHTML = companyApi.equipmentGroups
+    .map((group) => {
+      return `
+        <article class="company-group-card company-panel">
+          <div class="company-group-head">
+            <h3>${escapeHtml(group.title)}</h3>
+            <span>${group.items.length} ${
+              group.items.length === 1 ? "позиция" : group.items.length < 5 ? "позиции" : "позиций"
+            }</span>
+          </div>
+          <div class="company-equipment-grid">
+            ${group.items
+              .map((item) => {
+                return `
+                  <button
+                    class="company-equipment-card"
+                    type="button"
+                    data-company-media-src="${escapeHtml(item.image)}"
+                    data-company-media-alt="${escapeHtml(item.title)}"
+                    aria-label="Открыть фото ${escapeHtml(item.title)}"
+                  >
+                    <span class="company-equipment-media">
+                      <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" loading="lazy" />
+                    </span>
+                    <span class="company-equipment-copy">
+                      <strong>${escapeHtml(item.title)}</strong>
+                      <span>${escapeHtml(item.description)}</span>
+                    </span>
+                  </button>
+                `;
+              })
+              .join("")}
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  videosLeadNode.textContent = companyApi.videosLead;
+  videosIntroNode.innerHTML = buildParagraphs(companyApi.videosIntro);
+  videosChannelNode.href = companyApi.videosChannelUrl;
+
+  videosNode.innerHTML = companyApi.videos
+    .map((video) => {
+      const videoUrl = `https://www.youtube.com/watch?v=${encodeURIComponent(video.id)}`;
+      const previewUrl = `https://i.ytimg.com/vi/${encodeURIComponent(video.id)}/hqdefault.jpg`;
+
+      return `
+        <a class="company-video-card" href="${videoUrl}" target="_blank" rel="noreferrer">
+          <span class="company-video-preview">
+            <img src="${previewUrl}" alt="${escapeHtml(video.title)}" loading="lazy" />
+            <span class="company-video-play" aria-hidden="true">▶</span>
+          </span>
+          <span class="company-video-copy">
+            <strong>${escapeHtml(video.title)}</strong>
+            <span>${escapeHtml(video.description)}</span>
+            <em>${escapeHtml(video.category)}</em>
+          </span>
+        </a>
+      `;
+    })
+    .join("");
+
+  contactsNode.innerHTML = `
+    <article class="company-contact-card company-panel">
+      <h3>О компании</h3>
+      <p>${escapeHtml(companyApi.contacts.description)}</p>
+      <strong>Адрес и время работы</strong>
+      <p>${escapeHtml(companyApi.contacts.address)}</p>
+    </article>
+    <article class="company-contact-card company-panel">
+      <h3>Телефоны</h3>
+      <div class="company-contact-links">
+        ${companyApi.contacts.phones
+          .map(
+            (phone) =>
+              `<a href="${buildPhoneHref(phone)}">${escapeHtml(phone)}</a>`,
+          )
+          .join("")}
+      </div>
+    </article>
+    <article class="company-contact-card company-panel">
+      <h3>Email</h3>
+      <div class="company-contact-links">
+        <a href="mailto:${escapeHtml(companyApi.contacts.email)}">${escapeHtml(companyApi.contacts.email)}</a>
+      </div>
+      <button class="company-contact-button" type="button" data-open-order-modal>
+        Оставить заявку
+      </button>
+    </article>
+  `;
+
+  page.addEventListener("click", (event) => {
+    const mediaTrigger = event.target.closest("[data-company-media-src]");
+
+    if (!mediaTrigger) {
+      return;
+    }
+
+    openPhotoModal(
+      mediaTrigger.dataset.companyMediaSrc || "",
+      mediaTrigger.dataset.companyMediaAlt || "Изображение",
+    );
+  });
+
+  photoModalClose?.addEventListener("click", closePhotoModal);
+
+  photoModal?.addEventListener("click", (event) => {
+    if (event.target === photoModal) {
+      closePhotoModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closePhotoModal();
+    }
+  });
+}
+
 function initCatalogItemPage() {
   const page = document.querySelector("[data-product-page]");
 
@@ -1064,6 +1258,9 @@ function initCatalogItemPage() {
   const orderTrigger = document.querySelector("[data-product-order-trigger]");
   const orderComment = document.querySelector(".order-form textarea[name='comment']");
   const catalogLinkNode = document.querySelector("[data-product-catalog-link]");
+  const examplePhotoModal = document.querySelector("#example-photo-modal");
+  const examplePhotoModalImage = examplePhotoModal?.querySelector("[data-example-modal-image]");
+  const examplePhotoModalClose = examplePhotoModal?.querySelector(".photo-modal-close");
 
   if (
     !titleNode ||
@@ -1251,16 +1448,47 @@ function initCatalogItemPage() {
     const colorClass = colorClassById[state.color] || "";
 
     examplesNode.innerHTML = preset.examples
-      .map((item) => {
+      .map((item, index) => {
         return `
-          <article class="product-example-card ${item.tone}">
-            <div class="product-example-media ${item.frame} ${colorClass}">
+          <button
+            class="product-example-card ${item.tone}"
+            type="button"
+            data-example-index="${index}"
+            aria-label="Открыть пример работы ${index + 1}"
+          >
+            <span class="product-example-media ${item.frame} ${colorClass}">
               <img src="${escapeHtml(item.src)}" alt="${escapeHtml(title)}" />
-            </div>
-          </article>
+            </span>
+          </button>
         `;
       })
       .join("");
+  }
+
+  function openExamplePhoto(index) {
+    const item = preset.examples[index];
+
+    if (!item || !examplePhotoModal || !examplePhotoModalImage) {
+      return;
+    }
+
+    examplePhotoModalImage.src = item.src;
+    examplePhotoModalImage.alt = `${title} — пример работы ${index + 1}`;
+    examplePhotoModal.hidden = false;
+    document.body.classList.add("modal-open");
+    examplePhotoModalClose?.focus();
+  }
+
+  function closeExamplePhoto() {
+    if (!examplePhotoModal || examplePhotoModal.hidden) {
+      return;
+    }
+
+    examplePhotoModal.hidden = true;
+
+    if (!document.querySelector(".modal-backdrop:not([hidden])")) {
+      document.body.classList.remove("modal-open");
+    }
   }
 
   function syncOrderComment() {
@@ -1346,6 +1574,23 @@ function initCatalogItemPage() {
     syncOrderTrigger();
   });
 
+  examplesNode.addEventListener("click", (event) => {
+    const target = event.target.closest("[data-example-index]");
+    if (!target) {
+      return;
+    }
+
+    openExamplePhoto(Number(target.dataset.exampleIndex));
+  });
+
+  examplePhotoModalClose?.addEventListener("click", closeExamplePhoto);
+
+  examplePhotoModal?.addEventListener("click", (event) => {
+    if (event.target === examplePhotoModal) {
+      closeExamplePhoto();
+    }
+  });
+
   document.querySelectorAll("[data-qty-change]").forEach((button) => {
     button.addEventListener("click", () => {
       commitQuantityInput();
@@ -1391,10 +1636,18 @@ function initCatalogItemPage() {
     { capture: true },
   );
 
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeExamplePhoto();
+    }
+  });
+
   renderPage();
 }
 
+initSiteHeaderMenu();
 initHomeSearch();
-initOrderModal();
 initCatalogPage();
+initCompanyPage();
 initCatalogItemPage();
+initOrderModal();

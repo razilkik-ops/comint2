@@ -21,15 +21,30 @@
         <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
       </a>
 
-      <nav class="main-nav" aria-label="Основная навигация">
-        <a href="index.html#services">Услуги</a>
-        <a href="index.html#products">Продукция</a>
-        <a href="index.html#portfolio">Портфолио</a>
-        <a href="index.html#company">О компании</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-      <a class="quick-order" href="#contacts" data-open-order-modal>Быстрый заказ</a>
+      <div class="site-menu" id="site-menu" data-site-menu>
+        <nav class="main-nav" aria-label="Основная навигация">
+          <a href="index.html#services">Услуги</a>
+          <a href="index.html#products">Продукция</a>
+          <a href="index.html#portfolio">Портфолио</a>
+          <a href="company.html">О компании</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+
+        <a class="quick-order" href="#contacts" data-open-order-modal>Быстрый заказ</a>
+      </div>
     </header>
 
     <main class="souvenirs-main">
@@ -53,9 +68,6 @@
         <aside class="catalog-sidebar">
           <h2>Категории</h2>
           <div class="category-list" data-category-list></div>
-          <a class="catalog-download" href="assets/comint-souvenirs-catalog.pdf" download data-catalog-download>
-            Скачать каталог
-          </a>
         </aside>
 
         <div class="catalog-content">
@@ -72,23 +84,25 @@
             </form>
 
             <div class="catalog-actions">
-              <div class="catalog-sort-wrap">
-                <button class="catalog-sort" type="button" data-sort-trigger aria-haspopup="true" aria-expanded="false">
-                  <span data-sort-label>По популярности</span>
-                  <span class="catalog-sort-chevron" aria-hidden="true">⌄</span>
-                </button>
-                <div class="catalog-sort-menu" data-sort-menu hidden>
-                  <button type="button" data-sort="popular">Сначала основные</button>
-                  <button type="button" data-sort="name">По названию</button>
-                  <button type="button" data-sort="section">По разделу</button>
-                </div>
-              </div>
-
               <div class="catalog-view" role="tablist" aria-label="Режим отображения каталога">
                 <button class="is-active" type="button" aria-label="Сетка" data-view="grid" aria-pressed="true">
-                  ◫
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                    <rect x="13" y="4" width="7" height="7" rx="1.5"></rect>
+                    <rect x="4" y="13" width="7" height="7" rx="1.5"></rect>
+                    <rect x="13" y="13" width="7" height="7" rx="1.5"></rect>
+                  </svg>
                 </button>
-                <button type="button" aria-label="Список" data-view="list" aria-pressed="false">☷</button>
+                <button type="button" aria-label="Список" data-view="list" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="4" y="5" width="3" height="3" rx="1"></rect>
+                    <rect x="4" y="10.5" width="3" height="3" rx="1"></rect>
+                    <rect x="4" y="16" width="3" height="3" rx="1"></rect>
+                    <rect x="9" y="5" width="11" height="3" rx="1.5"></rect>
+                    <rect x="9" y="10.5" width="11" height="3" rx="1.5"></rect>
+                    <rect x="9" y="16" width="11" height="3" rx="1.5"></rect>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -106,7 +120,7 @@
 
     <footer class="site-footer" id="contacts">
       <div class="footer-brand">
-        <a class="logo" href="#" aria-label="COMINT">
+        <a class="logo" href="index.html" aria-label="COMINT">
           <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
         </a>
         <p>Качество в деталях.<br />Доверие в каждом заказе.</p>
@@ -128,34 +142,14 @@
         <small>© COMINT 2025. Все права защищены.</small>
       </div>
 
-      <div class="footer-column">
-        <h3>Услуги</h3>
-        <a href="#">Полиграфия</a>
-        <a href="#">Сувенирная продукция</a>
-        <a href="#">Широкоформатная печать</a>
-        <a href="#">Упаковка и этикетки</a>
-        <a href="#">Дизайн и верстка</a>
-        <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer">Бот автопродаж</a>
-      </div>
-
-      <div class="footer-column">
-        <h3>Продукция</h3>
-        <a href="#">Визитки</a>
-        <a href="#">Листовки и флаеры</a>
-        <a href="#">Буклеты и брошюры</a>
-        <a href="#">Плакаты и постеры</a>
-        <a href="#">Баннеры и вывески</a>
-        <a href="#">Подарочная продукция</a>
-      </div>
-
       <div class="footer-column" id="company">
         <h3>О компании</h3>
-        <a href="#">О нас</a>
-        <a href="#">Производство</a>
-        <a href="#">Почему мы сейчас</a>
-        <a href="#">Качество</a>
-        <a href="#">Вакансии</a>
-        <a href="#">Документы</a>
+        <a href="company.html#about-story">О нас</a>
+        <a href="company.html#about-today">Компания сегодня</a>
+        <a href="company.html#certificates">Сертификаты</a>
+        <a href="company.html#equipment">Оборудование</a>
+        <a href="company.html#company-videos">Видео работы</a>
+        <a href="company.html#company-contacts">Контакты</a>
       </div>
 
       <div class="footer-column">
