@@ -96,11 +96,13 @@
               <button type="button" class="product-qty-button" data-qty-change="-50" aria-label="Уменьшить">
                 −
               </button>
-              <input type="text" value="500" inputmode="numeric" data-product-quantity aria-label="Тираж" />
+              <div class="product-quantity-value">
+                <input type="text" value="500" inputmode="numeric" data-product-quantity aria-label="Тираж" />
+                <span data-product-quantity-unit>шт</span>
+              </div>
               <button type="button" class="product-qty-button" data-qty-change="50" aria-label="Увеличить">
                 +
               </button>
-              <span data-product-quantity-unit>шт</span>
             </div>
           </div>
 

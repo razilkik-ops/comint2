@@ -2342,30 +2342,43 @@ main {
 
 .product-quantity-control {
   display: inline-grid;
-  grid-template-columns: 42px 80px 42px auto;
+  grid-template-columns: 42px minmax(120px, auto) 42px;
+  gap: 10px;
   align-items: center;
+}
+
+.product-quantity-value,
+.product-qty-button {
   min-height: 46px;
   border: 1px solid rgba(205, 214, 238, 0.86);
   border-radius: 12px;
-  overflow: hidden;
   background: rgba(255, 255, 255, 0.84);
 }
 
 .product-qty-button {
+  width: 42px;
   height: 46px;
   border: 0;
   color: #6249f0;
   font-size: 28px;
-  background: transparent;
+  box-shadow: var(--soft-shadow);
   cursor: pointer;
 }
 
+.product-quantity-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px;
+  box-shadow: var(--soft-shadow);
+}
+
 .product-quantity-control input {
-  width: 100%;
+  width: 72px;
   height: 46px;
   border: 0;
-  border-left: 1px solid rgba(220, 227, 245, 0.9);
-  border-right: 1px solid rgba(220, 227, 245, 0.9);
+  padding: 0;
   color: #16223e;
   font-size: 14px;
   font-weight: 700;
@@ -2375,10 +2388,11 @@ main {
 }
 
 .product-quantity-control span {
-  padding: 0 12px 0 10px;
+  padding: 0;
   color: #7985a8;
   font-size: 13px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .product-order-button {
@@ -2628,9 +2642,21 @@ main {
   right: 18px;
   z-index: 2;
   width: 46px;
+  min-width: 46px;
+  max-width: 46px;
   height: 46px;
+  min-height: 46px;
+  max-height: 46px;
+  padding: 0;
   border: 0;
   border-radius: 50%;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 46px;
   color: #f4f7ff;
   font-size: 34px;
   line-height: 1;
@@ -2711,7 +2737,12 @@ main {
     top: 14px;
     right: 14px;
     width: 42px;
+    min-width: 42px;
+    max-width: 42px;
     height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    flex-basis: 42px;
     font-size: 30px;
   }
 
@@ -3298,21 +3329,37 @@ main {
   }
 
   .product-quantity-control {
-    grid-template-columns: 38px 1fr 38px 42px;
+    width: 100%;
+    grid-template-columns: 52px minmax(0, 1fr) 52px;
+    gap: 8px;
   }
 
-  .product-qty-button,
-  .product-quantity-control input {
-    height: 44px;
+  .product-quantity-value,
+  .product-qty-button {
+    min-height: 52px;
+    border-radius: 16px;
   }
 
   .product-qty-button {
-    font-size: 24px;
+    width: 52px;
+    height: 52px;
+    font-size: 28px;
+  }
+
+  .product-quantity-value {
+    padding: 0 16px;
+    gap: 8px;
+  }
+
+  .product-quantity-control input {
+    width: auto;
+    min-width: 0;
+    height: 52px;
+    font-size: 18px;
   }
 
   .product-quantity-control span {
-    padding: 0 8px 0 6px;
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .product-example-grid {
