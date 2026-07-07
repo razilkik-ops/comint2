@@ -1247,7 +1247,7 @@ main {
   .main-nav {
     width: 100%;
     display: grid;
-    gap: 18px;
+    gap: 16px;
     font-size: 13px;
     white-space: normal;
     justify-content: flex-start;
@@ -1257,7 +1257,7 @@ main {
 
   .nav-dropdown {
     display: grid;
-    gap: 10px;
+    gap: 0;
   }
 
   .nav-dropdown::after {
@@ -1266,8 +1266,11 @@ main {
 
   .main-nav a,
   .nav-link {
+    display: flex;
+    align-items: center;
     width: 100%;
     padding: 0;
+    min-height: 24px;
     color: #1f2b48;
     font-size: 16px;
     font-weight: 700;
@@ -1293,6 +1296,7 @@ main {
 
   .nav-dropdown.is-open .nav-dropdown-menu {
     max-height: 320px;
+    margin-top: 10px;
     padding: 10px;
     border: 1px solid rgba(207, 218, 245, 0.85);
     background: rgba(255, 255, 255, 0.5);
@@ -1304,6 +1308,7 @@ main {
     padding: 10px 12px;
     font-size: 14px;
     font-weight: 600;
+    min-height: 0;
   }
 
   .quick-order {
