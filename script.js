@@ -25,6 +25,13 @@ const sortLabels = catalogApi?.sortLabels || {
   section: "По разделу",
 };
 
+const headerNavGroups = {
+  print: (service) => service.catalogKind === "print",
+  souvenirs: (service) => service.catalogKind === "souvenirs",
+  calendar: (service) => service.section === "Печать и изготовление календарей",
+  wide: (service) => service.section === "Широкоформатная печать",
+};
+
 function normalize(value) {
   return value.trim().toLowerCase();
 }
@@ -56,21 +63,59 @@ function findCatalogService(query) {
   return catalogApi.search(query);
 }
 
+function getHeaderMenuServices(group) {
+  if (!catalogApi || !headerNavGroups[group]) {
+    return [];
+  }
+
+  return catalogApi.services
+    .filter(headerNavGroups[group])
+    .slice()
+    .sort((left, right) => left.title.localeCompare(right.title, "ru", { sensitivity: "base" }));
+}
+
 function initSiteHeaderMenu() {
   const headers = [...document.querySelectorAll(".site-header")];
 
   headers.forEach((header) => {
     const toggle = header.querySelector("[data-menu-toggle]");
     const menu = header.querySelector("[data-site-menu]");
-    const links = [...header.querySelectorAll(".main-nav a, .quick-order")];
+    const dropdowns = [...header.querySelectorAll("[data-nav-group]")];
 
     if (!toggle || !menu) {
       return;
     }
 
+    dropdowns.forEach((dropdown) => {
+      const group = dropdown.dataset.navGroup || "";
+      const trigger = dropdown.querySelector("[data-nav-trigger]");
+      const popup = dropdown.querySelector(".nav-dropdown-menu");
+      const services = getHeaderMenuServices(group);
+
+      if (!trigger || !popup || !services.length) {
+        return;
+      }
+
+      trigger.setAttribute("aria-haspopup", "true");
+      trigger.setAttribute("aria-expanded", "false");
+      popup.innerHTML = services
+        .map((service) => `<a href="${escapeHtml(buildCatalogItemLink(service))}">${escapeHtml(service.title)}</a>`)
+        .join("");
+    });
+
+    const links = [...header.querySelectorAll(".main-nav a, .quick-order")];
+
+    function closeDropdowns() {
+      dropdowns.forEach((dropdown) => {
+        dropdown.classList.remove("is-open");
+        dropdown.querySelector("[data-nav-trigger]")?.setAttribute("aria-expanded", "false");
+      });
+    }
+
     function closeMenu() {
       header.classList.remove("is-menu-open");
       toggle.setAttribute("aria-expanded", "false");
+      closeDropdowns();
     }
 
     function openMenu() {
@@ -89,7 +134,30 @@ function initSiteHeaderMenu() {
 
     links.forEach((link) => {
       link.addEventListener("click", () => {
+        if (window.innerWidth <= 760 && link.hasAttribute("data-nav-trigger")) {
+          return;
+        }
+
         closeMenu();
+      });
+    });
+
+    dropdowns.forEach((dropdown) => {
+      const trigger = dropdown.querySelector("[data-nav-trigger]");
+
+      trigger?.addEventListener("click", (event) => {
+        if (window.innerWidth > 760) {
+          return;
+        }
+
+        event.preventDefault();
+        const shouldOpen = !dropdown.classList.contains("is-open");
+        closeDropdowns();
+
+        if (shouldOpen) {
+          dropdown.classList.add("is-open");
+          trigger.setAttribute("aria-expanded", "true");
+        }
       });
     });
 
@@ -108,6 +176,10 @@ function initSiteHeaderMenu() {
     window.addEventListener("resize", () => {
       if (window.innerWidth > 760) {
         closeMenu();
+      }
+
+      if (window.innerWidth <= 760) {
+        closeDropdowns();
       }
     });
   });
