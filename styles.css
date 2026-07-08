@@ -291,6 +291,10 @@ body.modal-open {
   background: rgba(153, 109, 255, 0.1);
 }
 
+.mobile-submenu {
+  display: none;
+}
+
 .quick-order,
 .result-button {
   display: inline-flex;
@@ -1268,12 +1272,25 @@ main {
   .nav-link {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     padding: 0;
     min-height: 24px;
     color: #1f2b48;
     font-size: 16px;
     font-weight: 700;
+  }
+
+  .nav-link::after {
+    content: "›";
+    margin-left: 16px;
+    color: #7f8cb1;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .main-nav > a::after {
+    content: none;
   }
 
   .nav-dropdown-menu {
@@ -1294,21 +1311,64 @@ main {
     transform: none;
   }
 
-  .nav-dropdown.is-open .nav-dropdown-menu {
-    max-height: 320px;
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid rgba(207, 218, 245, 0.85);
-    background: rgba(255, 255, 255, 0.5);
-    pointer-events: auto;
+  .site-header.is-submenu-open .main-nav,
+  .site-header.is-submenu-open .quick-order {
+    display: none;
+  }
+
+  .site-header.is-submenu-open .mobile-submenu {
+    display: grid;
+    gap: 12px;
+  }
+
+  .mobile-submenu {
+    width: 100%;
+  }
+
+  .mobile-submenu-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 0;
+    border: 0;
+    color: #2a3657;
+    font-size: 15px;
+    font-weight: 700;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .mobile-submenu-back span {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .mobile-submenu-title {
+    margin: 0;
+    color: #1f2b48;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .mobile-submenu-links {
+    display: grid;
+    gap: 8px;
+    max-height: min(52vh, 360px);
     overflow-y: auto;
   }
 
-  .nav-dropdown-menu a {
-    padding: 10px 12px;
-    font-size: 14px;
+  .mobile-submenu-links a {
+    display: block;
+    padding: 12px 14px;
+    border: 1px solid rgba(207, 218, 245, 0.9);
+    border-radius: 16px;
+    color: #253352;
+    font-size: 15px;
     font-weight: 600;
-    min-height: 0;
+    line-height: 1.35;
+    background: rgba(255, 255, 255, 0.56);
   }
 
   .quick-order {

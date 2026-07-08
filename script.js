@@ -81,6 +81,10 @@ function initSiteHeaderMenu() {
     const toggle = header.querySelector("[data-menu-toggle]");
     const menu = header.querySelector("[data-site-menu]");
     const dropdowns = [...header.querySelectorAll("[data-nav-group]")];
+    const mobileSubmenu = header.querySelector("[data-mobile-submenu]");
+    const mobileSubmenuBack = header.querySelector("[data-mobile-submenu-back]");
+    const mobileSubmenuTitle = header.querySelector("[data-mobile-submenu-title]");
+    const mobileSubmenuLinks = header.querySelector("[data-mobile-submenu-links]");
 
     if (!toggle || !menu) {
       return;
@@ -105,6 +109,36 @@ function initSiteHeaderMenu() {
 
     const links = [...header.querySelectorAll(".main-nav a, .quick-order")];
 
+    function closeSubmenu() {
+      header.classList.remove("is-submenu-open");
+
+      if (mobileSubmenu) {
+        mobileSubmenu.hidden = true;
+      }
+
+      if (mobileSubmenuTitle) {
+        mobileSubmenuTitle.textContent = "";
+      }
+
+      if (mobileSubmenuLinks) {
+        mobileSubmenuLinks.innerHTML = "";
+      }
+    }
+
+    function openSubmenu(dropdown) {
+      const trigger = dropdown.querySelector("[data-nav-trigger]");
+      const popup = dropdown.querySelector(".nav-dropdown-menu");
+
+      if (!trigger || !popup || !mobileSubmenu || !mobileSubmenuTitle || !mobileSubmenuLinks) {
+        return;
+      }
+
+      mobileSubmenuTitle.textContent = trigger.textContent.trim();
+      mobileSubmenuLinks.innerHTML = popup.innerHTML;
+      mobileSubmenu.hidden = false;
+      header.classList.add("is-submenu-open");
+    }
+
     function closeDropdowns() {
       dropdowns.forEach((dropdown) => {
         dropdown.classList.remove("is-open");
@@ -115,6 +149,7 @@ function initSiteHeaderMenu() {
     function closeMenu() {
       header.classList.remove("is-menu-open");
       toggle.setAttribute("aria-expanded", "false");
+      closeSubmenu();
       closeDropdowns();
     }
 
@@ -151,14 +186,15 @@ function initSiteHeaderMenu() {
         }
 
         event.preventDefault();
-        const shouldOpen = !dropdown.classList.contains("is-open");
         closeDropdowns();
-
-        if (shouldOpen) {
-          dropdown.classList.add("is-open");
-          trigger.setAttribute("aria-expanded", "true");
-        }
+        openSubmenu(dropdown);
+        trigger.setAttribute("aria-expanded", "true");
       });
+    });
+
+    mobileSubmenuBack?.addEventListener("click", () => {
+      closeSubmenu();
+      closeDropdowns();
     });
 
     document.addEventListener("click", (event) => {
@@ -179,6 +215,7 @@ function initSiteHeaderMenu() {
       }
 
       if (window.innerWidth <= 760) {
+        closeSubmenu();
         closeDropdowns();
       }
     });
