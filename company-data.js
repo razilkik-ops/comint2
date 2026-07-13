@@ -28,9 +28,6 @@
     certificates: [
       "https://comint.by/wp-content/uploads/2023/03/image.png",
       "https://comint.by/wp-content/uploads/2023/03/image-2.png",
-      "https://comint.by/wp-content/uploads/2023/03/image-3.png",
-      "https://comint.by/wp-content/uploads/2023/03/image-4.png",
-      "https://comint.by/wp-content/uploads/2023/03/image-5.png",
     ],
     equipmentLead:
       "Класс мастера виден по его инструментам. Высокий уровень качества и производительности — результат не только упорного и вдохновлённого труда нашей команды, но и тщательного подбора и обслуживания нашего оборудования. Убедитесь в широком ассортименте наших печатных и послепечатных машин, ознакомьтесь с инструментами нашей работы — будьте уверены, эти инструменты не любят стоять без дела!",
