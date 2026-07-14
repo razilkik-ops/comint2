@@ -1185,6 +1185,7 @@ function initCompanyPage() {
   closingNode.innerHTML = buildParagraphs(companyApi.closing);
 
   certificatesNode.innerHTML = companyApi.certificates
+    .slice(0, 2)
     .map((src, index) => {
       return `
         <button
