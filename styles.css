@@ -280,6 +280,10 @@ body.mobile-menu-open {
     transform 0.18s ease;
 }
 
+.nav-dropdown-menu[hidden] {
+  display: none;
+}
+
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown:focus-within .nav-dropdown-menu,
 .nav-dropdown.is-open .nav-dropdown-menu {
@@ -1274,12 +1278,14 @@ main {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     scrollbar-width: thin;
+    visibility: hidden;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-8px);
     transition:
       opacity 0.2s ease,
-      transform 0.2s ease;
+      transform 0.2s ease,
+      visibility 0s linear 0.2s;
   }
 
   .site-menu::before {
@@ -1301,9 +1307,11 @@ main {
   }
 
   .site-header.is-menu-open .site-menu {
+    visibility: visible;
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+    transition-delay: 0s;
   }
 
   .main-nav {
@@ -1389,6 +1397,21 @@ main {
 
   .mobile-submenu {
     width: 100%;
+  }
+
+  .mobile-submenu-header {
+    position: sticky;
+    top: -16px;
+    z-index: 2;
+    display: grid;
+    gap: 10px;
+    margin: -16px -16px 0;
+    padding: 16px 16px 12px;
+    border-bottom: 1px solid rgba(207, 218, 245, 0.82);
+    background: rgba(244, 247, 255, 0.94);
+    box-shadow: 0 10px 22px rgba(83, 98, 149, 0.08);
+    -webkit-backdrop-filter: blur(24px) saturate(1.15);
+    backdrop-filter: blur(24px) saturate(1.15);
   }
 
   .mobile-submenu-back {
@@ -2379,6 +2402,19 @@ main {
     radial-gradient(circle at top left, rgba(186, 132, 255, 0.12), transparent 35%),
     radial-gradient(circle at right center, rgba(99, 172, 255, 0.12), transparent 36%),
     rgba(255, 255, 255, 0.48);
+  outline: none;
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.product-stage:active {
+  cursor: grabbing;
+}
+
+.product-stage:focus-visible {
+  box-shadow: 0 0 0 3px rgba(108, 82, 255, 0.24);
 }
 
 .product-stage-media,
@@ -2407,6 +2443,11 @@ main {
   transition:
     transform 0.24s ease,
     filter 0.24s ease;
+}
+
+.product-stage-media img {
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
 
 .product-thumbnails {

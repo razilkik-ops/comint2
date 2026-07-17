@@ -103,7 +103,9 @@ function initSiteHeaderMenu() {
     const menuGroups = new Map();
     let wasMobileViewport = window.innerWidth <= 760;
     let mobileMenuScrollTop = 0;
+    let mobileRootMenuScrollTop = 0;
     let pendingMobileMenuScrollTop = null;
+    let activeMobileSubmenuTrigger = null;
 
     if (!toggle || !menu) {
       return;
@@ -129,12 +131,42 @@ function initSiteHeaderMenu() {
         services,
         title: trigger.textContent.trim(),
         triggerHref,
+        trigger,
       });
     });
 
-    const links = [...header.querySelectorAll(".main-nav a, .quick-order")];
+    function syncMenuAccessibility() {
+      const isMobileViewport = window.innerWidth <= 760;
+      const isMenuOpen = header.classList.contains("is-menu-open");
+      const isMenuHidden = isMobileViewport && !isMenuOpen;
 
-    function closeSubmenu() {
+      menu.inert = isMenuHidden;
+      toggle.setAttribute("aria-label", isMenuOpen ? "Закрыть меню" : "Открыть меню");
+
+      if (isMenuHidden) {
+        menu.setAttribute("aria-hidden", "true");
+      } else {
+        menu.removeAttribute("aria-hidden");
+      }
+
+      dropdowns.forEach((dropdown) => {
+        const popup = dropdown.querySelector(".nav-dropdown-menu");
+        if (!popup) {
+          return;
+        }
+
+        popup.hidden = isMobileViewport;
+        popup.inert = isMobileViewport;
+        if (isMobileViewport) {
+          popup.setAttribute("aria-hidden", "true");
+        } else {
+          popup.removeAttribute("aria-hidden");
+        }
+      });
+    }
+
+    function closeSubmenu({ restoreMenuScroll = false, restoreFocus = false } = {}) {
+      const triggerToRestore = activeMobileSubmenuTrigger;
       header.classList.remove("is-submenu-open");
 
       if (mobileSubmenu) {
@@ -147,6 +179,16 @@ function initSiteHeaderMenu() {
 
       if (mobileSubmenuLinks) {
         mobileSubmenuLinks.replaceChildren();
+      }
+
+      activeMobileSubmenuTrigger = null;
+
+      if (restoreMenuScroll) {
+        menu.scrollTop = mobileRootMenuScrollTop;
+      }
+
+      if (restoreFocus) {
+        triggerToRestore?.focus({ preventScroll: true });
       }
     }
 
@@ -171,11 +213,14 @@ function initSiteHeaderMenu() {
       }
 
       fragment.append(buildHeaderMenuFragment(menuGroup.services));
+      mobileRootMenuScrollTop = menu.scrollTop;
+      activeMobileSubmenuTrigger = menuGroup.trigger;
       mobileSubmenuTitle.textContent = menuGroup.title;
       mobileSubmenuLinks.replaceChildren(fragment);
       mobileSubmenu.hidden = false;
-      mobileSubmenuLinks.scrollTop = 0;
       header.classList.add("is-submenu-open");
+      menu.scrollTop = 0;
+      mobileSubmenuBack?.focus({ preventScroll: true });
     }
 
     function closeDropdowns() {
@@ -222,18 +267,25 @@ function initSiteHeaderMenu() {
       event.preventDefault();
     }
 
-    function closeMenu() {
+    function closeMenu({ restoreFocus = false } = {}) {
+      closeSubmenu();
+      closeDropdowns();
       header.classList.remove("is-menu-open");
       toggle.setAttribute("aria-expanded", "false");
       unlockMobilePageScroll();
-      closeSubmenu();
-      closeDropdowns();
+      menu.scrollTop = 0;
+      syncMenuAccessibility();
+
+      if (restoreFocus) {
+        toggle.focus({ preventScroll: true });
+      }
     }
 
     function openMenu() {
       header.classList.add("is-menu-open");
       toggle.setAttribute("aria-expanded", "true");
       lockMobilePageScroll();
+      syncMenuAccessibility();
     }
 
     function rememberMobileMenuScrollPosition() {
@@ -255,14 +307,17 @@ function initSiteHeaderMenu() {
       openMenu();
     });
 
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth <= 760 && link.hasAttribute("data-nav-trigger")) {
-          return;
-        }
+    menu.addEventListener("click", (event) => {
+      const link = event.target.closest("a");
+      if (!link) {
+        return;
+      }
 
-        closeMenu();
-      });
+      if (window.innerWidth <= 760 && link.hasAttribute("data-nav-trigger")) {
+        return;
+      }
+
+      closeMenu();
     });
 
     dropdowns.forEach((dropdown) => {
@@ -282,7 +337,7 @@ function initSiteHeaderMenu() {
     });
 
     mobileSubmenuBack?.addEventListener("click", () => {
-      closeSubmenu();
+      closeSubmenu({ restoreMenuScroll: true, restoreFocus: true });
       closeDropdowns();
     });
 
@@ -294,7 +349,7 @@ function initSiteHeaderMenu() {
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        closeMenu();
+        closeMenu({ restoreFocus: true });
       }
     });
 
@@ -306,7 +361,11 @@ function initSiteHeaderMenu() {
       }
 
       wasMobileViewport = isMobileViewport;
+      syncMenuAccessibility();
     });
+
+    window.addEventListener("pagehide", closeMenu);
+    syncMenuAccessibility();
   });
 }
 
@@ -1454,6 +1513,7 @@ function initCatalogItemPage() {
   const priceTableNode = document.querySelector("[data-product-price-table]");
   const specsNode = document.querySelector("[data-product-specs]");
   const examplesNode = document.querySelector("[data-product-examples]");
+  const stageNode = document.querySelector("[data-product-stage]");
   const stageMediaNode = document.querySelector("[data-product-stage-media]");
   const stageImageNode = document.querySelector("[data-product-stage-image]");
   const thumbnailsNode = document.querySelector("[data-product-thumbnails]");
@@ -1475,6 +1535,7 @@ function initCatalogItemPage() {
     !priceTableNode ||
     !specsNode ||
     !examplesNode ||
+    !stageNode ||
     !stageMediaNode ||
     !stageImageNode ||
     !thumbnailsNode
@@ -1530,6 +1591,9 @@ function initCatalogItemPage() {
     quantity: preset.tiers[Math.min(3, preset.tiers.length - 1)].qty,
     galleryIndex: 0,
   };
+  let galleryPointerId = null;
+  let galleryPointerStartX = 0;
+  let galleryPointerStartY = 0;
 
   const colorClassById = Object.fromEntries(preset.colors.map((color) => [color.id, color.className || ""]));
 
@@ -1567,7 +1631,30 @@ function initCatalogItemPage() {
     stageImageNode.src = item.src;
     stageImageNode.alt = title;
     stageMediaNode.className = `product-stage-media ${item.frame} ${colorClass}`.trim();
+    stageNode.setAttribute(
+      "aria-label",
+      `${title}: ${item.label}, изображение ${state.galleryIndex + 1} из ${preset.gallery.length}`,
+    );
     renderThumbnails();
+  }
+
+  function setGalleryIndex(index) {
+    const nextIndex = Math.max(0, Math.min(preset.gallery.length - 1, index));
+    if (nextIndex === state.galleryIndex) {
+      return;
+    }
+
+    state.galleryIndex = nextIndex;
+    renderStage();
+    syncOrderTrigger();
+  }
+
+  function resetGalleryPointer() {
+    if (galleryPointerId !== null && stageNode.hasPointerCapture?.(galleryPointerId)) {
+      stageNode.releasePointerCapture(galleryPointerId);
+    }
+
+    galleryPointerId = null;
   }
 
   function renderFirstOptions() {
@@ -1771,9 +1858,46 @@ function initCatalogItemPage() {
       return;
     }
 
-    state.galleryIndex = Number(target.dataset.thumbIndex || 0);
-    renderStage();
-    syncOrderTrigger();
+    setGalleryIndex(Number(target.dataset.thumbIndex || 0));
+  });
+
+  stageNode.addEventListener("pointerdown", (event) => {
+    if (event.isPrimary === false || (event.pointerType === "mouse" && event.button !== 0)) {
+      return;
+    }
+
+    galleryPointerId = event.pointerId;
+    galleryPointerStartX = event.clientX;
+    galleryPointerStartY = event.clientY;
+    stageNode.setPointerCapture?.(event.pointerId);
+  });
+
+  stageNode.addEventListener("pointerup", (event) => {
+    if (galleryPointerId !== event.pointerId) {
+      return;
+    }
+
+    const distanceX = event.clientX - galleryPointerStartX;
+    const distanceY = event.clientY - galleryPointerStartY;
+    const swipeThreshold = Math.max(44, Math.min(88, stageNode.clientWidth * 0.16));
+    resetGalleryPointer();
+
+    if (Math.abs(distanceX) < swipeThreshold || Math.abs(distanceX) <= Math.abs(distanceY) * 1.15) {
+      return;
+    }
+
+    setGalleryIndex(state.galleryIndex + (distanceX < 0 ? 1 : -1));
+  });
+
+  stageNode.addEventListener("pointercancel", resetGalleryPointer);
+  stageNode.addEventListener("dragstart", (event) => event.preventDefault());
+  stageNode.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
+      return;
+    }
+
+    event.preventDefault();
+    setGalleryIndex(state.galleryIndex + (event.key === "ArrowRight" ? 1 : -1));
   });
 
   examplesNode.addEventListener("click", (event) => {

@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260717-menu-render-fix-v2" />
+    <link rel="stylesheet" href="styles.css?v=20260717-mobile-menu-swipe-v3" />
   </head>
   <body>
     <div class="page-glow page-glow-left"></div>
@@ -66,11 +66,13 @@
         </nav>
 
         <div class="mobile-submenu" data-mobile-submenu hidden>
-          <button class="mobile-submenu-back" type="button" data-mobile-submenu-back aria-label="Назад к меню">
-            <span aria-hidden="true">←</span>
-            Назад
-          </button>
-          <p class="mobile-submenu-title" data-mobile-submenu-title></p>
+          <div class="mobile-submenu-header">
+            <button class="mobile-submenu-back" type="button" data-mobile-submenu-back aria-label="Назад к меню">
+              <span aria-hidden="true">←</span>
+              Назад
+            </button>
+            <p class="mobile-submenu-title" data-mobile-submenu-title></p>
+          </div>
           <div class="mobile-submenu-links" data-mobile-submenu-links></div>
         </div>
 
@@ -238,6 +240,6 @@
     </div>
 
     <script src="catalog-data.js"></script>
-    <script src="script.js?v=20260717-menu-scroll-lock-v6"></script>
+    <script src="script.js?v=20260717-mobile-menu-swipe-v7"></script>
   </body>
 </html>
