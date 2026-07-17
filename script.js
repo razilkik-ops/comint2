@@ -101,6 +101,7 @@ function initSiteHeaderMenu() {
     const mobileSubmenuTitle = header.querySelector("[data-mobile-submenu-title]");
     const mobileSubmenuLinks = header.querySelector("[data-mobile-submenu-links]");
     const menuGroups = new Map();
+    let wasMobileViewport = window.innerWidth <= 760;
 
     if (!toggle || !menu) {
       return;
@@ -250,14 +251,13 @@ function initSiteHeaderMenu() {
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 760) {
+      const isMobileViewport = window.innerWidth <= 760;
+
+      if (isMobileViewport !== wasMobileViewport) {
         closeMenu();
       }
 
-      if (window.innerWidth <= 760) {
-        closeSubmenu();
-        closeDropdowns();
-      }
+      wasMobileViewport = isMobileViewport;
     });
   });
 }
