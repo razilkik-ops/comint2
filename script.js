@@ -192,6 +192,7 @@ function initSiteHeaderMenu() {
 
       mobileMenuScrollTop = pendingMobileMenuScrollTop ?? window.scrollY;
       pendingMobileMenuScrollTop = null;
+      document.body.style.setProperty("--mobile-page-scroll-top", `${mobileMenuScrollTop}px`);
       document.documentElement.classList.add("mobile-menu-open");
       document.body.classList.add("mobile-menu-open");
     }
@@ -201,6 +202,7 @@ function initSiteHeaderMenu() {
 
       document.documentElement.classList.remove("mobile-menu-open");
       document.body.classList.remove("mobile-menu-open");
+      document.body.style.removeProperty("--mobile-page-scroll-top");
 
       if (wasLocked) {
         window.scrollTo(0, mobileMenuScrollTop);
@@ -213,17 +215,11 @@ function initSiteHeaderMenu() {
       }
 
       const target = event.target;
-      if (target && typeof target.closest === "function" && target.closest(".mobile-submenu-links")) {
+      if (target && typeof target.closest === "function" && target.closest("[data-site-menu]")) {
         return;
       }
 
       event.preventDefault();
-    }
-
-    function keepMobileMenuPagePosition() {
-      if (document.body.classList.contains("mobile-menu-open") && window.scrollY !== mobileMenuScrollTop) {
-        window.scrollTo(0, mobileMenuScrollTop);
-      }
     }
 
     function closeMenu() {
@@ -247,7 +243,6 @@ function initSiteHeaderMenu() {
     }
 
     document.addEventListener("touchmove", preventMobileMenuPageScroll, { passive: false });
-    window.addEventListener("scroll", keepMobileMenuPagePosition, { passive: true });
     toggle.addEventListener("pointerdown", rememberMobileMenuScrollPosition);
     toggle.addEventListener("touchstart", rememberMobileMenuScrollPosition, { passive: true });
 
