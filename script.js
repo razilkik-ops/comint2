@@ -74,6 +74,21 @@ function getHeaderMenuServices(group) {
     .sort((left, right) => left.title.localeCompare(right.title, "ru", { sensitivity: "base" }));
 }
 
+function buildHeaderServiceLink(service) {
+  const link = document.createElement("a");
+  link.href = buildCatalogItemLink(service);
+  link.textContent = service.title;
+  return link;
+}
+
+function buildHeaderMenuFragment(services) {
+  const fragment = document.createDocumentFragment();
+  services.forEach((service) => {
+    fragment.append(buildHeaderServiceLink(service));
+  });
+  return fragment;
+}
+
 function initSiteHeaderMenu() {
   const headers = [...document.querySelectorAll(".site-header")];
 
@@ -85,6 +100,7 @@ function initSiteHeaderMenu() {
     const mobileSubmenuBack = header.querySelector("[data-mobile-submenu-back]");
     const mobileSubmenuTitle = header.querySelector("[data-mobile-submenu-title]");
     const mobileSubmenuLinks = header.querySelector("[data-mobile-submenu-links]");
+    const menuGroups = new Map();
 
     if (!toggle || !menu) {
       return;
@@ -100,11 +116,17 @@ function initSiteHeaderMenu() {
         return;
       }
 
+      const triggerHref = trigger.getAttribute("href") || "";
+
       trigger.setAttribute("aria-haspopup", "true");
       trigger.setAttribute("aria-expanded", "false");
-      popup.innerHTML = services
-        .map((service) => `<a href="${escapeHtml(buildCatalogItemLink(service))}">${escapeHtml(service.title)}</a>`)
-        .join("");
+      popup.replaceChildren(buildHeaderMenuFragment(services));
+      menuGroups.set(group, {
+        group,
+        services,
+        title: trigger.textContent.trim(),
+        triggerHref,
+      });
     });
 
     const links = [...header.querySelectorAll(".main-nav a, .quick-order")];
@@ -121,22 +143,39 @@ function initSiteHeaderMenu() {
       }
 
       if (mobileSubmenuLinks) {
-        mobileSubmenuLinks.innerHTML = "";
+        mobileSubmenuLinks.replaceChildren();
       }
     }
 
-    function openSubmenu(dropdown) {
-      const trigger = dropdown.querySelector("[data-nav-trigger]");
-      const popup = dropdown.querySelector(".nav-dropdown-menu");
+    function openSubmenu(group) {
+      const menuGroup = menuGroups.get(group);
 
-      if (!trigger || !popup || !mobileSubmenu || !mobileSubmenuTitle || !mobileSubmenuLinks) {
+      if (!menuGroup || !mobileSubmenu || !mobileSubmenuTitle || !mobileSubmenuLinks) {
         return;
       }
 
-      mobileSubmenuTitle.textContent = trigger.textContent.trim();
-      mobileSubmenuLinks.innerHTML = popup.innerHTML;
+      const fragment = document.createDocumentFragment();
+      const hasOverviewLink =
+        menuGroup.triggerHref &&
+        !menuGroup.services.some((service) => buildCatalogItemLink(service) === menuGroup.triggerHref);
+
+      if (hasOverviewLink) {
+        const overviewLink = document.createElement("a");
+        overviewLink.href = menuGroup.triggerHref;
+        overviewLink.textContent = `Перейти в раздел "${menuGroup.title}"`;
+        overviewLink.className = "mobile-submenu-overview";
+        fragment.append(overviewLink);
+      }
+
+      fragment.append(buildHeaderMenuFragment(menuGroup.services));
+      mobileSubmenuTitle.textContent = menuGroup.title;
+      mobileSubmenuLinks.replaceChildren(fragment);
       mobileSubmenu.hidden = false;
-      header.classList.add("is-submenu-open");
+      mobileSubmenuLinks.scrollTop = 0;
+
+      requestAnimationFrame(() => {
+        header.classList.add("is-submenu-open");
+      });
     }
 
     function closeDropdowns() {
@@ -179,6 +218,7 @@ function initSiteHeaderMenu() {
 
     dropdowns.forEach((dropdown) => {
       const trigger = dropdown.querySelector("[data-nav-trigger]");
+      const group = dropdown.dataset.navGroup || "";
 
       trigger?.addEventListener("click", (event) => {
         if (window.innerWidth > 760) {
@@ -187,7 +227,7 @@ function initSiteHeaderMenu() {
 
         event.preventDefault();
         closeDropdowns();
-        openSubmenu(dropdown);
+        openSubmenu(group);
         trigger.setAttribute("aria-expanded", "true");
       });
     });
