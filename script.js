@@ -102,6 +102,8 @@ function initSiteHeaderMenu() {
     const mobileSubmenuLinks = header.querySelector("[data-mobile-submenu-links]");
     const menuGroups = new Map();
     let wasMobileViewport = window.innerWidth <= 760;
+    let mobileMenuScrollTop = 0;
+    let pendingMobileMenuScrollTop = null;
 
     if (!toggle || !menu) {
       return;
@@ -186,9 +188,51 @@ function initSiteHeaderMenu() {
       });
     }
 
+    function lockMobilePageScroll() {
+      if (window.innerWidth > 760 || document.body.classList.contains("mobile-menu-open")) {
+        return;
+      }
+
+      mobileMenuScrollTop = pendingMobileMenuScrollTop ?? window.scrollY;
+      pendingMobileMenuScrollTop = null;
+      document.documentElement.classList.add("mobile-menu-open");
+      document.body.classList.add("mobile-menu-open");
+    }
+
+    function unlockMobilePageScroll() {
+      const wasLocked = document.body.classList.contains("mobile-menu-open");
+
+      document.documentElement.classList.remove("mobile-menu-open");
+      document.body.classList.remove("mobile-menu-open");
+
+      if (wasLocked) {
+        window.scrollTo(0, mobileMenuScrollTop);
+      }
+    }
+
+    function preventMobileMenuPageScroll(event) {
+      if (!document.body.classList.contains("mobile-menu-open")) {
+        return;
+      }
+
+      const target = event.target;
+      if (target && typeof target.closest === "function" && target.closest(".mobile-submenu-links")) {
+        return;
+      }
+
+      event.preventDefault();
+    }
+
+    function keepMobileMenuPagePosition() {
+      if (document.body.classList.contains("mobile-menu-open") && window.scrollY !== mobileMenuScrollTop) {
+        window.scrollTo(0, mobileMenuScrollTop);
+      }
+    }
+
     function closeMenu() {
       header.classList.remove("is-menu-open");
       toggle.setAttribute("aria-expanded", "false");
+      unlockMobilePageScroll();
       closeSubmenu();
       closeDropdowns();
     }
@@ -196,7 +240,19 @@ function initSiteHeaderMenu() {
     function openMenu() {
       header.classList.add("is-menu-open");
       toggle.setAttribute("aria-expanded", "true");
+      lockMobilePageScroll();
     }
+
+    function rememberMobileMenuScrollPosition() {
+      if (window.innerWidth <= 760 && !header.classList.contains("is-menu-open")) {
+        pendingMobileMenuScrollTop = window.scrollY;
+      }
+    }
+
+    document.addEventListener("touchmove", preventMobileMenuPageScroll, { passive: false });
+    window.addEventListener("scroll", keepMobileMenuPagePosition, { passive: true });
+    toggle.addEventListener("pointerdown", rememberMobileMenuScrollPosition);
+    toggle.addEventListener("touchstart", rememberMobileMenuScrollPosition, { passive: true });
 
     toggle.addEventListener("click", () => {
       if (header.classList.contains("is-menu-open")) {

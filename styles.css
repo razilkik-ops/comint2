@@ -80,6 +80,11 @@ body.modal-open {
   overflow: hidden;
 }
 
+html.mobile-menu-open,
+body.mobile-menu-open {
+  overscroll-behavior: none;
+}
+
 .page-glow {
   position: fixed;
   z-index: -2;
