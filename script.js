@@ -1344,7 +1344,11 @@ function initCompanyPage() {
         <a class="company-video-card" href="${videoUrl}" target="_blank" rel="noreferrer">
           <span class="company-video-preview">
             <img src="${previewUrl}" alt="${escapeHtml(video.title)}" loading="lazy" />
-            <span class="company-video-play" aria-hidden="true">▶</span>
+            <span class="company-video-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M9.7 6.7c-.9-.6-2.1.1-2.1 1.2v8.2c0 1.1 1.2 1.8 2.1 1.2l6.6-4.1c.9-.6.9-1.9 0-2.5L9.7 6.7Z"></path>
+              </svg>
+            </span>
           </span>
           <span class="company-video-copy">
             <strong>${escapeHtml(video.title)}</strong>

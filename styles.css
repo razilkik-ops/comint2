@@ -3372,10 +3372,16 @@ main {
   height: 58px;
   border-radius: 50%;
   color: #fff;
-  font-size: 22px;
   background: linear-gradient(135deg, rgba(189, 69, 255, 0.92), rgba(47, 124, 255, 0.92));
   transform: translate(-50%, -50%);
   box-shadow: 0 16px 34px rgba(93, 95, 229, 0.28);
+}
+
+.company-video-play svg {
+  display: block;
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
 }
 
 .company-video-copy {
