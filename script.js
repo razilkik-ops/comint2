@@ -175,10 +175,7 @@ function initSiteHeaderMenu() {
       mobileSubmenuLinks.replaceChildren(fragment);
       mobileSubmenu.hidden = false;
       mobileSubmenuLinks.scrollTop = 0;
-
-      requestAnimationFrame(() => {
-        header.classList.add("is-submenu-open");
-      });
+      header.classList.add("is-submenu-open");
     }
 
     function closeDropdowns() {

@@ -1222,6 +1222,8 @@ main {
     gap: 14px;
     border-radius: 18px;
     overflow: visible;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 
   .logo {
@@ -1254,10 +1256,10 @@ main {
     border-radius: 20px;
     overflow: hidden;
     max-height: calc(100dvh - 128px);
-    background: rgba(244, 247, 255, 0.82);
+    background: rgba(244, 247, 255, 0.98);
     box-shadow: 0 18px 60px rgba(83, 98, 149, 0.16);
-    -webkit-backdrop-filter: blur(34px) saturate(1.15);
-    backdrop-filter: blur(34px) saturate(1.15);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     opacity: 0;
@@ -1275,10 +1277,7 @@ main {
     z-index: 0;
     pointer-events: none;
     border-radius: inherit;
-    background: rgba(244, 247, 255, 0.34);
-    -webkit-backdrop-filter: blur(34px) saturate(1.15);
-    backdrop-filter: blur(34px) saturate(1.15);
-    transform: translateZ(0);
+    background: transparent;
   }
 
   .site-menu > * {
