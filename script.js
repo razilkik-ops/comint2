@@ -1493,6 +1493,13 @@ function initCatalogItemPage() {
     }) || buildFallbackService(params);
 
   const preset = productPagePresets[service.presetKey] || productPagePresets.pen;
+  const hasUploadedServiceImage = Boolean(service.hasUploadedImage);
+  const gallery = hasUploadedServiceImage
+    ? [{ src: service.image, frame: "product-frame-custom", label: "Изображение услуги" }]
+    : preset.gallery;
+  const examples = hasUploadedServiceImage
+    ? [{ src: service.image, frame: "product-frame-custom", tone: "" }]
+    : preset.examples;
   const title = service.title;
   const catalogConfig = catalogApi?.catalogConfigs?.[service.catalogKind];
 
@@ -1604,7 +1611,7 @@ function initCatalogItemPage() {
   function renderThumbnails() {
     const colorClass = colorClassById[state.color] || "";
 
-    thumbnailsNode.innerHTML = preset.gallery
+    thumbnailsNode.innerHTML = gallery
       .map((item, index) => {
         const isActive = index === state.galleryIndex;
         return `
@@ -1625,7 +1632,7 @@ function initCatalogItemPage() {
   }
 
   function renderStage() {
-    const item = preset.gallery[state.galleryIndex] || preset.gallery[0];
+    const item = gallery[state.galleryIndex] || gallery[0];
     const colorClass = colorClassById[state.color] || "";
 
     stageImageNode.src = item.src;
@@ -1633,13 +1640,13 @@ function initCatalogItemPage() {
     stageMediaNode.className = `product-stage-media ${item.frame} ${colorClass}`.trim();
     stageNode.setAttribute(
       "aria-label",
-      `${title}: ${item.label}, изображение ${state.galleryIndex + 1} из ${preset.gallery.length}`,
+      `${title}: ${item.label}, изображение ${state.galleryIndex + 1} из ${gallery.length}`,
     );
     renderThumbnails();
   }
 
   function setGalleryIndex(index) {
-    const nextIndex = Math.max(0, Math.min(preset.gallery.length - 1, index));
+    const nextIndex = Math.max(0, Math.min(gallery.length - 1, index));
     if (nextIndex === state.galleryIndex) {
       return;
     }
@@ -1736,7 +1743,7 @@ function initCatalogItemPage() {
   function renderExamples() {
     const colorClass = colorClassById[state.color] || "";
 
-    examplesNode.innerHTML = preset.examples
+    examplesNode.innerHTML = examples
       .map((item, index) => {
         return `
           <button
@@ -1755,7 +1762,7 @@ function initCatalogItemPage() {
   }
 
   function openExamplePhoto(index) {
-    const item = preset.examples[index];
+    const item = examples[index];
 
     if (!item || !examplePhotoModal || !examplePhotoModalImage) {
       return;
@@ -1810,7 +1817,7 @@ function initCatalogItemPage() {
 
     const firstOption = preset.colors.find((item) => item.id === state.color)?.label || "";
     const method = preset.methods.find((item) => item.id === state.method)?.label || "";
-    const currentGallery = preset.gallery[state.galleryIndex] || preset.gallery[0];
+    const currentGallery = gallery[state.galleryIndex] || gallery[0];
 
     orderTrigger.dataset.orderTitle = title;
     orderTrigger.dataset.orderImage = currentGallery.src;
