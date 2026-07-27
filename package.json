@@ -10,8 +10,9 @@
     "sync:legacy-media": "node scripts/download-legacy-media.js",
     "audit:legacy-seo": "node scripts/audit-legacy-seo.js",
     "start": "node server.js",
-    "test": "npm run test:layout && npm run test:seo && npm run test:search",
+    "test": "npm run test:layout && npm run test:seo && npm run test:search && npm run test:pages",
     "test:layout": "node scripts/layout-quality-check.js",
+    "test:pages": "node scripts/github-pages-quality-check.js",
     "test:search": "node scripts/search-quality-check.js",
     "test:seo": "node scripts/seo-quality-check.js"
   },

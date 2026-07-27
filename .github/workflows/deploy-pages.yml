@@ -46,6 +46,9 @@ jobs:
             --exclude "tmp-imagegen-logo" \
             --exclude "comint-cpanel-ready-privacy-cookies"
 
+      - name: Apply GitHub Pages base path
+        run: node scripts/prepare-github-pages.js dist "/${{ github.event.repository.name }}/"
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:

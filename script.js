@@ -1,6 +1,8 @@
 const catalogApi = window.ComintCatalogData || null;
 const companyApi = window.ComintCompanyData || null;
 const legacyUrlMap = window.ComintLegacyUrlMap || {};
+const deploymentBasePath =
+  document.querySelector("base[data-deployment-base]")?.getAttribute("href") || "";
 
 const fallbackSearchCopy = {
   визитки: [
@@ -45,13 +47,31 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;");
 }
 
+function withDeploymentBase(value) {
+  const path = String(value || "");
+
+  if (
+    !deploymentBasePath ||
+    !path.startsWith("/") ||
+    path.startsWith("//") ||
+    path.startsWith(deploymentBasePath)
+  ) {
+    return path;
+  }
+
+  return `${deploymentBasePath.replace(/\/$/, "")}${path}`;
+}
+
 function buildCatalogItemLink(service) {
-  return legacyUrlMap[service.slug] || `/services/${service.slug}`;
+  return withDeploymentBase(
+    legacyUrlMap[service.slug] || `/services/${service.slug}`,
+  );
 }
 
 function normalizeAssetPath(value) {
   const path = String(value || "");
-  return path.startsWith("assets/") ? `/${path}` : path;
+  const rootPath = path.startsWith("assets/") ? `/${path}` : path;
+  return withDeploymentBase(rootPath);
 }
 
 function findCatalogService(query) {
@@ -672,7 +692,7 @@ function initOrderModal() {
     resetFormStatus();
 
     try {
-      const response = await fetch("/api/send-order.php", {
+      const response = await fetch(withDeploymentBase("/api/send-order.php"), {
         method: "POST",
         body: new FormData(orderForm),
         headers: {
@@ -735,14 +755,14 @@ function initCookieNotice() {
   notice.setAttribute("aria-label", "Уведомление о cookies");
   notice.innerHTML = `
     <span class="cookie-notice-mark" aria-hidden="true">
-      <img class="cookie-notice-mark-image" src="/assets/cookie-icon.png" alt="" />
+      <img class="cookie-notice-mark-image" src="${withDeploymentBase("/assets/cookie-icon.png")}" alt="" />
     </span>
     <div class="cookie-notice-copy">
       <strong>Мы используем cookies</strong>
       <p>
         Сайт сохраняет технические cookies, чтобы формы и интерфейс работали корректно.
-        Подробности есть в <a href="/cookies">Политике cookies</a> и
-        <a href="/privacy-policy">Политике конфиденциальности</a>.
+        Подробности есть в <a href="${withDeploymentBase("/cookies")}">Политике cookies</a> и
+        <a href="${withDeploymentBase("/privacy-policy")}">Политике конфиденциальности</a>.
       </p>
     </div>
     <button class="cookie-notice-button" type="button">Понятно</button>
@@ -1752,7 +1772,7 @@ function initCatalogItemPage() {
   descriptionNode.textContent = buildProductDescription(service);
 
   if (catalogLinkNode && catalogConfig) {
-    catalogLinkNode.href = catalogConfig.pagePath;
+    catalogLinkNode.href = withDeploymentBase(catalogConfig.pagePath);
     catalogLinkNode.textContent = catalogConfig.label;
   }
 
