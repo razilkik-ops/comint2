@@ -1,2 +1,10 @@
 .DS_Store
+node_modules/
 .codex-temp-*.png
+*.zip
+comint-cpanel-ready-privacy-cookies/
+tmp-imagegen-logo/
+site-screenshot.png
+api/config.local.php
+cloudflare-bot/.dev.vars
+cloudflare-bot/.wrangler

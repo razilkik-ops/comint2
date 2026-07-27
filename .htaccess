@@ -1,0 +1,172 @@
+DirectoryIndex index.html
+Options -Indexes -MultiViews
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  <FilesMatch "\.(?:css|js|png|jpe?g|webp|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:html|xml|txt)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# Do not expose local tooling, archives, screenshots, or hidden files.
+<FilesMatch "(?i)^(?:\.|.*\.zip$|server\.js|package(?:-lock)?\.json|site-screenshot\.png)$">
+  Require all denied
+</FilesMatch>
+
+# These folders are not part of the public website deployment.
+RedirectMatch 404 ^/(?:\.git|cloudflare-bot|node_modules|scripts|seo-migration|templates|tmp-imagegen-logo|comint-cpanel-ready-privacy-cookies)(?:/|$)
+
+RewriteEngine On
+
+# Keep one HTTPS, non-www version of every indexable URL.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.comint\.by$ [NC]
+RewriteRule ^ https://comint.by%{REQUEST_URI} [R=301,L,NE]
+
+# Redirect legacy parameter-based product cards to their static SEO URLs.
+RewriteCond %{QUERY_STRING} (^|&)slug=([^&]+)(&|$) [NC]
+RewriteRule ^catalog-item(?:\.html)?$ /services/%2? [R=301,L,NE]
+RewriteRule ^catalog-item(?:\.html)?$ - [R=404,L]
+
+RewriteRule ^polygraphy/?$ /cifrovaya-pechat/ [R=301,L,NE]
+RewriteRule ^souvenirs/?$ /suveniryi/ [R=301,L,NE]
+
+# SEO:MIGRATION-REDIRECTS:START
+RewriteRule ^services/izgotovlenie-i-pechat-beydzhey/?$ /cifrovaya-pechat/bejdzh/ [R=301,L,NE]
+RewriteRule ^services/bloki-dlya-zapisey-kub-bloki/?$ /cifrovaya-pechat/bloki-dlya-zapisej-kub-bloki/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-i-pechat-bloknotov-s-logotipom/?$ /cifrovaya-pechat/bloknoty/ [R=301,L,NE]
+RewriteRule ^services/pechat-broshyur/?$ /cifrovaya-pechat/broshury/ [R=301,L,NE]
+RewriteRule ^services/reklamnye-buklety-pechat-izgotovlenie-i-dizayn/?$ /cifrovaya-pechat/buklety/ [R=301,L,NE]
+RewriteRule ^services/pechat-tsennikov/?$ /cifrovaya-pechat/cenniki/ [R=301,L,NE]
+RewriteRule ^services/dizayn-poligrafii/?$ /cifrovaya-pechat/design-poligrafii/ [R=301,L,NE]
+RewriteRule ^services/diskontnye-karty/?$ /cifrovaya-pechat/discount/ [R=301,L,NE]
+RewriteRule ^services/firmennye-konverty-s-logotipom/?$ /cifrovaya-pechat/firmennye-konverty-s-logotipom/ [R=301,L,NE]
+RewriteRule ^services/pechat-flaerov/?$ /cifrovaya-pechat/flaery/ [R=301,L,NE]
+RewriteRule ^services/garantiynye-talony/?$ /cifrovaya-pechat/garantijnye-talony/ [R=301,L,NE]
+RewriteRule ^services/pechat-instruktsiy/?$ /cifrovaya-pechat/instrukciya/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-birok-i-yarlykov/?$ /cifrovaya-pechat/izgotovlenie-birok-i-yarlykov/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-i-pechat-otkrytok/?$ /cifrovaya-pechat/izgotovlenie-i-pechat-otkrytok/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-i-pechat-vizitok/?$ /cifrovaya-pechat/izgotovlenie-i-pechat-vizitok/ [R=301,L,NE]
+RewriteRule ^services/kartochki-s-nomerom-telefona-dlya-mashin/?$ /cifrovaya-pechat/kartochki-s-telefonom-dlya-mashin/ [R=301,L,NE]
+RewriteRule ^services/pechat-katalogov/?$ /cifrovaya-pechat/katalogi/ [R=301,L,NE]
+RewriteRule ^services/magnity-i-bloki-dlya-zapisi/?$ /cifrovaya-pechat/magnityi-blok/ [R=301,L,NE]
+RewriteRule ^services/pechat-i-izgotovlenie-firmennyh-papok/?$ /cifrovaya-pechat/papki/ [R=301,L,NE]
+RewriteRule ^services/pechat-firmennyh-blankov/?$ /cifrovaya-pechat/pechat-firmennyh-blankov/ [R=301,L,NE]
+RewriteRule ^services/pechat-reklamnyh-listovok/?$ /cifrovaya-pechat/pechat-listovok/ [R=301,L,NE]
+RewriteRule ^services/pechat-menyu/?$ /cifrovaya-pechat/pechat-menyu/ [R=301,L,NE]
+RewriteRule ^services/pechat-reklamnyh-plakatov-i-afish/?$ /cifrovaya-pechat/plakaty-afishy/ [R=301,L,NE]
+RewriteRule ^services/razrabotka-i-pechat-prays-listov/?$ /cifrovaya-pechat/price_list/ [R=301,L,NE]
+RewriteRule ^services/pechat-priglasitelnyh-i-vhodnyh-biletov/?$ /cifrovaya-pechat/priglasheniya-bilety/ [R=301,L,NE]
+RewriteRule ^services/pechat-i-izgotovlenie-propuskov/?$ /cifrovaya-pechat/propusk/ [R=301,L,NE]
+RewriteRule ^services/razdatochnye-materialy/?$ /cifrovaya-pechat/razdatochnue_materialu/ [R=301,L,NE]
+RewriteRule ^services/pechat-sertifikatov-diplomov-blagodarnostey/?$ /cifrovaya-pechat/sertifikaty-diplomy/ [R=301,L,NE]
+RewriteRule ^services/rassadki-i-priglasitelnye-na-svadbu/?$ /cifrovaya-pechat/svadebnaya-poligraphiya/ [R=301,L,NE]
+RewriteRule ^services/pechat-fotografiy-bolshogo-formata/?$ /decor-interjera/fotografii/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-fotooboev-na-zakaz/?$ /decor-interjera/fotooboi/ [R=301,L,NE]
+RewriteRule ^services/matirovanie-stekla-plenkoy-s-effektom-iney/?$ /decor-interjera/matirovanie-stekol/ [R=301,L,NE]
+RewriteRule ^services/dekorativnye-nakleyki-na-steny-i-mebel-stikery-na-holodilnik/?$ /decor-interjera/naklejki-na-stenyi-i-mebel/ [R=301,L,NE]
+RewriteRule ^services/pechat-na-holste-reproduktsiy-kartin-i-fotografiy/?$ /decor-interjera/pechat-na-xolste/ [R=301,L,NE]
+RewriteRule ^services/pechat-posterov-i-plakatov-bolshogo-formata/?$ /decor-interjera/posteryi-i-plakatyi/ [R=301,L,NE]
+RewriteRule ^services/skinali-dlya-kuhni/?$ /decor-interjera/skinali/ [R=301,L,NE]
+RewriteRule ^services/trafarety-dlya-dekora/?$ /decor-interjera/trafaretyi-dlya-okraski-sten/ [R=301,L,NE]
+RewriteRule ^services/akrilovye-paneli/?$ /info-pos/akrilovye-paneli/ [R=301,L,NE]
+RewriteRule ^services/tsennikoderzhateli-iz-plastika-i-orgstekla/?$ /info-pos/czennikoderzhateli-iz-plastika-i-orgstekla/ [R=301,L,NE]
+RewriteRule ^services/garderobnye-nomerki-birki-i-nomerki-dlya-klyuchey/?$ /info-pos/garderobnye-nomerki-birki-i-nomerki-dlya-klyuchej/ [R=301,L,NE]
+RewriteRule ^services/hengery-izgotovlenie-i-pechat/?$ /info-pos/hengery-izgotovlenie-i-pechat-hengerov/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-reklamnyh-mobaylov/?$ /info-pos/izgotovlenie-reklamnyh-mobajlov/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-torgovoy-atributiki/?$ /info-pos/izgotovlenie-torgovoj-atributiki/ [R=301,L,NE]
+RewriteRule ^services/kompleksnoe-oformlenie-magazina-reklamnoe-oformlenie-torgovogo-zala/?$ /info-pos/kompleksnoe-oformlenie-mest-prodazh/ [R=301,L,NE]
+RewriteRule ^services/mulyazhi-produktov/?$ /info-pos/mulyazhi-produktov/ [R=301,L,NE]
+RewriteRule ^services/pechat-shelftokerov/?$ /info-pos/pechat-shelftokerov/ [R=301,L,NE]
+RewriteRule ^services/podstavki-pod-poligraficheskuyu-produktsiyu-iz-orgstekla/?$ /info-pos/podstavki-pod-poligraficheskuyu-produkcziyu-iz-orgstekla/ [R=301,L,NE]
+RewriteRule ^services/podstavki-pod-tovary-iz-orgstekla/?$ /info-pos/podstavki-tovary/ [R=301,L,NE]
+RewriteRule ^services/pos-materialy/?$ /info-pos/pos-materialy/ [R=301,L,NE]
+RewriteRule ^services/reklamnye-stoppery/?$ /info-pos/reklamnye-stoppery/ [R=301,L,NE]
+RewriteRule ^services/reklamnye-voblery/?$ /info-pos/reklamnye-voblery/ [R=301,L,NE]
+RewriteRule ^services/informatsionnye-i-reklamnye-ukazateli-navigatsiya-v-torgovom-zale/?$ /info-pos/reklamnyie-ukazateli/ [R=301,L,NE]
+RewriteRule ^services/rostovye-figury-hardpostery-tantamareski/?$ /info-pos/rostovye-figury-hardpostery-tantamareski/ [R=301,L,NE]
+RewriteRule ^services/informatsionnye-stendy/?$ /info-stendyi-tablichki/informaczionnye-stendy/ [R=301,L,NE]
+RewriteRule ^services/vyveski-i-tablichki-dlya-kabinetov-ofisnye-tablichki/?$ /info-stendyi-tablichki/ofisnyie-tablichki/ [R=301,L,NE]
+RewriteRule ^services/bukletnitsy-napolnye-i-stoyki-dlya-bukletov/?$ /mobilnoe-reklamnoe-oborudovanie/bukletnicy/ [R=301,L,NE]
+RewriteRule ^services/fold-up-stendy-shirmy/?$ /mobilnoe-reklamnoe-oborudovanie/fold-up/ [R=301,L,NE]
+RewriteRule ^services/mobilnye-bannery/?$ /mobilnoe-reklamnoe-oborudovanie/mobilnye-stendy/ [R=301,L,NE]
+RewriteRule ^services/pop-up-stendy/?$ /mobilnoe-reklamnoe-oborudovanie/pop-up-stendy/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-promo-stoek-i-promo-stolov/?$ /mobilnoe-reklamnoe-oborudovanie/promo-stojki/ [R=301,L,NE]
+RewriteRule ^services/roll-up-stendy/?$ /mobilnoe-reklamnoe-oborudovanie/roll-ap-stendy/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-fasadnyh-tablichek-i-informatsionnyh-ukazateley/?$ /naruzhnaya-reklama/fasadnye-tablichki/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-svetovyh-obemnyh-bukv/?$ /naruzhnaya-reklama/obemnye-bukvy/ [R=301,L,NE]
+RewriteRule ^services/oformlenie-pasporta-naruzhnoy-reklamy/?$ /naruzhnaya-reklama/oformlenie-naruzhnoj-reklamy/ [R=301,L,NE]
+RewriteRule ^services/oformlenie-vitrin-magazinov-reklama-na-vitrinah/?$ /naruzhnaya-reklama/oformlenie-vitrin-minsk/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-reklamnyh-pilonov/?$ /naruzhnaya-reklama/pilony/ [R=301,L,NE]
+RewriteRule ^services/reklamnye-shtendery/?$ /naruzhnaya-reklama/shtender/ [R=301,L,NE]
+RewriteRule ^services/svetovye-koroba-laytboksy/?$ /naruzhnaya-reklama/svetovye-koroba/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-naruzhnyh-reklamnyh-vyvesok/?$ /naruzhnaya-reklama/vyveski/ [R=301,L,NE]
+RewriteRule ^services/pechat-na-tkani/?$ /odezhda-i-tekstil/pechat-na-tkani-i-sumkah/ [R=301,L,NE]
+RewriteRule ^services/dizayn-i-proektirovanie-vystavochnyh-stendov/?$ /oformlenie-vystavok/dizajn-expo-stendov/ [R=301,L,NE]
+RewriteRule ^services/spetspredlozhenie-vystavka-pod-klyuch/?$ /oformlenie-vystavok/expo-komplex/ [R=301,L,NE]
+RewriteRule ^services/mobilnye-vystavochnye-konstruktsii-dlya-stendov/?$ /oformlenie-vystavok/mobilnye-expo-konstrukcii/ [R=301,L,NE]
+RewriteRule ^services/oformlenie-i-okleyka-vystavochnyh-stendov-grafikoy/?$ /oformlenie-vystavok/oformlenie-expo-stendov/ [R=301,L,NE]
+RewriteRule ^services/karmannye-kalendari/?$ /pechat-i-izgotovlenie-kalendarej/karmannye-kalendari/ [R=301,L,NE]
+RewriteRule ^services/kvartalnye-kalendari/?$ /pechat-i-izgotovlenie-kalendarej/kvartalnye-kalendari/ [R=301,L,NE]
+RewriteRule ^services/nastolnye-kalendari-domiki/?$ /pechat-i-izgotovlenie-kalendarej/nastolnye-kalendari-domiki/ [R=301,L,NE]
+RewriteRule ^services/perekidnye-nastennye-kalendari/?$ /pechat-i-izgotovlenie-kalendarej/perekidnye-nastennye-kalendari/ [R=301,L,NE]
+RewriteRule ^services/nakleyki-na-avto/?$ /reklama-na-transporte/naklejki-na-avto/ [R=301,L,NE]
+RewriteRule ^services/samokleyaschiesya-etiketki/?$ /samokleyushhayasya-produkcziya/etiketki/ [R=301,L,NE]
+RewriteRule ^services/garantiynye-plomby-pechatnye/?$ /samokleyushhayasya-produkcziya/garantijnye-plomby-pechatnye/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-znakov-bezopasnosti/?$ /samokleyushhayasya-produkcziya/izgotovlenie-znakov-bezopasnosti/ [R=301,L,NE]
+RewriteRule ^services/pechat-nakleek-iz-samokleyascheysya-bumagi/?$ /samokleyushhayasya-produkcziya/naklejka-iz-bymagi/ [R=301,L,NE]
+RewriteRule ^services/plotternye-nakleyki/?$ /samokleyushhayasya-produkcziya/naklejki_plotter/ [R=301,L,NE]
+RewriteRule ^services/napolnye-nakleyki/?$ /samokleyushhayasya-produkcziya/naklejki-na-pol/ [R=301,L,NE]
+RewriteRule ^services/izgotovlenie-i-pechat-nakleek-na-samokleyuscheysya-plenke/?$ /samokleyushhayasya-produkcziya/naklejki-print/ [R=301,L,NE]
+RewriteRule ^services/uslugi-plotternoy-rezki/?$ /samokleyushhayasya-produkcziya/plotternaya-rezka/ [R=301,L,NE]
+RewriteRule ^services/samokleyaschiesya-trafarety/?$ /samokleyushhayasya-produkcziya/trafarety/ [R=301,L,NE]
+RewriteRule ^services/pechat-bannerov/?$ /shirokoformatnaya-pechat/bannery/ [R=301,L,NE]
+RewriteRule ^services/pechat-flagov-vympelov-znamen/?$ /shirokoformatnaya-pechat/flagi/ [R=301,L,NE]
+RewriteRule ^services/press-voll-brendvoll-press-stena-fony-dekoratsii/?$ /shirokoformatnaya-pechat/fonyi-pressvolyi/ [R=301,L,NE]
+RewriteRule ^services/reklamnye-bannery-rastyazhki/?$ /shirokoformatnaya-pechat/reklamnye-bannery-rastyazhki/ [R=301,L,NE]
+RewriteRule ^services/stroitelnaya-setka-dlya-ograzhdeniya/?$ /shirokoformatnaya-pechat/setka/ [R=301,L,NE]
+RewriteRule ^services/breloki-s-logotipom/?$ /suveniryi/breloki-s-logotipom/ [R=301,L,NE]
+RewriteRule ^services/firmennye-bumazhnye-pakety-s-logotipom/?$ /suveniryi/bumazhnyie-paketyi/ [R=301,L,NE]
+RewriteRule ^services/suvenirnye-nastennye-chasy-s-logotipom-kompanii/?$ /suveniryi/chasy/ [R=301,L,NE]
+RewriteRule ^services/pechat-na-tkanevyh-sumkah/?$ /suveniryi/eko-sumki/ [R=301,L,NE]
+RewriteRule ^services/ezhednevniki-i-planingi-s-logotipom/?$ /suveniryi/ezhednevniki/ [R=301,L,NE]
+RewriteRule ^services/pechat-na-kruzhkah/?$ /suveniryi/firmennyie-kruzhki/ [R=301,L,NE]
+RewriteRule ^services/tkanevye-bannernye-i-bumazhnye-flazhki/?$ /suveniryi/flazhki/ [R=301,L,NE]
+RewriteRule ^services/fleshki-s-logotipom/?$ /suveniryi/fleshki-s-logotipom/ [R=301,L,NE]
+RewriteRule ^services/kartonnye-korobki-i-pakety-dlya-upakovki/?$ /suveniryi/kartonnye-korobki-i-pakety-dlya-upakovki/ [R=301,L,NE]
+RewriteRule ^services/kepki-s-logotipom/?$ /suveniryi/kepki/ [R=301,L,NE]
+RewriteRule ^services/kovriki-dlya-myshi-s-pechatyu-logotipa/?$ /suveniryi/kovriki-dlya-myishi/ [R=301,L,NE]
+RewriteRule ^services/pechat-logotipov-na-pazlah/?$ /suveniryi/pazlyi/ [R=301,L,NE]
+RewriteRule ^services/pechat-na-magnitah/?$ /suveniryi/pechat-na-magnitax1/ [R=301,L,NE]
+RewriteRule ^services/podarochnye-nabory/?$ /suveniryi/podarochnyie-naboryi/ [R=301,L,NE]
+RewriteRule ^services/podstavki-pod-kruzhku/?$ /suveniryi/podstavki-iz-probki/ [R=301,L,NE]
+RewriteRule ^services/polietilenovye-pakety-s-logotipom/?$ /suveniryi/polietilenovyie-paketyi/ [R=301,L,NE]
+RewriteRule ^services/ruchki-s-logotipom/?$ /suveniryi/ruchki-s-logotipom/ [R=301,L,NE]
+RewriteRule ^services/suveniry-dlya-medrabotnikov/?$ /suveniryi/suveniry-dlya-medrabotnikov/ [R=301,L,NE]
+RewriteRule ^services/pechat-na-tarelkah/?$ /suveniryi/tarelki/ [R=301,L,NE]
+RewriteRule ^services/uf-pechat/?$ /suveniryi/uf-pechat-v-minske/ [R=301,L,NE]
+RewriteRule ^services/zazhigalki-s-logotipom/?$ /suveniryi/zazhigalki/ [R=301,L,NE]
+RewriteRule ^services/zerkala-karmannye/?$ /suveniryi/zerkala-karmannye/ [R=301,L,NE]
+# SEO:MIGRATION-REDIRECTS:END
+
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ %1 [R=301,L,NE]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L,QSA]

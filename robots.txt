@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /cloudflare-bot/
+Disallow: /comint-cpanel-ready-privacy-cookies/
+Disallow: /tmp-imagegen-logo/
+
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&gclid&yclid&from /
+Host: comint.by
+Sitemap: https://comint.by/sitemap.xml

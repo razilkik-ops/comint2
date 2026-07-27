@@ -1,0 +1,749 @@
+{
+  "source": "https://comint.by/wp-json/wp/v2/pages",
+  "capturedAt": "2026-07-27T20:20:36.768Z",
+  "count": 14,
+  "pages": [
+    {
+      "id": 333,
+      "slug": "glavnaya",
+      "legacyUrl": "https://comint.by/",
+      "legacyPath": "/",
+      "date": "2023-03-28T21:40:22",
+      "modified": "2024-11-18T09:51:57",
+      "featuredMediaId": 0,
+      "title": "Главная",
+      "seo": {
+        "title": "Полиграфические и рекламные услуги от компании Коминт",
+        "description": "Полиграфические услуги, оперативная цифровая печать✅ . Срочное изготовление визиток, брошюр, баннеров и другой печатной продукции в Минске ✅",
+        "canonical": "https://comint.by/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Полиграфические и рекламные услуги от компании Коминт",
+          "description": "Полиграфические услуги, оперативная цифровая печать✅ . Срочное изготовление визиток, брошюр, баннеров и другой печатной продукции в Минске ✅",
+          "url": "https://comint.by/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "\n<p>Наша компания предлагает широкий спектр услуг по печати различных материалов. Среди них:</p>\n\n\n\n<ul>\n<li>Буклеты и листовки. Эти материалы могут использоваться как для рекламы продукции, так и для информирования клиентов об услугах компании.</li>\n\n\n\n<li>Каталоги и брошюры. Каталоги могут быть использованы для демонстрации продукции, а брошюры – для описания услуг.</li>\n\n\n\n<li>Книги и журналы. Наша компания может выполнить как небольшие тиражи книг на заказ, так и выпуск журнала в большом количестве экземпляров.</li>\n\n\n\n<li>Рекламные баннеры и флаеры. Эти материалы используются для рекламы товаров и услуг на выставках, в торговых центрах и на улицах города.</li>\n\n\n\n<li>Визитки. Визитки являются неотъемлемой частью бизнес-культуры и используются для представления себя и своей компании.</li>\n</ul>\n\n\n\n<p>Кроме того, наша типография может предложить следующие дополнительные услуги:</p>\n\n\n\n<ul>\n<li>Дизайн. Специалисты печатного центра могут помочь в создании дизайна для будущей печатной продукции.</li>\n\n\n\n<li>Верстка. Опытные верстальщики создадут макеты любой сложности.</li>\n\n\n\n<li>Обрезка и переплет. После печати материалы должны быть обрезаны и соединены в книгу или брошюру.</li>\n\n\n\n<li>Ламинация. Ламинация придает печатной продукции дополнительную прочность и защиту от повреждений.</li>\n</ul>\n\n\n\n<p></p>\n\n\n\n<p>Наша типография может обслуживать как корпоративных клиентов, так и частных заказчиков. Благодаря использованию различных технологий печати, мы можем предложить оптимальный вариант печати для каждого заказчика.</p>\n",
+        "text": "Наша компания предлагает широкий спектр услуг по печати различных материалов. Среди них: Буклеты и листовки. Эти материалы могут использоваться как для рекламы продукции, так и для информирования клиентов об услугах компании. Каталоги и брошюры. Каталоги могут быть использованы для демонстрации продукции, а брошюры – для описания услуг. Книги и журналы. Наша компания может выполнить как небольшие тиражи книг на заказ, так и выпуск журнала в большом количестве экземпляров. Рекламные баннеры и флаеры. Эти материалы используются для рекламы товаров и услуг на выставках, в торговых центрах и на улицах города. Визитки. Визитки являются неотъемлемой частью бизнес-культуры и используются для представления себя и своей компании. Кроме того, наша типография может предложить следующие дополнительные услуги: Дизайн. Специалисты печатного центра могут помочь в создании дизайна для будущей печатной продукции. Верстка. Опытные верстальщики создадут макеты любой сложности. Обрезка и переплет. После печати материалы должны быть обрезаны и соединены в книгу или брошюру. Ламинация. Ламинация придает печатной продукции дополнительную прочность и защиту от повреждений. Наша типография может обслуживать как корпоративных клиентов, так и частных заказчиков. Благодаря использованию различных технологий печати, мы можем предложить оптимальный вариант печати для каждого заказчика.",
+        "wordCount": 183,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": "<p>Наша компания предлагает широкий спектр услуг по печати различных материалов. Среди них: Кроме того, наша типография может предложить следующие дополнительные услуги: Наша типография может обслуживать как корпоративных клиентов, так и частных заказчиков. Благодаря использованию различных технологий печати, мы можем предложить оптимальный вариант печати для каждого заказчика.</p>\n"
+    },
+    {
+      "id": 8,
+      "slug": "cart",
+      "legacyUrl": "https://comint.by/cart/",
+      "legacyPath": "/cart/",
+      "date": "2023-03-24T23:00:58",
+      "modified": "2024-01-17T13:38:57",
+      "featuredMediaId": 0,
+      "title": "Корзина",
+      "seo": {
+        "title": "Корзина - Comint",
+        "description": "",
+        "canonical": "https://comint.by/cart/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Корзина - Comint",
+          "description": "",
+          "url": "https://comint.by/cart/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "\n\n\n<div class=\"woocommerce\"></div>\n",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    },
+    {
+      "id": 92,
+      "slug": "cases",
+      "legacyUrl": "https://comint.by/cases/",
+      "legacyPath": "/cases/",
+      "date": "2023-03-25T17:12:18",
+      "modified": "2024-01-17T13:38:55",
+      "featuredMediaId": 0,
+      "title": "Портфолио",
+      "seo": {
+        "title": "Портфолио - Comint",
+        "description": "",
+        "canonical": "https://comint.by/cases/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Портфолио - Comint",
+          "description": "",
+          "url": "https://comint.by/cases/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    },
+    {
+      "id": 9,
+      "slug": "checkout",
+      "legacyUrl": "https://comint.by/checkout/",
+      "legacyPath": "/checkout/",
+      "date": "2023-03-24T23:00:58",
+      "modified": "2024-01-17T13:38:56",
+      "featuredMediaId": 0,
+      "title": "Оформление заказа",
+      "seo": {
+        "title": "Оформление заказа - Comint",
+        "description": "",
+        "canonical": "https://comint.by/checkout/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Оформление заказа - Comint",
+          "description": "",
+          "url": "https://comint.by/checkout/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "<div class=\"woocommerce\"></div>\n",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    },
+    {
+      "id": 70507,
+      "slug": "colourmap",
+      "legacyUrl": "https://comint.by/colourmap/",
+      "legacyPath": "/colourmap/",
+      "date": "2023-12-28T14:49:44",
+      "modified": "2024-01-17T13:38:51",
+      "featuredMediaId": 0,
+      "title": "Цветовая раскладка ORACAL",
+      "seo": {
+        "title": "Цветовая раскладка ORACAL от типографии Коминт",
+        "description": "Коминт является 1-м импортером бренда Оракал в Беларусь. Это самоклеющиеся пленки и бумаги для изготовления рекламы, печати, дизайна интерьеров. Продажа самоклеющейся пленки ORACAL в Минске",
+        "canonical": "https://comint.by/colourmap/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Цветовая раскладка ORACAL от типографии Коминт",
+          "description": "Коминт является 1-м импортером бренда Оракал в Беларусь. Это самоклеющиеся пленки и бумаги для изготовления рекламы, печати, дизайна интерьеров. Продажа самоклеющейся пленки ORACAL в Минске",
+          "url": "https://comint.by/colourmap/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "url": "https://comint.by/images/colour/641_000m.gif"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "\n<figure class=\"wp-block-table\"><table><tbody><tr><td colspan=\"5\"><strong>ЦВЕТОВАЯ КАРТА</strong></td></tr><tr><td colspan=\"2\"><strong>Номер по каталогу</strong></td><td rowspan=\"2\"><strong>Наименование цвета</strong></td><td rowspan=\"2\"><strong>±RAL</strong></td><td rowspan=\"2\"><strong>Цвет</strong></td></tr><tr><td><strong>матовые</strong></td><td><strong>глянцевые</strong></td></tr><tr><td>000M</td><td>000G</td><td>прозрачный</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_000m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>010M</td><td>010G</td><td>белый</td><td>9003</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_010m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>020M</td><td>020G</td><td>золитсто-желтый</td><td>1033</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_020m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>019M</td><td>019G</td><td>ярко-желтый</td><td>1003</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_019m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>021M</td><td>021G</td><td>желтый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_021m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>022M</td><td>022G</td><td>светло-желтый</td><td>1021</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_022m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>025M</td><td>025G</td><td>серно-желтый</td><td>1016</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_025m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>026M</td><td>026G</td><td>пурпурно-красный</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_026m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>030M</td><td>030G</td><td>темно-красный</td><td>3003</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_030m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>031M</td><td>031G</td><td>красный</td><td>3000</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_031m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>032M</td><td>032G</td><td>светло-красный</td><td>3020</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_032m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>047М</td><td>047G</td><td>оранжево-красный</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_047m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>034M</td><td>034G</td><td>оранжевый</td><td>2004</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_034m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>036M</td><td>036G</td><td>светло-оранжевый</td><td>2008</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_036m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>035M</td><td>035G</td><td>пастельно-оранжевый</td><td>2003</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_035m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>040M</td><td>040G</td><td>фиолетовый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_040m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>043M</td><td>043G</td><td>лавандовый</td><td>4005</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_043m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>042M</td><td>042G</td><td>сереневый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_042m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>041M</td><td>041G</td><td>малиновый</td><td>9010</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_041m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>045M</td><td>045G</td><td>светло-розовый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_045m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>562M</td><td>562G</td><td>глубоководный синий</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_562m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>518М</td><td>518G</td><td>синий со стальным отливом</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_518m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>050M</td><td>050G</td><td>темно-синий</td><td>5013</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_050m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>065М</td><td>065G</td><td>кобальтовый синий</td><td>5002</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_065m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>049M</td><td>049G</td><td>кобальтовый синий</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_049m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>086M</td><td>086G</td><td>ярко-синий</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_086m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>067M</td><td>067G</td><td>синий</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_067m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>057M</td><td>057G</td><td>дорожный синий</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_57m0.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>051M</td><td>051G</td><td>генциановый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_051m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>098M</td><td>098G</td><td>генциановый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_098m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>052M</td><td>052G</td><td>лазурный</td><td>5015</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_052m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>084M</td><td>084M</td><td>небесно-голубой</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_056m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>053M</td><td>053G</td><td>голубой</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_053m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>066M</td><td>066G</td><td>бирюзово-синий</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_066m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>054M</td><td>054G</td><td>бирюзовый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_054m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>055M</td><td>055G</td><td>цвет мяты</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_055m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>060M</td><td>060G</td><td>темно-зеленый</td><td>6005</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_060m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>613M</td><td>613M</td><td>лесной зеленый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_613m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>061M</td><td>061G</td><td>зеленый</td><td>6029</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_061m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>068M</td><td>068G</td><td>травянисто зеленый</td><td>8023</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_068m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>062M</td><td>062G</td><td>светло-зеленый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_062m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>064M</td><td>064G</td><td>желто-зеленый</td><td>6018</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_064m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>063M</td><td>063G</td><td>липово-зеленый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_063m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>080M</td><td>080M</td><td>коричневый</td><td>8017</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_080m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>083M</td><td>083M</td><td>ореховый</td><td>8023</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_083m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>081M</td><td>081G</td><td>светло-коричневый</td><td>1011</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_081m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>082M</td><td>082G</td><td>бежевый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_082m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>023M</td><td>023G</td><td>кремовый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_023m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>070M</td><td>070G</td><td>черный</td><td>9005</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_070m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>073M</td><td>073G</td><td>темно-серый</td><td>7043</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_073m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>071M</td><td>071G</td><td>серый</td><td>7005</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_071m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>076M</td><td>076G</td><td>серый телеком</td><td>7045</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_076m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>074M</td><td>074G</td><td>средне-серый</td><td>7042</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_074m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>072M</td><td>072G</td><td>светло-серый</td><td>7035</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_072m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>090M</td><td>090G</td><td>серебристо-серый</td><td>9006</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_090m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>091M</td><td>091G</td><td>золотистый</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_091m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr><tr><td>092M</td><td>092G</td><td>медный</td><td>&#8212;</td><td><img decoding=\"async\" src=\"https://comint.by/images/colour/641_092m.gif\" alt=\"Цветовая раскладка ORACAL\"></td></tr></tbody></table></figure>\n",
+        "text": "ЦВЕТОВАЯ КАРТА Номер по каталогу Наименование цвета ±RAL Цвет матовые глянцевые 000M 000G прозрачный — 010M 010G белый 9003 020M 020G золитсто-желтый 1033 019M 019G ярко-желтый 1003 021M 021G желтый — 022M 022G светло-желтый 1021 025M 025G серно-желтый 1016 026M 026G пурпурно-красный — 030M 030G темно-красный 3003 031M 031G красный 3000 032M 032G светло-красный 3020 047М 047G оранжево-красный — 034M 034G оранжевый 2004 036M 036G светло-оранжевый 2008 035M 035G пастельно-оранжевый 2003 040M 040G фиолетовый — 043M 043G лавандовый 4005 042M 042G сереневый — 041M 041G малиновый 9010 045M 045G светло-розовый — 562M 562G глубоководный синий — 518М 518G синий со стальным отливом — 050M 050G темно-синий 5013 065М 065G кобальтовый синий 5002 049M 049G кобальтовый синий — 086M 086G ярко-синий — 067M 067G синий — 057M 057G дорожный синий — 051M 051G генциановый — 098M 098G генциановый — 052M 052G лазурный 5015 084M 084M небесно-голубой — 053M 053G голубой — 066M 066G бирюзово-синий — 054M 054G бирюзовый — 055M 055G цвет мяты — 060M 060G темно-зеленый 6005 613M 613M лесной зеленый — 061M 061G зеленый 6029 068M 068G травянисто зеленый 8023 062M 062G светло-зеленый — 064M 064G желто-зеленый 6018 063M 063G липово-зеленый — 080M 080M коричневый 8017 083M 083M ореховый 8023 081M 081G светло-коричневый 1011 082M 082G бежевый — 023M 023G кремовый — 070M 070G черный 9005 073M 073G темно-серый 7043 071M 071G серый 7005 076M 076G серый телеком 7045 074M 074G средне-серый 7042 072M 072G светло-серый 7035 090M 090G серебристо-серый 9006 091M 091G золотистый — 092M 092G медный —",
+        "wordCount": 250,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": "<p>ЦВЕТОВАЯ КАРТА Номер по каталогу Наименование цвета ±RAL Цвет матовые глянцевые 000M 000G прозрачный &#8212; 010M 010G белый 9003 020M 020G золитсто-желтый 1033 019M 019G ярко-желтый 1003 021M 021G желтый &#8212; 022M 022G светло-желтый 1021 025M 025G серно-желтый 1016 026M 026G пурпурно-красный &#8212; 030M 030G темно-красный 3003 031M 031G красный 3000 032M 032G светло-красный 3020 [&hellip;]</p>\n"
+    },
+    {
+      "id": 35,
+      "slug": "company",
+      "legacyUrl": "https://comint.by/company/",
+      "legacyPath": "/company/",
+      "date": "2023-03-25T12:28:09",
+      "modified": "2024-01-17T13:38:55",
+      "featuredMediaId": 0,
+      "title": "О компании",
+      "seo": {
+        "title": "О компании - Comint",
+        "description": "",
+        "canonical": "https://comint.by/company/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "О компании - Comint",
+          "description": "Мы ориентированы как на работу с юридическими лицами, так и с физическими, не ограничивая размеры тиражей и сроки исполнения заказов.Мы также предлагаем широкий перечень сувенирной продукции с нанесением изображений, фотографий или логотипов. Мы в состоянии предложить высококачественные изделия из металла, керамики или кожи с различными вариантами нанесения изображения, от тиснения до ультрафиолетовой печати. С нами [&hellip;]",
+          "url": "https://comint.by/company/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "\n<p>Мы ориентированы как на работу с юридическими лицами, так и с физическими, не ограничивая размеры тиражей и сроки исполнения заказов.<br>Мы также предлагаем широкий перечень сувенирной продукции с нанесением изображений, фотографий или логотипов. Мы в состоянии предложить высококачественные изделия из металла, керамики или кожи с различными вариантами нанесения изображения, от тиснения до ультрафиолетовой печати. С нами дарить подарки коллегам и бизнес-партнёрам стало гораздо проще!<br>Кроме этого, мы по-прежнему занимаемся импортом материалов и конструкций для изготовления рекламной продукции, как для продажи, так и для собственного производства. Мы работаем с несколькими производителями и осуществляем поставки из Германии, Великобритании и Китая.</p>\n\n\n\n<p><strong>Компания “Коминт” сегодня – это:</strong></p>\n\n\n\n<ul>\n<li>Два печатных широкоформатных станка японского производства – интерьерная экосольвентная печать. Она является совершенно безвредной для человека, устойчива к внешним воздействиям, используется как для внутреннего оформления, так и для наружной рекламы.</li>\n\n\n\n<li>Плоттер для фигурной резки самоклеящихся и не самоклеящихся материалов, которые впоследствии используются в производстве визуальной рекламы.</li>\n\n\n\n<li>Фрезерно-гравировальное 3D оборудование для изготовления рекламной и сувенирной продукции, а также нетипичных элементов оформления интерьера.</li>\n\n\n\n<li>С 2007 года мы предлагаем Вам услуги оперативной полиграфии на профессиональном оборудовании “Xerox”, а также ряд послепечатных конечных работ на собственном производстве и оборудовании: ламинирование, резка, биговка, перфорация, сборка, переплет.</li>\n\n\n\n<li>Услуги УФ-печати на любой поверхности предлагают безграничные возможности по созданию брендированной сувенирной продукции.</li>\n</ul>\n\n\n\n<p>Часть продукции мы изготавливаем в мастерской, расположенной рядом с офисом, часть на удаленном производстве, в мастерской крупногабаритных работ. Вы также можете подробно ознакомиться с ассортиментом нашего оборудования.</p>\n\n\n\n<p>Ассортимент предлагаемой нами продукции бесконечен, все заказы выполняются индивидуально. Наше оборудование позволяет качественно и в короткие сроки справляться с любыми задачами. У нас в штате на сегодняшний день работают профессионалы своего дела, и наши специалисты ежедневно трудятся над расширением ассортимента услуг и продуктов.</p>\n\n\n\n<p>Мы не совершенны, но мы постоянно совершенствуемся.</p>\n",
+        "text": "Мы ориентированы как на работу с юридическими лицами, так и с физическими, не ограничивая размеры тиражей и сроки исполнения заказов. Мы также предлагаем широкий перечень сувенирной продукции с нанесением изображений, фотографий или логотипов. Мы в состоянии предложить высококачественные изделия из металла, керамики или кожи с различными вариантами нанесения изображения, от тиснения до ультрафиолетовой печати. С нами дарить подарки коллегам и бизнес-партнёрам стало гораздо проще! Кроме этого, мы по-прежнему занимаемся импортом материалов и конструкций для изготовления рекламной продукции, как для продажи, так и для собственного производства. Мы работаем с несколькими производителями и осуществляем поставки из Германии, Великобритании и Китая. Компания “Коминт” сегодня – это: Два печатных широкоформатных станка японского производства – интерьерная экосольвентная печать. Она является совершенно безвредной для человека, устойчива к внешним воздействиям, используется как для внутреннего оформления, так и для наружной рекламы. Плоттер для фигурной резки самоклеящихся и не самоклеящихся материалов, которые впоследствии используются в производстве визуальной рекламы. Фрезерно-гравировальное 3D оборудование для изготовления рекламной и сувенирной продукции, а также нетипичных элементов оформления интерьера. С 2007 года мы предлагаем Вам услуги оперативной полиграфии на профессиональном оборудовании “Xerox”, а также ряд послепечатных конечных работ на собственном производстве и оборудовании: ламинирование, резка, биговка, перфорация, сборка, переплет. Услуги УФ-печати на любой поверхности предлагают безграничные возможности по созданию брендированной сувенирной продукции. Часть продукции мы изготавливаем в мастерской, расположенной рядом с офисом, часть на удаленном производстве, в мастерской крупногабаритных работ. Вы также можете подробно ознакомиться с ассортиментом нашего оборудования. Ассортимент предлагаемой нами продукции бесконечен, все заказы выполняются индивидуально. Наше оборудование позволяет качественно и в короткие сроки справляться с любыми задачами. У нас в штате на сегодняшний день работают профессионалы своего дела, и наши специалисты ежедневно трудятся над расширением ассортимента услуг и продуктов. Мы не совершенны, но мы постоянно совершенствуемся.",
+        "wordCount": 284,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": "<p>Мы ориентированы как на работу с юридическими лицами, так и с физическими, не ограничивая размеры тиражей и сроки исполнения заказов.Мы также предлагаем широкий перечень сувенирной продукции с нанесением изображений, фотографий или логотипов. Мы в состоянии предложить высококачественные изделия из металла, керамики или кожи с различными вариантами нанесения изображения, от тиснения до ультрафиолетовой печати. С нами [&hellip;]</p>\n"
+    },
+    {
+      "id": 154,
+      "slug": "contacts",
+      "legacyUrl": "https://comint.by/contacts/",
+      "legacyPath": "/contacts/",
+      "date": "2023-03-25T19:05:59",
+      "modified": "2025-08-12T10:58:40",
+      "featuredMediaId": 0,
+      "title": "Контакты",
+      "seo": {
+        "title": "Контакты - Comint",
+        "description": "",
+        "canonical": "https://comint.by/contacts/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Контакты - Comint",
+          "description": "",
+          "url": "https://comint.by/contacts/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    },
+    {
+      "id": 70892,
+      "slug": "karta-sajta",
+      "legacyUrl": "https://comint.by/karta-sajta/",
+      "legacyPath": "/karta-sajta/",
+      "date": "2024-04-18T16:47:30",
+      "modified": "2024-04-18T18:53:46",
+      "featuredMediaId": 0,
+      "title": "Карта сайта",
+      "seo": {
+        "title": "Карта сайта - Comint",
+        "description": "",
+        "canonical": "https://comint.by/karta-sajta/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Карта сайта - Comint",
+          "description": "",
+          "url": "https://comint.by/karta-sajta/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-layout-1 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\"><div class=\"wsp-container\"><h2 class=\"wsp-pages-title\">Страницы</h2>\n<ul class=\"wsp-pages-list\">\n<li class=\"page_item page-item-229 current_page_parent\"><a href=\"https://comint.by/news/\">Блог</a></li>\n<li class=\"page_item page-item-333\"><a href=\"https://comint.by/\">Главная</a></li>\n<li class=\"page_item page-item-154\"><a href=\"https://comint.by/contacts/\">Контакты</a></li>\n<li class=\"page_item page-item-8\"><a href=\"https://comint.by/cart/\">Корзина</a></li>\n<li class=\"page_item page-item-7\"><a href=\"https://comint.by/shop/\">Магазин</a></li>\n<li class=\"page_item page-item-10\"><a href=\"https://comint.by/my-account/\">Мой аккаунт</a></li>\n<li class=\"page_item page-item-35\"><a href=\"https://comint.by/company/\">О компании</a></li>\n<li class=\"page_item page-item-70512\"><a href=\"https://comint.by/reviews/\">Отзывы</a></li>\n<li class=\"page_item page-item-9\"><a href=\"https://comint.by/checkout/\">Оформление заказа</a></li>\n<li class=\"page_item page-item-124\"><a href=\"https://comint.by/oplata-i-dostavka/\">Покупателю</a></li>\n<li class=\"page_item page-item-92\"><a href=\"https://comint.by/cases/\">Портфолио</a></li>\n<li class=\"page_item page-item-2\"><a href=\"https://comint.by/maket/\">Требования к макетам</a></li>\n<li class=\"page_item page-item-70507\"><a href=\"https://comint.by/colourmap/\">Цветовая раскладка ORACAL</a></li>\n</ul>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\"><div class=\"wsp-container\"><h2 class=\"wsp-product_cats-title\">Категории товаров</h2>\n<ul class=\"wsp-product_cats-list\">\n<li><a href=\"https://comint.by/reklama-na-transporte/\">Реклама на транспорте</a></li>\n<li><a href=\"https://comint.by/odezhda-i-tekstil/\">Одежда и текстиль</a></li>\n<li><a href=\"https://comint.by/info-stendyi-tablichki/\">Навигация</a></li>\n<li><a href=\"https://comint.by/mobilnoe-reklamnoe-oborudovanie/\">Мобильное рекламное оборудование</a></li>\n<li><a href=\"https://comint.by/info-pos/\">Оформление мест продаж</a></li>\n<li><a href=\"https://comint.by/decor-interjera/\">Декор интерьера</a></li>\n<li><a href=\"https://comint.by/pechat-i-izgotovlenie-kalendarej/\">Печать и изготовление календарей</a></li>\n<li><a href=\"https://comint.by/oformlenie-vystavok/\">Оформление выставок</a></li>\n<li><a href=\"https://comint.by/shirokoformatnaya-pechat/\">Широкоформатная печать</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/\">Наружная реклама</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/\">Самоклеющаяся продукция</a></li>\n<li><a href=\"https://comint.by/suveniryi/\">Сувенирная продукция</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/\">Полиграфия</a></li>\n</ul>\n</div>\n</div>\n</div>\n\n\n<div class=\"wsp-container\"><h2 class=\"wsp-products-title\">Товары</h2>\n<ul class=\"wsp-products-list\">\n<li><a href=\"https://comint.by/suveniryi/kartonnye-korobki-i-pakety-dlya-upakovki/\">Картонные коробки и пакеты для упаковки</a></li>\n<li><a href=\"https://comint.by/shirokoformatnaya-pechat/flagi/\">Печать флагов, вымпелов, знамен в Минске</a></li>\n<li><a href=\"https://comint.by/odezhda-i-tekstil/pechat-na-tkani-i-sumkah/\">Печать на ткани</a></li>\n<li><a href=\"https://comint.by/pechat-i-izgotovlenie-kalendarej/nastolnye-kalendari-domiki/\">Настольные календари-домики</a></li>\n<li><a href=\"https://comint.by/pechat-i-izgotovlenie-kalendarej/perekidnye-nastennye-kalendari/\">Перекидные настенные календари</a></li>\n<li><a href=\"https://comint.by/pechat-i-izgotovlenie-kalendarej/kvartalnye-kalendari/\">Квартальные календари</a></li>\n<li><a href=\"https://comint.by/suveniryi/uf-pechat-v-minske/\">УФ печать в Минске</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/kartochki-s-telefonom-dlya-mashin/\">Карточки с номером телефона для машин</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/firmennye-konverty-s-logotipom/\">Фирменные конверты с логотипом</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/magnityi-blok/\">Магниты и блоки для записи</a></li>\n<li><a href=\"https://comint.by/info-stendyi-tablichki/informaczionnye-stendy/\">Информационные стенды</a></li>\n<li><a href=\"https://comint.by/oformlenie-vystavok/expo-komplex/\">Спецпредложение «Выставка под  ключ»</a></li>\n<li><a href=\"https://comint.by/oformlenie-vystavok/mobilnye-expo-konstrukcii/\">Мобильные выставочные конструкции для стендов</a></li>\n<li><a href=\"https://comint.by/oformlenie-vystavok/dizajn-expo-stendov/\">Дизайн и проектирование выставочных стендов</a></li>\n<li><a href=\"https://comint.by/oformlenie-vystavok/oformlenie-expo-stendov/\">Оформление и оклейка выставочных  стендов графикой</a></li>\n<li><a href=\"https://comint.by/reklama-na-transporte/naklejki-na-avto/\">Наклейки на авто</a></li>\n<li><a href=\"https://comint.by/suveniryi/ruchki-s-logotipom/\">Ручки с логотипом</a></li>\n<li><a href=\"https://comint.by/suveniryi/ezhednevniki/\">Ежедневники и планинги с логотипом на заказ</a></li>\n<li><a href=\"https://comint.by/suveniryi/breloki-s-logotipom/\">Брелоки с логотипом</a></li>\n<li><a href=\"https://comint.by/suveniryi/pechat-na-magnitax1/\">Печать на магнитах</a></li>\n<li><a href=\"https://comint.by/suveniryi/chasy/\">Сувенирные настенные часы с логотипом компании</a></li>\n<li><a href=\"https://comint.by/suveniryi/flazhki/\">Тканевые, баннерные и бумажные флажки</a></li>\n<li><a href=\"https://comint.by/suveniryi/bumazhnyie-paketyi/\">Фирменные бумажные пакеты с логотипом</a></li>\n<li><a href=\"https://comint.by/suveniryi/polietilenovyie-paketyi/\">Полиэтиленовые пакеты с логотипом</a></li>\n<li><a href=\"https://comint.by/suveniryi/fleshki-s-logotipom/\">Флешки с логотипом</a></li>\n<li><a href=\"https://comint.by/suveniryi/zazhigalki/\">Зажигалки с логотипом</a></li>\n<li><a href=\"https://comint.by/suveniryi/podarochnyie-naboryi/\">Подарочные наборы</a></li>\n<li><a href=\"https://comint.by/suveniryi/firmennyie-kruzhki/\">Печать на кружках</a></li>\n<li><a href=\"https://comint.by/suveniryi/kovriki-dlya-myishi/\">Коврики для мыши: печать логотипа</a></li>\n<li><a href=\"https://comint.by/suveniryi/tarelki/\">Печать на тарелках</a></li>\n<li><a href=\"https://comint.by/suveniryi/pazlyi/\">Печать логотипов на пазлах по индивидуальному дизайну</a></li>\n<li><a href=\"https://comint.by/suveniryi/kepki/\">Кепки с логотипом: печать и изготовление</a></li>\n<li><a href=\"https://comint.by/suveniryi/eko-sumki/\">Печать на тканевых сумках</a></li>\n<li><a href=\"https://comint.by/suveniryi/podstavki-iz-probki/\">Подставки под кружку</a></li>\n<li><a href=\"https://comint.by/suveniryi/zerkala-karmannye/\">Зеркала карманные</a></li>\n<li><a href=\"https://comint.by/suveniryi/suveniry-dlya-medrabotnikov/\">Сувениры для медработников</a></li>\n<li><a href=\"https://comint.by/decor-interjera/fotooboi/\">Изготовление фотообоев на заказ</a></li>\n<li><a href=\"https://comint.by/decor-interjera/matirovanie-stekol/\">Матирование стекла пленкой с эффектом «иней»</a></li>\n<li><a href=\"https://comint.by/decor-interjera/pechat-na-xolste/\">Печать на холсте репродукций картин и фотографий</a></li>\n<li><a href=\"https://comint.by/decor-interjera/fotografii/\">Печать фотографий большого формата</a></li>\n<li><a href=\"https://comint.by/decor-interjera/naklejki-na-stenyi-i-mebel/\">Декоративные наклейки на стены и мебель, стикеры на холодильник</a></li>\n<li><a href=\"https://comint.by/decor-interjera/trafaretyi-dlya-okraski-sten/\">Трафареты для декора</a></li>\n<li><a href=\"https://comint.by/decor-interjera/posteryi-i-plakatyi/\">Печать постеров и плакатов большого формата</a></li>\n<li><a href=\"https://comint.by/decor-interjera/skinali/\">Скинали для кухни</a></li>\n<li><a href=\"https://comint.by/info-pos/kompleksnoe-oformlenie-mest-prodazh/\">Комплексное оформление магазина, рекламное оформление торгового зала</a></li>\n<li><a href=\"https://comint.by/info-pos/reklamnyie-ukazateli/\">Информационные и рекламные указатели, навигация в торговом зале</a></li>\n<li><a href=\"https://comint.by/info-pos/pos-materialy/\">Pos материалы</a></li>\n<li><a href=\"https://comint.by/info-pos/podstavki-tovary/\">Подставки под товары из оргстекла</a></li>\n<li><a href=\"https://comint.by/info-pos/podstavki-pod-poligraficheskuyu-produkcziyu-iz-orgstekla/\">Подставки под полиграфическую продукцию из оргстекла</a></li>\n<li><a href=\"https://comint.by/info-pos/czennikoderzhateli-iz-plastika-i-orgstekla/\">Ценникодержатели из пластика и оргстекла</a></li>\n<li><a href=\"https://comint.by/info-pos/reklamnye-voblery/\">Рекламные воблеры</a></li>\n<li><a href=\"https://comint.by/info-pos/pechat-shelftokerov/\">Печать шелфтокеров</a></li>\n<li><a href=\"https://comint.by/info-pos/hengery-izgotovlenie-i-pechat-hengerov/\">Хенгеры, изготовление и печать хенгеров</a></li>\n<li><a href=\"https://comint.by/info-pos/rostovye-figury-hardpostery-tantamareski/\">Ростовые фигуры, хардпостеры, тантамарески</a></li>\n<li><a href=\"https://comint.by/info-pos/mulyazhi-produktov/\">Муляжи продуктов</a></li>\n<li><a href=\"https://comint.by/info-pos/izgotovlenie-reklamnyh-mobajlov/\">Изготовление рекламных мобайлов</a></li>\n<li><a href=\"https://comint.by/info-pos/reklamnye-stoppery/\">Рекламные стопперы</a></li>\n<li><a href=\"https://comint.by/info-pos/akrilovye-paneli/\">Акриловые панели</a></li>\n<li><a href=\"https://comint.by/info-pos/garderobnye-nomerki-birki-i-nomerki-dlya-klyuchej/\">Гардеробные номерки, бирки и номерки для ключей</a></li>\n<li><a href=\"https://comint.by/info-pos/izgotovlenie-torgovoj-atributiki/\">Изготовление торговой атрибутики</a></li>\n<li><a href=\"https://comint.by/mobilnoe-reklamnoe-oborudovanie/mobilnye-stendy/\">Баннеры мобильные</a></li>\n<li><a href=\"https://comint.by/mobilnoe-reklamnoe-oborudovanie/promo-stojki/\">Изготовление промо-стоек и промо-столов</a></li>\n<li><a href=\"https://comint.by/mobilnoe-reklamnoe-oborudovanie/fold-up/\">Fold-up (Фолд-ап) стенды-ширмы</a></li>\n<li><a href=\"https://comint.by/mobilnoe-reklamnoe-oborudovanie/bukletnicy/\">Буклетницы напольные и стойки для буклетов</a></li>\n<li><a href=\"https://comint.by/mobilnoe-reklamnoe-oborudovanie/roll-ap-stendy/\">Roll up (Ролл ап) стенды</a></li>\n<li><a href=\"https://comint.by/mobilnoe-reklamnoe-oborudovanie/pop-up-stendy/\">Pop up стенды (Поп Ап Системы)</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/fasadnye-tablichki/\">Изготовление фасадных табличек и информационных указателей</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/vyveski/\">Изготовление наружных рекламных вывесок</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/svetovye-koroba/\">Световые короба (лайтбоксы)</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/obemnye-bukvy/\">Изготовление световых объемных букв</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/shtender/\">Штендер рекламный</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/pilony/\">Изготовление рекламных пилонов</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/oformlenie-vitrin-minsk/\">Оформление витрин магазинов, реклама на витринах</a></li>\n<li><a href=\"https://comint.by/naruzhnaya-reklama/oformlenie-naruzhnoj-reklamy/\">Оформление паспорта наружной рекламы</a></li>\n<li><a href=\"https://comint.by/shirokoformatnaya-pechat/bannery/\">Печать баннеров в Минске</a></li>\n<li><a href=\"https://comint.by/shirokoformatnaya-pechat/reklamnye-bannery-rastyazhki/\">Рекламные баннеры-растяжки</a></li>\n<li><a href=\"https://comint.by/shirokoformatnaya-pechat/setka/\">Строительная сетка для ограждения</a></li>\n<li><a href=\"https://comint.by/shirokoformatnaya-pechat/fonyi-pressvolyi/\">Пресс волл (press wall), брендволл, пресс стена, фоны, декорации</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/naklejki-print/\">Изготовление и печать наклеек на самоклеющейся пленке</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/naklejka-iz-bymagi/\">Печать наклеек из самоклеящейся бумаги</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/etiketki/\">Самоклеящиеся этикетки</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/naklejki_plotter/\">Плоттерные наклейки</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/garantijnye-plomby-pechatnye/\">Гарантийные пломбы печатные</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/izgotovlenie-znakov-bezopasnosti/\">Изготовление знаков безопасности</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/naklejki-na-pol/\">Напольные наклейки</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/trafarety/\">Самоклеящиеся трафареты</a></li>\n<li><a href=\"https://comint.by/samokleyushhayasya-produkcziya/plotternaya-rezka/\">Услуги плоттерной резки</a></li>\n<li><a href=\"https://comint.by/info-stendyi-tablichki/ofisnyie-tablichki/\">Вывески таблички для кабинетов, офисные таблички</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/papki/\">Печать и изготовление фирменных папок</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/svadebnaya-poligraphiya/\">Рассадки и пригласительные на свадьбу</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/bloki-dlya-zapisej-kub-bloki/\">Блоки для записей, куб-блоки</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/cenniki/\">Печать ценников</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/izgotovlenie-birok-i-yarlykov/\">Изготовление бирок и ярлыков</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/sertifikaty-diplomy/\">Печать сертификатов, дипломов, благодарностей</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/razdatochnue_materialu/\">Раздаточные материалы</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/garantijnye-talony/\">Гарантийные талоны</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/instrukciya/\">Печать инструкций</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/propusk/\">Печать и изготовление пропусков</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/price_list/\">Разработка и печать прайс-листов</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/pechat-firmennyh-blankov/\">Печать фирменных бланков</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/plakaty-afishy/\">Печать рекламных плакатов и афиш</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/priglasheniya-bilety/\">Печать пригласительных и входных билетов</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/izgotovlenie-i-pechat-otkrytok/\">Изготовление и печать открыток</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/bloknoty/\">Изготовление и печать блокнотов с логотипом</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/pechat-menyu/\">Печать меню</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/katalogi/\">Печать каталогов</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/broshury/\">Печать брошюр</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/flaery/\">Печать флаеров</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/design-poligrafii/\">Дизайн полиграфии</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/buklety/\">Рекламные буклеты - печать, изготовление и разработка дизайна</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/pechat-listovok/\">Печать рекламных листовок</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/discount/\">Дисконтные карты в Минске</a></li>\n<li><a href=\"https://comint.by/pechat-i-izgotovlenie-kalendarej/karmannye-kalendari/\">Карманные календари</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/izgotovlenie-i-pechat-vizitok/\">Изготовление и печать визиток</a></li>\n<li><a href=\"https://comint.by/cifrovaya-pechat/bejdzh/\">Изготовление и печать бейджей</a></li>\n</ul>\n</div>\n",
+        "text": "Страницы Блог Главная Контакты Корзина Магазин Мой аккаунт О компании Отзывы Оформление заказа Покупателю Портфолио Требования к макетам Цветовая раскладка ORACAL Категории товаров Реклама на транспорте Одежда и текстиль Навигация Мобильное рекламное оборудование Оформление мест продаж Декор интерьера Печать и изготовление календарей Оформление выставок Широкоформатная печать Наружная реклама Самоклеющаяся продукция Сувенирная продукция Полиграфия Товары Картонные коробки и пакеты для упаковки Печать флагов, вымпелов, знамен в Минске Печать на ткани Настольные календари-домики Перекидные настенные календари Квартальные календари УФ печать в Минске Карточки с номером телефона для машин Фирменные конверты с логотипом Магниты и блоки для записи Информационные стенды Спецпредложение «Выставка под ключ» Мобильные выставочные конструкции для стендов Дизайн и проектирование выставочных стендов Оформление и оклейка выставочных стендов графикой Наклейки на авто Ручки с логотипом Ежедневники и планинги с логотипом на заказ Брелоки с логотипом Печать на магнитах Сувенирные настенные часы с логотипом компании Тканевые, баннерные и бумажные флажки Фирменные бумажные пакеты с логотипом Полиэтиленовые пакеты с логотипом Флешки с логотипом Зажигалки с логотипом Подарочные наборы Печать на кружках Коврики для мыши: печать логотипа Печать на тарелках Печать логотипов на пазлах по индивидуальному дизайну Кепки с логотипом: печать и изготовление Печать на тканевых сумках Подставки под кружку Зеркала карманные Сувениры для медработников Изготовление фотообоев на заказ Матирование стекла пленкой с эффектом «иней» Печать на холсте репродукций картин и фотографий Печать фотографий большого формата Декоративные наклейки на стены и мебель, стикеры на холодильник Трафареты для декора Печать постеров и плакатов большого формата Скинали для кухни Комплексное оформление магазина, рекламное оформление торгового зала Информационные и рекламные указатели, навигация в торговом зале Pos материалы Подставки под товары из оргстекла Подставки под полиграфическую продукцию из оргстекла Ценникодержатели из пластика и оргстекла Рекламные воблеры Печать шелфтокеров Хенгеры, изготовление и печать хенгеров Ростовые фигуры, хардпостеры, тантамарески Муляжи продуктов Изготовление рекламных мобайлов Рекламные стопперы Акриловые панели Гардеробные номерки, бирки и номерки для ключей Изготовление торговой атрибутики Баннеры мобильные Изготовление промо-стоек и промо-столов Fold-up (Фолд-ап) стенды-ширмы Буклетницы напольные и стойки для буклетов Roll up (Ролл ап) стенды Pop up стенды (Поп Ап Системы) Изготовление фасадных табличек и информационных указателей Изготовление наружных рекламных вывесок Световые короба (лайтбоксы) Изготовление световых объемных букв Штендер рекламный Изготовление рекламных пилонов Оформление витрин магазинов, реклама на витринах Оформление паспорта наружной рекламы Печать баннеров в Минске Рекламные баннеры-растяжки Строительная сетка для ограждения Пресс волл (press wall), брендволл, пресс стена, фоны, декорации Изготовление и печать наклеек на самоклеющейся пленке Печать наклеек из самоклеящейся бумаги Самоклеящиеся этикетки Плоттерные наклейки Гарантийные пломбы печатные Изготовление знаков безопасности Напольные наклейки Самоклеящиеся трафареты Услуги плоттерной резки Вывески таблички для кабинетов, офисные таблички Печать и изготовление фирменных папок Рассадки и пригласительные на свадьбу Блоки для записей, куб-блоки Печать ценников Изготовление бирок и ярлыков Печать сертификатов, дипломов, благодарностей Раздаточные материалы Гарантийные талоны Печать инструкций Печать и изготовление пропусков Разработка и печать прайс-листов Печать фирменных бланков Печать рекламных плакатов и афиш Печать пригласительных и входных билетов Изготовление и печать открыток Изготовление и печать блокнотов с логотипом Печать меню Печать каталогов Печать брошюр Печать флаеров Дизайн полиграфии Рекламные буклеты - печать, изготовление и разработка дизайна Печать рекламных листовок Дисконтные карты в Минске Карманные календари Изготовление и печать визиток Изготовление и печать бейджей",
+        "wordCount": 515,
+        "headings": {
+          "h2": [
+            "Страницы",
+            "Категории товаров",
+            "Товары"
+          ],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    },
+    {
+      "id": 2,
+      "slug": "maket",
+      "legacyUrl": "https://comint.by/maket/",
+      "legacyPath": "/maket/",
+      "date": "2023-03-24T22:54:02",
+      "modified": "2024-01-17T13:38:58",
+      "featuredMediaId": 0,
+      "title": "Требования к макетам",
+      "seo": {
+        "title": "Требования к макетам типографии Коминт",
+        "description": "Требования к макетам на печать от компании Коминт. Мы не несём ответственности за качество напечатанного с предоставленного заказчиком оригинал-макета изображения, если отдельно не оговорены другие условия.",
+        "canonical": "https://comint.by/maket/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Требования к макетам типографии Коминт",
+          "description": "Требования к макетам на печать от компании Коминт. Мы не несём ответственности за качество напечатанного с предоставленного заказчиком оригинал-макета изображения, если отдельно не оговорены другие условия.",
+          "url": "https://comint.by/maket/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "\n<h2 class=\"wp-block-heading\"><strong>ВАЖНО!</strong></h2>\n\n\n\n<p>1. Внимательно проверяйте присланный Вам на утверждение макет. За допущенные в оригинал-макете орфографические и пунктуационные ошибки ответственность несет заказчик.</p>\n\n\n\n<p>2. Ошибки, найденные в готовом изделии после утверждения оригинал-макета, не являются основанием для претензии и переделки заказа.</p>\n\n\n\n<p>3. После утверждения макета возражения по поводу оттенка цвета, если макет не был заранее подписан Вами в нашем офисе, не рассматриваются.</p>\n\n\n\n<p>4. Точно указывайте цветность печати, вид и плотность бумаги.</p>\n\n\n\n<p>ЕСЛИ ЕСТЬ СОМНЕНИЯ ПО ЛЮБЫМ ВОПРОСАМ, ОБЯЗАТЕЛЬНО ПРОКОНСУЛЬТИРУЙТЕСЬ С НАШИМИ СПЕЦИАЛИСТАМИ ДО УТВЕРЖДЕНИЯ МАКЕТА!!!</p>\n\n\n\n<p><br><strong>Широкоформатная печать:</strong></p>\n\n\n\n<p>Цветовая модель CMYK<br>Corel Draw (в кривых), JPG, TIFF, EPS<br>150-300 dpi<br>Для больших размеров (1,5-3 м.): дозаливка 2-3 см.<br>Для маленьких размеров (наклейки): дозаливка 2-3 мм.</p>\n\n\n\n<p><strong>Цифровая оперативная печать:</strong></p>\n\n\n\n<p><a href=\"https://comint.by/images/files/prepress.doc\">Скачать требования к макетам</a></p>\n\n\n\n<p><strong>Плоттерная резка:</strong></p>\n\n\n\n<p>Corel Draw, векторная графика, текст в кривых</p>\n",
+        "text": "ВАЖНО! 1. Внимательно проверяйте присланный Вам на утверждение макет. За допущенные в оригинал-макете орфографические и пунктуационные ошибки ответственность несет заказчик. 2. Ошибки, найденные в готовом изделии после утверждения оригинал-макета, не являются основанием для претензии и переделки заказа. 3. После утверждения макета возражения по поводу оттенка цвета, если макет не был заранее подписан Вами в нашем офисе, не рассматриваются. 4. Точно указывайте цветность печати, вид и плотность бумаги. ЕСЛИ ЕСТЬ СОМНЕНИЯ ПО ЛЮБЫМ ВОПРОСАМ, ОБЯЗАТЕЛЬНО ПРОКОНСУЛЬТИРУЙТЕСЬ С НАШИМИ СПЕЦИАЛИСТАМИ ДО УТВЕРЖДЕНИЯ МАКЕТА!!! Широкоформатная печать: Цветовая модель CMYK Corel Draw (в кривых), JPG, TIFF, EPS 150-300 dpi Для больших размеров (1,5-3 м.): дозаливка 2-3 см. Для маленьких размеров (наклейки): дозаливка 2-3 мм. Цифровая оперативная печать: Скачать требования к макетам Плоттерная резка: Corel Draw, векторная графика, текст в кривых",
+        "wordCount": 126,
+        "headings": {
+          "h2": [
+            "ВАЖНО!"
+          ],
+          "h3": []
+        }
+      },
+      "excerptHtml": "<p>ВАЖНО! 1. Внимательно проверяйте присланный Вам на утверждение макет. За допущенные в оригинал-макете орфографические и пунктуационные ошибки ответственность несет заказчик. 2. Ошибки, найденные в готовом изделии после утверждения оригинал-макета, не являются основанием для претензии и переделки заказа. 3. После утверждения макета возражения по поводу оттенка цвета, если макет не был заранее подписан Вами в нашем [&hellip;]</p>\n"
+    },
+    {
+      "id": 10,
+      "slug": "my-account",
+      "legacyUrl": "https://comint.by/my-account/",
+      "legacyPath": "/my-account/",
+      "date": "2023-03-24T23:00:58",
+      "modified": "2024-01-17T13:38:56",
+      "featuredMediaId": 0,
+      "title": "Мой аккаунт",
+      "seo": {
+        "title": "Мой аккаунт - Comint",
+        "description": "",
+        "canonical": "https://comint.by/my-account/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Мой аккаунт - Comint",
+          "description": "",
+          "url": "https://comint.by/my-account/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "<div class=\"woocommerce\"></div>\n",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    },
+    {
+      "id": 229,
+      "slug": "news",
+      "legacyUrl": "https://comint.by/news/",
+      "legacyPath": "/news/",
+      "date": "2023-03-25T21:09:35",
+      "modified": "2024-01-17T13:38:53",
+      "featuredMediaId": 0,
+      "title": "Блог",
+      "seo": {
+        "title": "Блог - Comint",
+        "description": "",
+        "canonical": "https://comint.by/news/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Блог - Comint",
+          "description": "",
+          "url": "https://comint.by/news/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    },
+    {
+      "id": 124,
+      "slug": "oplata-i-dostavka",
+      "legacyUrl": "https://comint.by/oplata-i-dostavka/",
+      "legacyPath": "/oplata-i-dostavka/",
+      "date": "2023-03-25T17:51:10",
+      "modified": "2024-01-17T13:38:54",
+      "featuredMediaId": 0,
+      "title": "Покупателю",
+      "seo": {
+        "title": "Покупателю - Comint",
+        "description": "Оплата и доставка продукции от компании ООО «Коминт». Выбирайте нас.",
+        "canonical": "https://comint.by/oplata-i-dostavka/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Покупателю - Comint",
+          "description": "Оплата и доставка продукции от компании ООО «Коминт». Выбирайте нас.",
+          "url": "https://comint.by/oplata-i-dostavka/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "url": "https://comint.by/wp-content/uploads/2023/03/logo-raschet.png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "\n<h4 class=\"wp-block-heading\">Процесс заказа товара в типографии «Коминт» состоит из следующих этапов:</h4>\n\n\n\n<p></p>\n\n\n\n<p><strong><em>1.Выбор товара и утверждение точных характеристик заказа</em></strong></p>\n\n\n\n<p>В первую очередь Вы определяетесь с точными характеристиками Вашего заказа. Вы можете сделать это самостоятельно или с помощью профессиональной консультации нашего менеджера. Далее удобным для Вас способом Вы размещаете заявку на заказ (e-mail, заказ с сайта, заказ звонка, skype или телефонный звонок).</p>\n\n\n\n<p>Мы свяжемся с Вами для уточнения всех вопросов. После этого Вами утверждаются заказ и итоговая сумма, которую Вы можете оплатить удобным для Вас способом.</p>\n\n\n\n<p>Обращаем&nbsp; Ваше внимание на тот факт, что в нашей компании установлена минимальная стоимость заказа – 30 бел.руб. При меньшей сумме заказа Вы можете указать большее количество продукции либо оставить заказ в исходном виде, согласившись оплатить 30 руб.</p>\n\n\n\n<p><strong><em>2. Оплата заказа</em></strong></p>\n\n\n\n<div class=\"wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-1 wp-block-group-is-layout-flex\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-layout-2 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img decoding=\"async\" width=\"86\" height=\"58\" src=\"https://comint.by/wp-content/uploads/2023/03/logo-raschet.png\" alt=\"\" class=\"wp-image-142\"/></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img decoding=\"async\" width=\"86\" height=\"58\" src=\"https://comint.by/wp-content/uploads/2023/03/logo-webpay.png\" alt=\"\" class=\"wp-image-143\"/></figure>\n</div>\n</div>\n</div>\n\n\n\n<p>Вы можете выбрать следующие способы оплаты (при выборе способа оплаты обращайте внимание на размеры комиссионных вознаграждений разных систем):</p>\n\n\n\n<ul>\n<li>\nБезналичный расчет\nС резидентами РБ мы проводим оплаты в белорусских рублях. При работе с юридическими лицами РФ мы можем вести расчеты в российских рублях.\n</li>\n\n\n\n<li>\nБанковскими карточками всех типов (через систему&nbsp; ЕРИП)<br> В своем интернет-банке заходите в раздел платежей в системе РАСЧЕТ ( ЕРИП ) (иногда он расположен в разделе &#171;Прочие платежи&#187; регион &#171;Вся Беларусь&#187;) &#8212; раздел &#171;Интернет-магазины/сервисы&#187; – «Comint.by –типография»&nbsp; и в появившемся поле вводите номер заказа, который пришел Вам в SMS или по e-mail. Подтверждаете оплату. Заказ оплачен.\n</li>\n\n\n\n<li>\n(через систему электронных платежей <strong>Webpay</strong>)<br> Вы получаете от нас по электронной почте письмо со ссылкой. При переходе по ссылке Вы попадаете на страницу, где вводите реквизиты своей банковской карточки для совершения оплаты. Подтверждаете оплату. Заказ оплачен.\n</li>\n\n\n\n<li>\nЧерез банкомат или инфокиоск&nbsp;\n(через систему ЕРИП)<br> Выбираете «платежи» &#8212; «услуги ЕРИП» &#8212; при отсутствии собственного идентификационного номера в ЕРИП нажимаете «далее» &#8212; раздел «интернет, кабельное ТВ, интернет магазины» &#8212; «Comint.by – типография». Вводите номер заказа, который пришел Вам в SMS или по e-mail. Подтверждаете оплату. Заказ оплачен.\n</li>\n\n\n\n<li> Электронными деньгами Webmoney (через систему  ЕРИП)<br> Заходите на сайт <a href=\"http://wmtransfer.by/\" target=\"_blank\" rel=\"noreferrer noopener nofollow\">wmtransfer.by</a> – на главной странице сайта раздел «оплатить электронными деньгами WebMoney WMB» -раздел « ЕРИП»– раздел «Интернет, Кабельное ТВ, Интернет магазины» &#8212; «Comint.by – типография». Вводите номер заказа, который пришел Вам в SMS или по e-mail. Далее следуйте инструкциям системы. Заказ оплачен. </li>\n\n\n\n<li> Электронными деньгами EasyPay  (через систему  ЕРИП)<br>Заходите на сайт <a href=\"https://ssl.easypay.by/\" target=\"_blank\" rel=\"noreferrer noopener nofollow\">easypay.by</a> – раздел «деньги» &#8212; «оплатить» &#8212; «ЕРИП» &#8212; «Интернет-магазины/сервисы» &#8212; «Comint.by – типография». Вводите номер заказа, который пришел Вам в SMS или по e-mail. Далее следуйте инструкциям системы. Заказ оплачен. </li>\n\n\n\n<li> Через платежную систему iPay со счета мобильного телефона МТС или  Life  (через систему ЕРИП)<br>Заходите на сайт <a href=\"http://www.ipay.by\" target=\"_blank\" rel=\"noreferrer noopener nofollow\">www.ipay.by</a> – зайти в раздел сайта «перечень услуг» &#8212; «Интернет-магазины/сервисы» &#8212; «Comint.by – типография». Вводите номер заказа, который пришел Вам в SMS или по e-mail. Далее следовать инструкциям сайта. Заказ оплачен. </li>\n\n\n\n<li>\nНаличными в кассе банка\n&nbsp;(через систему ЕРИП)<br>Доступные пункты банковского обслуживания размещены на сайте системы ЕРИП.\nСкажите оператору, что Вы хотите оплатить заказ в ЕРИП (раздел «Интернет-магазины/сервисы» &#8212; «Comint.by – типография»). Назовите номер заказа, который пришел Вам в виде SMS или на e-mail. Заказ оплачен.\n</li>\n\n\n\n<li>\nНаличными деньгами в нашем офисе <br>\nАдрес офиса: г. Минск, пр-т Незвасимости, д.185, оф.28А<br> Режим работы: 9.00-17.30 (пн-чт), 9.00-17.30 (пт)\n</li>\n</ul>\n\n\n\n<p>Независимо от способа оплаты с использованием банковской карточки или наличных денег, Вы получаете на руки подтверждающий оплату документ &#8212; бумажный или электронный чек.</p>\n\n\n\n<p>Если Вам необходима помощь в процессе осуществления оплаты, Вы можете обратиться за консультацией к нам.</p>\n\n\n\n<p>При отмене заказа возврат денежных средств происходит путем перечисления их на ваш расчетный счет (при безналичном способе оплаты), на пластиковую карту (при использовании способа оплаты с помощью банковской карты), либо наличными у нас в офисе.</p>\n\n\n\n<p><strong><em>3. Выполнение заказа</em></strong></p>\n\n\n\n<p>После осуществления оплаты мы приступаем к работе над Вашим заказом.</p>\n\n\n\n<p>Обращаем Ваше внимание, что информация об оплате по банковской карточке поступает к нам через несколько секунд после ее осуществления. Поэтому мы приступаем к выполнению Вашего заказа незамедлительно.</p>\n\n\n\n<p>Процесс работы над заказом может состоять из различных этапов в зависимости от его особенностей (согласование макета, технического задания, печать и т.д.).</p>\n\n\n\n<p><em><strong>4. Доставка</strong></em></p>\n\n\n\n<p>Наш менеджер информирует Вас о готовности заказа, после чего Вы согласовываете удобный способ забрать товар.</p>\n\n\n\n<p>При заказе на сумму более 100 бел. рублей&nbsp; Вы можете заказать бесплатную доставку в пределах города Минска. &nbsp;О необходимости доставки просьба сообщать заранее, так как мы планируем работу нашего водителя.<br> В случае, если Вы не получили услугу/товар, Вам необходимо обратиться в компанию по телефону или e-mail и уточнить срок и условия доставки. Менеджеры Вас проконсультируют. В случае успешной доставки, Вы вместе с товаром получаете кассовый (товарный) чек или товарную (товарно-транспортную)&nbsp; накладную.</p>\n\n\n\n<p>Самостоятельно Вы можете забрать заказ по адресу: г. Минск, пр-т Независимости, д. 185, офис 28/1.</p>\n\n\n\n<p>График работы: 9.00-18.00 (пн-чт), 9.00-17.30 (пт)</p>\n\n\n\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-layout-5 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-layout-3 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img decoding=\"async\" width=\"250\" height=\"250\" src=\"https://comint.by/wp-content/uploads/2023/03/auto-lada.png\" alt=\"\" class=\"wp-image-149\" srcset=\"https://comint.by/wp-content/uploads/2023/03/auto-lada.png 250w, https://comint.by/wp-content/uploads/2023/03/auto-lada-150x150.png 150w, https://comint.by/wp-content/uploads/2023/03/auto-lada-100x100.png 100w\" sizes=\"(max-width: 250px) 100vw, 250px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow\">\n<p><strong><em>Lada Largus</em></strong><br>Оперативная доставка заказов</p>\n</div>\n</div>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<div class=\"wp-block-columns is-layout-flex wp-container-core-columns-layout-4 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img decoding=\"async\" width=\"250\" height=\"250\" src=\"https://comint.by/wp-content/uploads/2023/03/auto-renault.png\" alt=\"\" class=\"wp-image-151\" srcset=\"https://comint.by/wp-content/uploads/2023/03/auto-renault.png 250w, https://comint.by/wp-content/uploads/2023/03/auto-renault-150x150.png 150w, https://comint.by/wp-content/uploads/2023/03/auto-renault-100x100.png 100w\" sizes=\"(max-width: 250px) 100vw, 250px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow\">\n<p><strong><em>Renault Master</em></strong><br>Микроавтобус для крупногабаритных заказов</p>\n</div>\n</div>\n</div>\n</div>\n\n\n\n<p><strong><em>5. Обратная связь</em></strong></p>\n\n\n\n<p>В случае возникновения претензий к качеству выполнения заказа, Вы можете связаться с нами любым удобным для Вас способом. Мы конструктивно решим все возникшие у Вас вопросы.</p>\n\n\n\n<p>Ваше мнение о нашей работе Вы можете высказать у нас на сайте. Мы рады любым отзывам. Отрицательные отзывы помогают нам становиться лучше, а положительные отзывы всегда приятно получить за хорошо проделанную работу.</p>\n",
+        "text": "Процесс заказа товара в типографии «Коминт» состоит из следующих этапов: 1.Выбор товара и утверждение точных характеристик заказа В первую очередь Вы определяетесь с точными характеристиками Вашего заказа. Вы можете сделать это самостоятельно или с помощью профессиональной консультации нашего менеджера. Далее удобным для Вас способом Вы размещаете заявку на заказ (e-mail, заказ с сайта, заказ звонка, skype или телефонный звонок). Мы свяжемся с Вами для уточнения всех вопросов. После этого Вами утверждаются заказ и итоговая сумма, которую Вы можете оплатить удобным для Вас способом. Обращаем Ваше внимание на тот факт, что в нашей компании установлена минимальная стоимость заказа – 30 бел.руб. При меньшей сумме заказа Вы можете указать большее количество продукции либо оставить заказ в исходном виде, согласившись оплатить 30 руб. 2. Оплата заказа Вы можете выбрать следующие способы оплаты (при выборе способа оплаты обращайте внимание на размеры комиссионных вознаграждений разных систем): Безналичный расчет С резидентами РБ мы проводим оплаты в белорусских рублях. При работе с юридическими лицами РФ мы можем вести расчеты в российских рублях. Банковскими карточками всех типов (через систему ЕРИП) В своем интернет-банке заходите в раздел платежей в системе РАСЧЕТ ( ЕРИП ) (иногда он расположен в разделе «Прочие платежи» регион «Вся Беларусь») — раздел «Интернет-магазины/сервисы» – «Comint.by –типография» и в появившемся поле вводите номер заказа, который пришел Вам в SMS или по e-mail. Подтверждаете оплату. Заказ оплачен. (через систему электронных платежей Webpay ) Вы получаете от нас по электронной почте письмо со ссылкой. При переходе по ссылке Вы попадаете на страницу, где вводите реквизиты своей банковской карточки для совершения оплаты. Подтверждаете оплату. Заказ оплачен. Через банкомат или инфокиоск (через систему ЕРИП) Выбираете «платежи» — «услуги ЕРИП» — при отсутствии собственного идентификационного номера в ЕРИП нажимаете «далее» — раздел «интернет, кабельное ТВ, интернет магазины» — «Comint.by – типография». Вводите номер заказа, который пришел Вам в SMS или по e-mail. Подтверждаете оплату. Заказ оплачен. Электронными деньгами Webmoney (через систему ЕРИП) Заходите на сайт wmtransfer.by – на главной странице сайта раздел «оплатить электронными деньгами WebMoney WMB» -раздел « ЕРИП»– раздел «Интернет, Кабельное ТВ, Интернет магазины» — «Comint.by – типография». Вводите номер заказа, который пришел Вам в SMS или по e-mail. Далее следуйте инструкциям системы. Заказ оплачен. Электронными деньгами EasyPay (через систему ЕРИП) Заходите на сайт easypay.by – раздел «деньги» — «оплатить» — «ЕРИП» — «Интернет-магазины/сервисы» — «Comint.by – типография». Вводите номер заказа, который пришел Вам в SMS или по e-mail. Далее следуйте инструкциям системы. Заказ оплачен. Через платежную систему iPay со счета мобильного телефона МТС или Life (через систему ЕРИП) Заходите на сайт www.ipay.by – зайти в раздел сайта «перечень услуг» — «Интернет-магазины/сервисы» — «Comint.by – типография». Вводите номер заказа, который пришел Вам в SMS или по e-mail. Далее следовать инструкциям сайта. Заказ оплачен. Наличными в кассе банка (через систему ЕРИП) Доступные пункты банковского обслуживания размещены на сайте системы ЕРИП. Скажите оператору, что Вы хотите оплатить заказ в ЕРИП (раздел «Интернет-магазины/сервисы» — «Comint.by – типография»). Назовите номер заказа, который пришел Вам в виде SMS или на e-mail. Заказ оплачен. Наличными деньгами в нашем офисе Адрес офиса: г. Минск, пр-т Незвасимости, д.185, оф.28А Режим работы: 9.00-17.30 (пн-чт), 9.00-17.30 (пт) Независимо от способа оплаты с использованием банковской карточки или наличных денег, Вы получаете на руки подтверждающий оплату документ — бумажный или электронный чек. Если Вам необходима помощь в процессе осуществления оплаты, Вы можете обратиться за консультацией к нам. При отмене заказа возврат денежных средств происходит путем перечисления их на ваш расчетный счет (при безналичном способе оплаты), на пластиковую карту (при использовании способа оплаты с помощью банковской карты), либо наличными у нас в офисе. 3. Выполнение заказа После осуществления оплаты мы приступаем к работе над Вашим заказом. Обращаем Ваше внимание, что информация об оплате по банковской карточке поступает к нам через несколько секунд после ее осуществления. Поэтому мы приступаем к выполнению Вашего заказа незамедлительно. Процесс работы над заказом может состоять из различных этапов в зависимости от его особенностей (согласование макета, технического задания, печать и т.д.). 4. Доставка Наш менеджер информирует Вас о готовности заказа, после чего Вы согласовываете удобный способ забрать товар. При заказе на сумму более 100 бел. рублей Вы можете заказать бесплатную доставку в пределах города Минска. О необходимости доставки просьба сообщать заранее, так как мы планируем работу нашего водителя. В случае, если Вы не получили услугу/товар, Вам необходимо обратиться в компанию по телефону или e-mail и уточнить срок и условия доставки. Менеджеры Вас проконсультируют. В случае успешной доставки, Вы вместе с товаром получаете кассовый (товарный) чек или товарную (товарно-транспортную) накладную. Самостоятельно Вы можете забрать заказ по адресу: г. Минск, пр-т Независимости, д. 185, офис 28/1. График работы: 9.00-18.00 (пн-чт), 9.00-17.30 (пт) Lada Largus Оперативная доставка заказов Renault Master Микроавтобус для крупногабаритных заказов 5. Обратная связь В случае возникновения претензий к качеству выполнения заказа, Вы можете связаться с нами любым удобным для Вас способом. Мы конструктивно решим все возникшие у Вас вопросы. Ваше мнение о нашей работе Вы можете высказать у нас на сайте. Мы рады любым отзывам. Отрицательные отзывы помогают нам становиться лучше, а положительные отзывы всегда приятно получить за хорошо проделанную работу.",
+        "wordCount": 823,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": "<p>Процесс заказа товара в типографии «Коминт» состоит из следующих этапов: 1.Выбор товара и утверждение точных характеристик заказа В первую очередь Вы определяетесь с точными характеристиками Вашего заказа. Вы можете сделать это самостоятельно или с помощью профессиональной консультации нашего менеджера. Далее удобным для Вас способом Вы размещаете заявку на заказ (e-mail, заказ с сайта, заказ звонка, [&hellip;]</p>\n"
+    },
+    {
+      "id": 70512,
+      "slug": "reviews",
+      "legacyUrl": "https://comint.by/reviews/",
+      "legacyPath": "/reviews/",
+      "date": "2023-12-29T21:03:52",
+      "modified": "2024-01-17T13:38:51",
+      "featuredMediaId": 0,
+      "title": "Отзывы",
+      "seo": {
+        "title": "Отзывы клиентов типографии Comint",
+        "description": "Отзывы клиентов о работе компании ООО «Коминт» ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/reviews/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Отзывы клиентов типографии Comint",
+          "description": "Отзывы клиентов о работе компании ООО «Коминт» ☎+375(29)392-90-04",
+          "url": "https://comint.by/reviews/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    },
+    {
+      "id": 7,
+      "slug": "shop",
+      "legacyUrl": "https://comint.by/shop/",
+      "legacyPath": "/shop/",
+      "date": "2023-03-24T23:00:58",
+      "modified": "2024-01-17T13:38:57",
+      "featuredMediaId": 0,
+      "title": "Магазин",
+      "seo": {
+        "title": "Магазин - Comint",
+        "description": "",
+        "canonical": "https://comint.by/shop/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Магазин - Comint",
+          "description": "",
+          "url": "https://comint.by/shop/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      },
+      "excerptHtml": ""
+    }
+  ]
+}

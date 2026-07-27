@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru-BY">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08a7b4" />
+    <meta name="apple-mobile-web-app-title" content="COMINT" />
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+<%- seoHead %>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=20260728-blog-v1" />
+  </head>
+  <body class="legacy-content-page <%= bodyClass %>">
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+
+<%- include("partials/header", { activeSection, hasOrderModal: false }) %>
+
+    <main class="legacy-main">
+      <nav class="breadcrumbs legacy-breadcrumbs" aria-label="Хлебные крошки">
+        <a href="/">Главная</a>
+        <% if (breadcrumbParent) { %>
+          <span>›</span>
+          <a href="<%= breadcrumbParent.href %>"><%= breadcrumbParent.label %></a>
+        <% } %>
+        <span>›</span>
+        <span><%= title %></span>
+      </nav>
+
+      <article class="legacy-article">
+        <header class="legacy-article-header">
+          <span class="product-seo-eyebrow"><%= eyebrow %></span>
+          <h1><%= title %></h1>
+          <% if (lead) { %><p><%= lead %></p><% } %>
+          <% if (dateText) { %><time datetime="<%= dateIso %>"><%= dateText %></time><% } %>
+        </header>
+
+        <div class="legacy-article-content legacy-seo-copy">
+<%- contentHtml %>
+        </div>
+      </article>
+    </main>
+
+<%- include("partials/footer") %>
+
+    <script src="/legacy-url-map.js"></script>
+    <script src="/catalog-data.js"></script>
+    <script src="/script.js?v=20260727-legacy-migration-v1"></script>
+  </body>
+</html>

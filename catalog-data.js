@@ -145,7 +145,7 @@
           label: "Промо-аксессуары",
         },
       ],
-      pagePath: "souvenirs.html",
+      pagePath: "/souvenirs",
       searchPlaceholder: "Поиск сувениров",
     },
     print: {
@@ -153,7 +153,7 @@
       heroTitle: "Полиграфия",
       heroDescription: "Все услуги по печати, рекламе и оформлению в одном каталоге",
       allLabel: "Вся полиграфия",
-      pagePath: "polygraphy.html",
+      pagePath: "/polygraphy",
       searchPlaceholder: "Поиск услуг полиграфии",
     },
   };
@@ -829,7 +829,7 @@
     "Изготовление и печать визиток": "assets/service-56-business-cards.webp",
     "Изготовление и печать бейджей": "assets/service-57-badges.webp",
     "Изготовление фотообоев на заказ": "assets/service-58-photo-wallpapers.webp",
-    "Матирование стекла пленкой с эффектом «иней»": "assets/service-59-frosted-glass-film.webp",
+    "Матирование стекла пленкой с эффектом «иней»": "assets/service-59-frosted-glass-film-v2.png",
     "Печать на холсте репродукций картин и фотографий": "assets/service-60-canvas-prints.webp",
     "Печать фотографий большого формата": "assets/service-61-large-format-photos.webp",
     "Декоративные наклейки на стены и мебель, стикеры на холодильник": "assets/service-62-decorative-stickers.webp",

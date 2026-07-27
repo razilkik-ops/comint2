@@ -1,0 +1,12 @@
+{
+  "name": "comint-autosales-bot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx wrangler dev",
+    "deploy": "npx wrangler deploy",
+    "sync:catalog": "node scripts/sync-catalog.mjs",
+    "db:migrate:local": "npx wrangler d1 migrations apply comint-autosales-db --local",
+    "db:migrate:remote": "npx wrangler d1 migrations apply comint-autosales-db --remote"
+  }
+}

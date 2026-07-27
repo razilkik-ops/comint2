@@ -1,24 +1,39 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru-BY">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMINT - Ручка металлическая</title>
+    <meta name="theme-color" content="#08a7b4" />
+    <meta name="apple-mobile-web-app-title" content="COMINT" />
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- SEO:PRODUCT:START -->
+    <title>Каталог услуг печати и рекламы | COMINT</title>
+    <meta
+      name="description"
+      content="Карточка услуги COMINT. Подбор материалов, технологии изготовления, тиража и сроков для полиграфической и рекламной продукции."
+    />
+    <meta name="robots" content="noindex,follow" />
+    <!-- SEO:PRODUCT:END -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260717-mobile-menu-swipe-v3" />
+    <link rel="stylesheet" href="styles.css?v=20260728-blog-v1" />
   </head>
   <body class="product-page">
     <div class="page-glow page-glow-left"></div>
     <div class="page-glow page-glow-right"></div>
 
+    <!-- EJS:HEADER:START -->
     <header class="site-header">
-      <a class="logo" href="index.html" aria-label="COMINT">
-        <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
+      <a class="logo" href="/" aria-label="COMINT">
+        <img src="/assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
       </a>
 
       <button
@@ -37,31 +52,32 @@
       <div class="site-menu" id="site-menu" data-site-menu>
         <nav class="main-nav" aria-label="Основная навигация">
           <div class="nav-dropdown" data-nav-group="print">
-            <a class="nav-link" href="polygraphy.html" data-nav-trigger>Полиграфия</a>
+            <a class="nav-link" href="/cifrovaya-pechat/" data-nav-trigger>Полиграфия</a>
             <div class="nav-dropdown-menu" aria-label="Услуги полиграфии"></div>
           </div>
           <div class="nav-dropdown" data-nav-group="souvenirs">
-            <a class="nav-link" href="souvenirs.html" data-nav-trigger>Сувенирная продукция</a>
+            <a class="nav-link" href="/suveniryi/" data-nav-trigger>Сувенирная продукция</a>
             <div class="nav-dropdown-menu" aria-label="Услуги сувенирной продукции"></div>
           </div>
           <div class="nav-dropdown" data-nav-group="calendar">
             <a
               class="nav-link"
-              href="catalog-item.html?title=%D0%9A%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5+%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D0%B8&section=%D0%9F%D0%B5%D1%87%D0%B0%D1%82%D1%8C+%D0%B8+%D0%B8%D0%B7%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5+%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D0%B5%D0%B9&kind=print&slug=kvartalnye-kalendari"
+              href="/pechat-i-izgotovlenie-kalendarej/kvartalnye-kalendari/"
               data-nav-trigger
-            >Календари 2026</a>
+            >Календари 2027</a>
             <div class="nav-dropdown-menu" aria-label="Услуги печати календарей"></div>
           </div>
           <div class="nav-dropdown" data-nav-group="wide">
             <a
               class="nav-link"
-              href="catalog-item.html?title=%D0%9F%D0%B5%D1%87%D0%B0%D1%82%D1%8C+%D0%B1%D0%B0%D0%BD%D0%BD%D0%B5%D1%80%D0%BE%D0%B2&section=%D0%A8%D0%B8%D1%80%D0%BE%D0%BA%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%BD%D0%B0%D1%8F+%D0%BF%D0%B5%D1%87%D0%B0%D1%82%D1%8C&kind=print&slug=pechat-bannerov"
+              href="/shirokoformatnaya-pechat/bannery/"
               data-nav-trigger
             >Широкоформатная печать</a>
             <div class="nav-dropdown-menu" aria-label="Услуги широкоформатной печати"></div>
           </div>
-          <a href="company.html">О нас</a>
-          <a href="company.html#company-videos">Портфолио</a>
+          <a href="/company/">О нас</a>
+          <a href="/company/#company-videos">Портфолио</a>
+          <a href="/news/">Блог</a>
           <a href="#contacts">Контакты</a>
         </nav>
 
@@ -79,12 +95,13 @@
         <a class="quick-order" href="#contacts" data-open-order-modal>Быстрый заказ</a>
       </div>
     </header>
+    <!-- EJS:HEADER:END -->
 
     <main class="product-main" data-product-page>
       <nav class="breadcrumbs product-breadcrumbs" aria-label="Хлебные крошки">
-        <a href="index.html">Главная</a>
+        <a href="/">Главная</a>
         <span>›</span>
-        <a href="souvenirs.html" data-product-catalog-link>Сувениры</a>
+        <a href="/souvenirs" data-product-catalog-link>Сувениры</a>
         <span>›</span>
         <span data-product-trail>Ручки</span>
       </nav>
@@ -120,23 +137,13 @@
           </p>
 
           <div class="product-option-group">
-            <h2 data-product-colors-heading>Цвет корпуса</h2>
-            <div class="product-option-grid product-option-grid-colors" data-product-colors></div>
-          </div>
-
-          <div class="product-option-group">
-            <h2 data-product-methods-heading>Нанесение</h2>
-            <div class="product-option-grid product-option-grid-methods" data-product-methods></div>
-          </div>
-
-          <div class="product-option-group">
-            <h2 data-product-quantity-heading>Тираж</h2>
+            <h2 data-product-quantity-heading>Размер тиража</h2>
             <div class="product-quantity-control">
               <button type="button" class="product-qty-button" data-qty-change="-50" aria-label="Уменьшить">
                 −
               </button>
               <div class="product-quantity-value">
-                <input type="text" value="500" inputmode="numeric" data-product-quantity aria-label="Тираж" />
+                <input type="text" value="500" inputmode="numeric" data-product-quantity aria-label="Размер тиража" />
                 <span data-product-quantity-unit>шт</span>
               </div>
               <button type="button" class="product-qty-button" data-qty-change="50" aria-label="Увеличить">
@@ -173,19 +180,24 @@
         <h2>Примеры работ</h2>
         <div class="product-example-grid" data-product-examples></div>
       </section>
+
+      <!-- SEO:CONTENT:START -->
+      <section class="product-seo-content" data-product-seo-content hidden></section>
+      <!-- SEO:CONTENT:END -->
     </main>
 
     <div class="photo-modal-backdrop" id="example-photo-modal" hidden>
       <div class="photo-modal-dialog" role="dialog" aria-modal="true" aria-label="Пример работы">
         <button class="photo-modal-close" type="button" aria-label="Закрыть фото">×</button>
-        <img src="" alt="" data-example-modal-image />
+        <img alt="" data-example-modal-image />
       </div>
     </div>
 
+    <!-- EJS:FOOTER:START -->
     <footer class="site-footer" id="contacts">
       <div class="footer-brand">
-        <a class="logo" href="index.html" aria-label="COMINT">
-          <img src="assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
+        <a class="logo" href="/" aria-label="COMINT">
+          <img src="/assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
         </a>
         <p>Качество в деталях.<br />Доверие в каждом заказе.</p>
         <div class="socials" aria-label="Социальные сети">
@@ -204,22 +216,28 @@
           <a href="#" aria-label="VK"><span>vk</span></a>
         </div>
         <small>© COMINT 2025. Все права защищены.</small>
+        <div class="footer-legal-links">
+          <a href="/privacy-policy">Политика конфиденциальности</a>
+          <a href="/cookies">Политика cookies</a>
+        </div>
       </div>
 
       <div class="footer-column" id="company">
         <h3>О компании</h3>
-        <a href="company.html#about-story">О нас</a>
-        <a href="company.html#about-today">Компания сегодня</a>
-        <a href="company.html#certificates">Сертификаты</a>
-        <a href="company.html#equipment">Оборудование</a>
-        <a href="company.html#company-videos">Видео работы</a>
-        <a href="company.html#company-contacts">Контакты</a>
+        <a href="/company/#about-story">О нас</a>
+        <a href="/company/#about-today">Компания сегодня</a>
+        <a href="/company/#certificates">Сертификаты</a>
+        <a href="/company/#equipment">Оборудование</a>
+        <a href="/company/#company-videos">Видео работы</a>
+        <a href="/news/">Блог</a>
+        <a href="/company/#company-contacts">Контакты</a>
       </div>
 
       <div class="footer-column">
         <h3>Контакты</h3>
-        <a href="tel:+375293929004">+375 (29) 392 90 04</a>
-        <a href="mailto:info@comint.by">info@comint.by</a>
+        <a href="tel:+3752939290094">+3752939290094 A1</a>
+        <a href="tel:+375297007767">+375297007767 MTC</a>
+        <a href="mailto:zakaz@comint.by">zakaz@comint.by</a>
         <span>220125, Минск,<br />пр. Независимости 185, офис 28/1.</span>
         <span>Пн-Чт: 9:00 - 17:30; Пт: 9:00 - 17:00</span>
       </div>
@@ -228,11 +246,12 @@
         <h3>Бот автопродаж</h3>
         <p>Поможет выбрать продукцию и оформить заявку в Telegram</p>
         <a href="https://t.me/comintmanagerbot" target="_blank" rel="noreferrer">
-          <img src="assets/telegram-icon.png" alt="" />
+          <img src="/assets/telegram-icon.png" alt="" />
           Открыть бота
         </a>
       </div>
     </footer>
+    <!-- EJS:FOOTER:END -->
 
     <div class="modal-backdrop" id="order-modal" hidden>
       <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
@@ -257,12 +276,19 @@
             </div>
             <div class="modal-order-prices">
               <span data-modal-order-unit>Стоимость: по запросу</span>
-              <strong data-modal-order-total>Тираж: 500 шт</strong>
+              <strong data-modal-order-total>Размер тиража: 500 шт</strong>
             </div>
           </div>
         </section>
 
         <form class="order-form">
+          <input type="hidden" name="service" data-order-service />
+          <input type="hidden" name="quantity" data-order-quantity />
+          <input type="hidden" name="page" data-order-page />
+          <label class="visually-hidden">
+            Сайт
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </label>
           <label class="order-field">
             <span>Ваше имя</span>
             <input type="text" name="name" placeholder="Иван" autocomplete="name" />
@@ -270,7 +296,7 @@
 
           <label class="order-field">
             <span>Телефон</span>
-            <input type="tel" name="phone" placeholder="+375 (29) 392 90 04" autocomplete="tel" />
+            <input type="tel" name="phone" placeholder="+3752939290094" autocomplete="tel" />
           </label>
 
           <label class="order-field order-field-full">
@@ -279,18 +305,39 @@
               name="comment"
               rows="4"
               placeholder="Тираж, формат, сроки или любые пожелания"
-            ></textarea>
+          ></textarea>
+          </label>
+
+          <label class="order-field order-field-full order-file-field">
+            <span>Файл (необязательно)</span>
+            <input
+              class="order-file-input"
+              type="file"
+              name="file"
+              accept=".jpg,.jpeg,.png,.pdf,.ai,.cdr,.eps,.svg,.zip,.rar"
+              data-order-file-input
+            />
+            <span class="order-file-dropzone">
+              <span class="order-file-icon" aria-hidden="true"></span>
+              <span class="order-file-copy">
+                <strong data-order-file-name>Прикрепить макет или ТЗ</strong>
+                <small>PDF, JPG, PNG, AI, CDR, EPS, SVG, ZIP, RAR до 20 МБ</small>
+              </span>
+              <span class="order-file-action">Выбрать файл</span>
+            </span>
           </label>
 
           <div class="order-actions">
             <button class="order-submit" type="submit">Отправить заявку</button>
             <p>Мы ответим в рабочее время: Пн-Чт, 9:00 - 17:30; Пт, 9:00 - 17:00.</p>
           </div>
+          <p class="order-form-status" data-order-form-status role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
 
+    <script src="legacy-url-map.js"></script>
     <script src="catalog-data.js"></script>
-    <script src="script.js?v=20260717-mobile-menu-swipe-v7"></script>
+    <script src="script.js?v=20260727-service-content-v1"></script>
   </body>
 </html>

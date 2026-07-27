@@ -3,7 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "npm run build:seo",
+    "build:layout": "node scripts/render-shared-layout.js",
+    "build:migration-map": "node scripts/build-legacy-migration-map.js",
+    "build:seo": "node scripts/render-shared-layout.js && node scripts/generate-seo-pages.js && node scripts/generate-legacy-content.js",
+    "sync:legacy-media": "node scripts/download-legacy-media.js",
+    "audit:legacy-seo": "node scripts/audit-legacy-seo.js",
     "start": "node server.js",
-    "test:search": "node scripts/search-quality-check.js"
+    "test": "npm run test:layout && npm run test:seo && npm run test:search",
+    "test:layout": "node scripts/layout-quality-check.js",
+    "test:search": "node scripts/search-quality-check.js",
+    "test:seo": "node scripts/seo-quality-check.js"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1"
   }
 }

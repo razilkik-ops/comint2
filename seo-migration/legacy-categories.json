@@ -1,0 +1,757 @@
+{
+  "source": "https://comint.by/wp-json/wp/v2/product_cat",
+  "capturedAt": "2026-07-27T20:20:36.768Z",
+  "count": 15,
+  "categories": [
+    {
+      "id": 19,
+      "slug": "cifrovaya-pechat",
+      "legacyUrl": "https://comint.by/cifrovaya-pechat/",
+      "legacyPath": "/cifrovaya-pechat/",
+      "title": "Полиграфия",
+      "productCount": 29,
+      "seo": {
+        "title": "Цифровая печать | Оперативная полиграфия в Минске в типографии \"Коминт\"",
+        "description": "Оперативная цифровая печать в Минске. ✔Лучшие цены на печатную полиграфическую рекламу и другие виды цифровой печати! ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/cifrovaya-pechat/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Цифровая печать | Оперативная полиграфия в Минске в типографии \"Коминт\"",
+          "description": "Оперативная цифровая печать в Минске. ✔Лучшие цены на печатную полиграфическую рекламу и другие виды цифровой печати! ☎+375(29)392-90-04",
+          "url": "https://comint.by/cifrovaya-pechat/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 38,
+      "slug": "decor-interjera",
+      "legacyUrl": "https://comint.by/decor-interjera/",
+      "legacyPath": "/decor-interjera/",
+      "title": "Декор интерьера",
+      "productCount": 8,
+      "seo": {
+        "title": "Декорирование интерьера жилых и нежилых помещений, декорирование стен, стекла",
+        "description": "Декор интерьера квартиры или комнаты. Оформление интерьера квартиры, офиса или магазина наклейками, плакатами, постерами, репродукциями, шторами, фотообоями, скинали",
+        "canonical": "https://nd.comint.by/decor-interjera/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Декорирование интерьера жилых и нежилых помещений, декорирование стен, стекла",
+          "description": "Декор интерьера квартиры или комнаты. Оформление интерьера квартиры, офиса или магазина наклейками, плакатами, постерами, репродукциями, шторами, фотообоями, скинали",
+          "url": "https://nd.comint.by/decor-interjera/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 35,
+      "slug": "info-pos",
+      "legacyUrl": "https://comint.by/info-pos/",
+      "legacyPath": "/info-pos/",
+      "title": "Оформление мест продаж",
+      "productCount": 16,
+      "seo": {
+        "title": "Оформление мест продаж в Минске, оформление торговых точек",
+        "description": "Оформление мест продаж, pos-материалы от компании Comint. Заказать оформление мест продаж, pos-материалы.",
+        "canonical": "https://comint.by/info-pos/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Оформление мест продаж в Минске, оформление торговых точек",
+          "description": "Оформление мест продаж, pos-материалы от компании Comint. Заказать оформление мест продаж, pos-материалы.",
+          "url": "https://comint.by/info-pos/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 30,
+      "slug": "info-stendyi-tablichki",
+      "legacyUrl": "https://comint.by/info-stendyi-tablichki/",
+      "legacyPath": "/info-stendyi-tablichki/",
+      "title": "Навигация",
+      "productCount": 2,
+      "seo": {
+        "title": "Информационные таблички изготовление на заказ в Минске",
+        "description": "Информационные таблички указатели, стойки и стенды с переменными данными, щиты с постоянной информацией ✅Заказать изготовление информационных табличек для административных зданий ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/info-stendyi-tablichki/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Информационные таблички изготовление на заказ в Минске",
+          "description": "Информационные таблички указатели, стойки и стенды с переменными данными, щиты с постоянной информацией ✅Заказать изготовление информационных табличек для административных зданий ☎+375(29)392-90-04",
+          "url": "https://comint.by/info-stendyi-tablichki/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 15,
+      "slug": "misc",
+      "legacyUrl": "https://comint.by/misc/",
+      "legacyPath": "/misc/",
+      "title": "Misc",
+      "productCount": 0,
+      "seo": {
+        "title": "Архивы Misc - Comint",
+        "description": "",
+        "canonical": "https://nd.comint.by/misc/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Архивы Misc - Comint",
+          "description": "",
+          "url": "https://nd.comint.by/misc/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 37,
+      "slug": "mobilnoe-reklamnoe-oborudovanie",
+      "legacyUrl": "https://comint.by/mobilnoe-reklamnoe-oborudovanie/",
+      "legacyPath": "/mobilnoe-reklamnoe-oborudovanie/",
+      "title": "Мобильное рекламное оборудование",
+      "productCount": 6,
+      "seo": {
+        "title": "Мобильные рекламные стенды и стойки, изготовление и продажа в Минске",
+        "description": "Мобильные рекламные конструкции в Минске, мобильные рекламные стенды, рекламные стойки, продажа и изготовление",
+        "canonical": "https://comint.by/mobilnoe-reklamnoe-oborudovanie/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Мобильные рекламные стенды и стойки, изготовление и продажа в Минске",
+          "description": "Мобильные рекламные конструкции в Минске, мобильные рекламные стенды, рекламные стойки, продажа и изготовление",
+          "url": "https://comint.by/mobilnoe-reklamnoe-oborudovanie/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 33,
+      "slug": "naruzhnaya-reklama",
+      "legacyUrl": "https://comint.by/naruzhnaya-reklama/",
+      "legacyPath": "/naruzhnaya-reklama/",
+      "title": "Наружная реклама",
+      "productCount": 8,
+      "seo": {
+        "title": "Изготовление наружной рекламы в Минске - производство и печать",
+        "description": "Изготовление наружной рекламы: вывески, штендеры, световые короба и т.д. в типографии Коминт ✅Печать наружной рекламы ✅Производство и монтаж ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/naruzhnaya-reklama/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Изготовление наружной рекламы в Минске - производство и печать",
+          "description": "Изготовление наружной рекламы: вывески, штендеры, световые короба и т.д. в типографии Коминт ✅Печать наружной рекламы ✅Производство и монтаж ☎+375(29)392-90-04",
+          "url": "https://comint.by/naruzhnaya-reklama/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 29,
+      "slug": "odezhda-i-tekstil",
+      "legacyUrl": "https://comint.by/odezhda-i-tekstil/",
+      "legacyPath": "/odezhda-i-tekstil/",
+      "title": "Одежда и текстиль",
+      "productCount": 1,
+      "seo": {
+        "title": "Одежда и текстиль в типографии Коминт",
+        "description": "Печать и нанесение рисунков на одежду и текстиль в типографии Коминт по выгодным ценам ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/odezhda-i-tekstil/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Одежда и текстиль в типографии Коминт",
+          "description": "Печать и нанесение рисунков на одежду и текстиль в типографии Коминт по выгодным ценам ☎+375(29)392-90-04",
+          "url": "https://comint.by/odezhda-i-tekstil/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 36,
+      "slug": "oformlenie-vystavok",
+      "legacyUrl": "https://comint.by/oformlenie-vystavok/",
+      "legacyPath": "/oformlenie-vystavok/",
+      "title": "Оформление выставок",
+      "productCount": 4,
+      "seo": {
+        "title": "Оформление выставки | Изготовление выставочных стендов в Минске",
+        "description": "Строительство выставочных стендов в Минске. ✔Оформление выставки и изготовление рекламных раздаточных материалов ☎+375(29)3929004",
+        "canonical": "https://comint.by/oformlenie-vystavok/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Оформление выставки | Изготовление выставочных стендов в Минске",
+          "description": "Строительство выставочных стендов в Минске. ✔Оформление выставки и изготовление рекламных раздаточных материалов ☎+375(29)3929004",
+          "url": "https://comint.by/oformlenie-vystavok/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 39,
+      "slug": "pechat-i-izgotovlenie-kalendarej",
+      "legacyUrl": "https://comint.by/pechat-i-izgotovlenie-kalendarej/",
+      "legacyPath": "/pechat-i-izgotovlenie-kalendarej/",
+      "title": "Печать и изготовление календарей",
+      "productCount": 4,
+      "seo": {
+        "title": "Печать календарей Минск | Заказать календарь по низкой цене",
+        "description": "Изготовление фирменных календарей ✔Разработка дизайна календаря ✔Заказать срочное изготовление календаря ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/pechat-i-izgotovlenie-kalendarej/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Печать календарей Минск | Заказать календарь по низкой цене",
+          "description": "Изготовление фирменных календарей ✔Разработка дизайна календаря ✔Заказать срочное изготовление календаря ☎+375(29)392-90-04",
+          "url": "https://comint.by/pechat-i-izgotovlenie-kalendarej/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 61,
+      "slug": "pechat-nakleek",
+      "legacyUrl": "https://comint.by/pechat-nakleek/",
+      "legacyPath": "/pechat-nakleek/",
+      "title": "Печать наклеек",
+      "productCount": 0,
+      "seo": {
+        "title": "Архивы Печать наклеек - Comint",
+        "description": "",
+        "canonical": "https://comint.by/pechat-nakleek/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Архивы Печать наклеек - Comint",
+          "description": "",
+          "url": "https://comint.by/pechat-nakleek/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 34,
+      "slug": "reklama-na-transporte",
+      "legacyUrl": "https://comint.by/reklama-na-transporte/",
+      "legacyPath": "/reklama-na-transporte/",
+      "title": "Реклама на транспорте",
+      "productCount": 1,
+      "seo": {
+        "title": "Реклама на транспорте: размещение и оклейка по выгодной стоимости - Comint",
+        "description": "Каталог продукции для наружной рекламы на общественном транспорте ✅Размещение и оклейка от типографии Коминт ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/reklama-na-transporte/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Реклама на транспорте: размещение и оклейка по выгодной стоимости - Comint",
+          "description": "Каталог продукции для наружной рекламы на общественном транспорте ✅Размещение и оклейка от типографии Коминт ☎+375(29)392-90-04",
+          "url": "https://comint.by/reklama-na-transporte/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 31,
+      "slug": "samokleyushhayasya-produkcziya",
+      "legacyUrl": "https://comint.by/samokleyushhayasya-produkcziya/",
+      "legacyPath": "/samokleyushhayasya-produkcziya/",
+      "title": "Самоклеющаяся продукция",
+      "productCount": 9,
+      "seo": {
+        "title": "Печать наклеек в Минске | Заказать изготовление наклеек по низкой цене",
+        "description": "✅Печать всех видов наклеек на заказ в Минске ✅Изготовление наклеек любым тиражом, оперативная широкоформатная печать и плоттерная резка ️☎+375 29 392-90-04",
+        "canonical": "https://comint.by/samokleyushhayasya-produkcziya/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Печать наклеек в Минске | Заказать изготовление наклеек по низкой цене",
+          "description": "✅Печать всех видов наклеек на заказ в Минске ✅Изготовление наклеек любым тиражом, оперативная широкоформатная печать и плоттерная резка ️☎+375 29 392-90-04",
+          "url": "https://comint.by/samokleyushhayasya-produkcziya/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 32,
+      "slug": "shirokoformatnaya-pechat",
+      "legacyUrl": "https://comint.by/shirokoformatnaya-pechat/",
+      "legacyPath": "/shirokoformatnaya-pechat/",
+      "title": "Широкоформатная печать",
+      "productCount": 5,
+      "seo": {
+        "title": "Широкоформатная печать по выгодной цене в Минске | Коминт",
+        "description": "Широкоформатная печать на виниле, пленке самоклейке, бумаге, баннерной ткани, строительной сетке и других материалах заказать в типографии Коминт ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/shirokoformatnaya-pechat/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Широкоформатная печать по выгодной цене в Минске | Коминт",
+          "description": "Широкоформатная печать на виниле, пленке самоклейке, бумаге, баннерной ткани, строительной сетке и других материалах заказать в типографии Коминт ☎+375(29)392-90-04",
+          "url": "https://comint.by/shirokoformatnaya-pechat/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    },
+    {
+      "id": 28,
+      "slug": "suveniryi",
+      "legacyUrl": "https://comint.by/suveniryi/",
+      "legacyPath": "/suveniryi/",
+      "title": "Сувенирная продукция",
+      "productCount": 22,
+      "seo": {
+        "title": "Сувенирная продукция с логотипом изготовление в Минске",
+        "description": "Изготовление рекламно-сувенирной продукции с логотипом вашей компании ✔Корпоративная сувенирная продукция ☎+375(29)392-90-04",
+        "canonical": "https://comint.by/suveniryi/",
+        "robots": {
+          "index": "index",
+          "follow": "follow",
+          "max-snippet": "max-snippet:-1",
+          "max-image-preview": "max-image-preview:large",
+          "max-video-preview": "max-video-preview:-1"
+        },
+        "openGraph": {
+          "locale": "ru_RU",
+          "type": "article",
+          "title": "Сувенирная продукция с логотипом изготовление в Минске",
+          "description": "Изготовление рекламно-сувенирной продукции с логотипом вашей компании ✔Корпоративная сувенирная продукция ☎+375(29)392-90-04",
+          "url": "https://comint.by/suveniryi/",
+          "siteName": "Comint",
+          "images": [
+            {
+              "width": 280,
+              "height": 88,
+              "url": "https://comint.by/wp-content/uploads/2023/06/logo.png",
+              "type": "image/png"
+            }
+          ]
+        },
+        "twitterCard": "summary_large_image",
+        "schema": {
+          "@context": "https://schema.org",
+          "@graph": []
+        }
+      },
+      "content": {
+        "html": "",
+        "text": "",
+        "wordCount": 0,
+        "headings": {
+          "h2": [],
+          "h3": []
+        }
+      }
+    }
+  ]
+}

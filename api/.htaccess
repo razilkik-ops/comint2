@@ -1,0 +1,6 @@
+Options -Indexes
+
+# Keep local credentials and environment files server-side only.
+<FilesMatch "(?i)^(?:config.*\.php|\.dev\.vars|.*\.(?:env|key|pem))$">
+  Require all denied
+</FilesMatch>

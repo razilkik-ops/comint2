@@ -1,5 +1,6 @@
 const catalogApi = window.ComintCatalogData || null;
 const companyApi = window.ComintCompanyData || null;
+const legacyUrlMap = window.ComintLegacyUrlMap || {};
 
 const fallbackSearchCopy = {
   визитки: [
@@ -45,14 +46,12 @@ function escapeHtml(value) {
 }
 
 function buildCatalogItemLink(service) {
-  const params = new URLSearchParams({
-    title: service.title,
-    section: service.section,
-    kind: service.catalogKind,
-    slug: service.slug,
-  });
+  return legacyUrlMap[service.slug] || `/services/${service.slug}`;
+}
 
-  return `catalog-item.html?${params.toString()}`;
+function normalizeAssetPath(value) {
+  const path = String(value || "");
+  return path.startsWith("assets/") ? `/${path}` : path;
 }
 
 function findCatalogService(query) {
@@ -438,6 +437,12 @@ function initOrderModal() {
   const orderModal = document.querySelector("#order-modal");
   const orderModalClose = orderModal?.querySelector(".modal-close");
   const orderForm = document.querySelector(".order-form");
+  const orderFormStatus = orderForm?.querySelector("[data-order-form-status]");
+  const orderSubmit = orderForm?.querySelector(".order-submit");
+  const orderServiceInput = orderForm?.querySelector("[data-order-service]");
+  const orderQuantityInput = orderForm?.querySelector("[data-order-quantity]");
+  const orderPageInput = orderForm?.querySelector("[data-order-page]");
+  const orderFileInputs = [...(orderForm?.querySelectorAll("[data-order-file-input]") || [])];
   const modalKicker = orderModal?.querySelector(".modal-kicker");
   const modalTitle = orderModal?.querySelector("#order-modal-title");
   const modalDescription = orderModal?.querySelector("[data-modal-description]");
@@ -475,6 +480,95 @@ function initOrderModal() {
 
     if (modalSummary) {
       modalSummary.hidden = true;
+    }
+  }
+
+  function resetFormStatus() {
+    if (!orderFormStatus) {
+      return;
+    }
+
+    orderFormStatus.textContent = "";
+    orderFormStatus.classList.remove("is-error");
+  }
+
+  function formatFileSize(bytes) {
+    if (!Number.isFinite(bytes) || bytes <= 0) {
+      return "";
+    }
+
+    const megabytes = bytes / 1024 / 1024;
+    if (megabytes >= 1) {
+      return `${megabytes.toFixed(megabytes >= 10 ? 0 : 1).replace(".", ",")} МБ`;
+    }
+
+    return `${Math.max(1, Math.round(bytes / 1024))} КБ`;
+  }
+
+  function updateFileField(input) {
+    const fileField = input.closest(".order-file-field");
+    const fileName = fileField?.querySelector("[data-order-file-name]");
+    const helper = fileField?.querySelector(".order-file-copy small");
+    const file = input.files?.[0];
+
+    if (fileName) {
+      fileName.textContent = file ? file.name : "Прикрепить макет или ТЗ";
+    }
+
+    if (helper) {
+      helper.textContent = file
+        ? `Выбран файл ${formatFileSize(file.size)}`
+        : "PDF, JPG, PNG, AI, CDR, EPS, SVG, ZIP, RAR до 20 МБ";
+    }
+
+    fileField?.classList.toggle("has-file", Boolean(file));
+  }
+
+  orderFileInputs.forEach((input) => {
+    const fileField = input.closest(".order-file-field");
+
+    input.addEventListener("change", () => updateFileField(input));
+
+    fileField?.addEventListener("dragenter", (event) => {
+      event.preventDefault();
+      fileField.classList.add("is-dragging");
+    });
+
+    fileField?.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      fileField.classList.add("is-dragging");
+    });
+
+    fileField?.addEventListener("dragleave", (event) => {
+      if (!fileField.contains(event.relatedTarget)) {
+        fileField.classList.remove("is-dragging");
+      }
+    });
+
+    fileField?.addEventListener("drop", (event) => {
+      event.preventDefault();
+      fileField.classList.remove("is-dragging");
+
+      if (event.dataTransfer?.files?.length) {
+        input.files = event.dataTransfer.files;
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+
+    updateFileField(input);
+  });
+
+  function syncOrderFormFields(trigger) {
+    if (orderServiceInput) {
+      orderServiceInput.value = trigger?.dataset.orderTitle || "";
+    }
+
+    if (orderQuantityInput) {
+      orderQuantityInput.value = trigger?.dataset.orderQuantity || "";
+    }
+
+    if (orderPageInput) {
+      orderPageInput.value = window.location.href;
     }
   }
 
@@ -528,6 +622,8 @@ function initOrderModal() {
 
   function openOrderModal(trigger) {
     resetModalContent();
+    resetFormStatus();
+    syncOrderFormFields(trigger);
 
     if (trigger?.dataset.orderMode === "product") {
       applyProductModalContent(trigger);
@@ -565,14 +661,108 @@ function initOrderModal() {
     }
   });
 
-  orderForm?.addEventListener("submit", (event) => {
+  orderForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    closeOrderModal();
-    orderForm.reset();
-    resetModalContent();
+
+    if (orderSubmit) {
+      orderSubmit.disabled = true;
+      orderSubmit.textContent = "Отправляем...";
+    }
+
+    resetFormStatus();
+
+    try {
+      const response = await fetch("/api/send-order.php", {
+        method: "POST",
+        body: new FormData(orderForm),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Не удалось отправить заявку.");
+      }
+
+      if (orderFormStatus) {
+        orderFormStatus.textContent = result.message || "Заявка отправлена.";
+      }
+
+      window.setTimeout(() => {
+        closeOrderModal();
+        orderForm.reset();
+        orderFileInputs.forEach(updateFileField);
+        resetModalContent();
+      }, 1600);
+    } catch (error) {
+      if (orderFormStatus) {
+        orderFormStatus.textContent = error.message || "Не удалось отправить заявку.";
+        orderFormStatus.classList.add("is-error");
+      }
+    } finally {
+      if (orderSubmit) {
+        orderSubmit.disabled = false;
+        orderSubmit.textContent = "Отправить заявку";
+      }
+    }
   });
 
   resetModalContent();
+}
+
+function initCookieNotice() {
+  const cookieName = "comint_cookie_notice";
+  const storageKey = "comintCookieNoticeAccepted";
+  const hasCookieNotice = document.cookie
+    .split(";")
+    .some((item) => item.trim().startsWith(`${cookieName}=accepted`));
+  const storage = (() => {
+    try {
+      return window.sessionStorage;
+    } catch (error) {
+      return null;
+    }
+  })();
+  const hasStorageNotice = storage?.getItem(storageKey) === "accepted";
+
+  if (hasCookieNotice || hasStorageNotice) {
+    return;
+  }
+
+  const notice = document.createElement("section");
+  notice.className = "cookie-notice";
+  notice.setAttribute("aria-label", "Уведомление о cookies");
+  notice.innerHTML = `
+    <span class="cookie-notice-mark" aria-hidden="true">
+      <img class="cookie-notice-mark-image" src="/assets/cookie-icon.png" alt="" />
+    </span>
+    <div class="cookie-notice-copy">
+      <strong>Мы используем cookies</strong>
+      <p>
+        Сайт сохраняет технические cookies, чтобы формы и интерфейс работали корректно.
+        Подробности есть в <a href="/cookies">Политике cookies</a> и
+        <a href="/privacy-policy">Политике конфиденциальности</a>.
+      </p>
+    </div>
+    <button class="cookie-notice-button" type="button">Понятно</button>
+  `;
+
+  notice.querySelector(".cookie-notice-button")?.addEventListener("click", () => {
+    document.cookie = `${cookieName}=accepted; path=/; SameSite=Lax`;
+    try {
+      storage?.setItem(storageKey, "accepted");
+    } catch (error) {
+      // Session cookie above is enough when browser storage is restricted.
+    }
+    notice.classList.add("is-hidden");
+
+    window.setTimeout(() => {
+      notice.remove();
+    }, 240);
+  });
+
+  document.body.append(notice);
 }
 
 function buildPagination(currentPage, totalPages) {
@@ -626,8 +816,6 @@ function initCatalogPage() {
   ) {
     return;
   }
-
-  document.title = `COMINT - ${catalog.label}`;
 
   if (heroTitle) {
     heroTitle.textContent = catalog.heroTitle;
@@ -736,7 +924,12 @@ function initCatalogPage() {
         return `
           <article class="product-card">
             <a class="product-visual" href="${buildCatalogItemLink(product)}" aria-label="Открыть ${escapeHtml(product.title)}">
-              <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.title)}" />
+              <img
+                src="${escapeHtml(product.image)}"
+                alt="${escapeHtml(product.title)}"
+                loading="lazy"
+                decoding="async"
+              />
             </a>
             <div class="product-info">
               <h3>${escapeHtml(product.title)}</h3>
@@ -1318,7 +1511,6 @@ function initCompanyPage() {
     }
   }
 
-  document.title = `COMINT - ${companyApi.hero.title}`;
   heroTitleNode.textContent = companyApi.hero.title;
   heroSubtitleNode.textContent = companyApi.hero.subtitle;
   heroImageNode.src = companyApi.hero.image;
@@ -1484,22 +1676,28 @@ function initCatalogItemPage() {
   }
 
   const params = new URLSearchParams(window.location.search);
-  const kind = params.get("kind") || "souvenirs";
+  const staticKind = document.body.dataset.serviceKind || "";
+  const staticSlug = document.body.dataset.serviceSlug || "";
+  const kind = params.get("kind") || staticKind || "souvenirs";
   const service =
     catalogApi?.findService({
       kind,
-      slug: params.get("slug") || "",
+      slug: params.get("slug") || staticSlug,
       title: params.get("title") || "",
     }) || buildFallbackService(params);
 
   const preset = productPagePresets[service.presetKey] || productPagePresets.pen;
   const hasUploadedServiceImage = Boolean(service.hasUploadedImage);
-  const gallery = hasUploadedServiceImage
-    ? [{ src: service.image, frame: "product-frame-custom", label: "Изображение услуги" }]
-    : preset.gallery;
-  const examples = hasUploadedServiceImage
-    ? [{ src: service.image, frame: "product-frame-custom", tone: "" }]
-    : preset.examples;
+  const gallery = (
+    hasUploadedServiceImage
+      ? [{ src: service.image, frame: "product-frame-custom", label: "Изображение услуги" }]
+      : preset.gallery
+  ).map((item) => ({ ...item, src: normalizeAssetPath(item.src) }));
+  const examples = (
+    hasUploadedServiceImage
+      ? [{ src: service.image, frame: "product-frame-custom", tone: "" }]
+      : preset.examples
+  ).map((item) => ({ ...item, src: normalizeAssetPath(item.src) }));
   const title = service.title;
   const catalogConfig = catalogApi?.catalogConfigs?.[service.catalogKind];
 
@@ -1509,8 +1707,6 @@ function initCatalogItemPage() {
   const priceNode = document.querySelector("[data-product-price]");
   const pricePrefixNode = document.querySelector("[data-product-price-prefix]");
   const priceSuffixNode = document.querySelector("[data-product-price-suffix]");
-  const colorsHeadingNode = document.querySelector("[data-product-colors-heading]");
-  const methodsHeadingNode = document.querySelector("[data-product-methods-heading]");
   const quantityHeadingNode = document.querySelector("[data-product-quantity-heading]");
   const quantityUnitNode = document.querySelector("[data-product-quantity-unit]");
   const tiersHeadingNode = document.querySelector("[data-product-tiers-heading]");
@@ -1536,8 +1732,6 @@ function initCatalogItemPage() {
     !trailNode ||
     !descriptionNode ||
     !priceNode ||
-    !colorsNode ||
-    !methodsNode ||
     !quantityInput ||
     !priceTableNode ||
     !specsNode ||
@@ -1550,7 +1744,9 @@ function initCatalogItemPage() {
     return;
   }
 
-  document.title = `COMINT - ${title}`;
+  if (!staticSlug) {
+    document.title = `${title} в Минске | COMINT`;
+  }
   titleNode.textContent = title;
   trailNode.textContent = service.section;
   descriptionNode.textContent = buildProductDescription(service);
@@ -1569,19 +1765,11 @@ function initCatalogItemPage() {
   }
 
   if (priceSuffixNode) {
-    priceSuffixNode.textContent = "после уточнения тиража, материалов и сроков";
-  }
-
-  if (colorsHeadingNode) {
-    colorsHeadingNode.textContent = preset.headings.colors;
-  }
-
-  if (methodsHeadingNode) {
-    methodsHeadingNode.textContent = preset.headings.methods;
+    priceSuffixNode.textContent = "после уточнения тиража и сроков";
   }
 
   if (quantityHeadingNode) {
-    quantityHeadingNode.textContent = preset.headings.quantity;
+    quantityHeadingNode.textContent = "Размер тиража";
   }
 
   if (quantityUnitNode) {
@@ -1623,7 +1811,7 @@ function initCatalogItemPage() {
             aria-pressed="${String(isActive)}"
           >
             <span class="product-thumb-media ${item.frame} ${colorClass}">
-              <img src="${escapeHtml(item.src)}" alt="" />
+              <img src="${escapeHtml(item.src)}" alt="" loading="lazy" decoding="async" />
             </span>
           </button>
         `;
@@ -1665,6 +1853,10 @@ function initCatalogItemPage() {
   }
 
   function renderFirstOptions() {
+    if (!colorsNode) {
+      return;
+    }
+
     colorsNode.innerHTML = preset.colors
       .map((color) => {
         const activeClass = color.id === state.color ? "is-active" : "";
@@ -1688,6 +1880,10 @@ function initCatalogItemPage() {
   }
 
   function renderMethods() {
+    if (!methodsNode) {
+      return;
+    }
+
     methodsNode.innerHTML = preset.methods
       .map((method) => {
         const activeClass = method.id === state.method ? "is-active" : "";
@@ -1753,7 +1949,12 @@ function initCatalogItemPage() {
             aria-label="Открыть пример работы ${index + 1}"
           >
             <span class="product-example-media ${item.frame} ${colorClass}">
-              <img src="${escapeHtml(item.src)}" alt="${escapeHtml(title)}" />
+              <img
+                src="${escapeHtml(item.src)}"
+                alt="${escapeHtml(title)}"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
           </button>
         `;
@@ -1792,9 +1993,7 @@ function initCatalogItemPage() {
       return;
     }
 
-    const firstOption = preset.colors.find((item) => item.id === state.color)?.label || "";
-    const method = preset.methods.find((item) => item.id === state.method)?.label || "";
-    orderComment.value = `${title}, раздел: ${service.section}, параметр: ${firstOption}, технология: ${method}, ${preset.headings.quantity.toLowerCase()}: ${state.quantity} ${preset.headings.quantityUnit}`;
+    orderComment.value = `${title}, раздел: ${service.section}, размер тиража: ${state.quantity} ${preset.headings.quantityUnit}`;
   }
 
   function commitQuantityInput() {
@@ -1815,17 +2014,16 @@ function initCatalogItemPage() {
       return;
     }
 
-    const firstOption = preset.colors.find((item) => item.id === state.color)?.label || "";
-    const method = preset.methods.find((item) => item.id === state.method)?.label || "";
     const currentGallery = gallery[state.galleryIndex] || gallery[0];
 
     orderTrigger.dataset.orderTitle = title;
     orderTrigger.dataset.orderImage = currentGallery.src;
     orderTrigger.dataset.orderImageFrame = currentGallery.frame;
     orderTrigger.dataset.orderColorClass = colorClassById[state.color] || "";
-    orderTrigger.dataset.orderOptions = `${firstOption} • ${method} • ${state.quantity} ${preset.headings.quantityUnit}`;
+    orderTrigger.dataset.orderOptions = `Размер тиража: ${state.quantity} ${preset.headings.quantityUnit}`;
+    orderTrigger.dataset.orderQuantity = `${state.quantity} ${preset.headings.quantityUnit}`;
     orderTrigger.dataset.orderUnit = "Стоимость: по запросу";
-    orderTrigger.dataset.orderTotal = `${preset.headings.quantity}: ${state.quantity} ${preset.headings.quantityUnit}`;
+    orderTrigger.dataset.orderTotal = `Размер тиража: ${state.quantity} ${preset.headings.quantityUnit}`;
   }
 
   function renderPage() {
@@ -1839,7 +2037,7 @@ function initCatalogItemPage() {
     syncOrderTrigger();
   }
 
-  colorsNode.addEventListener("click", (event) => {
+  colorsNode?.addEventListener("click", (event) => {
     const target = event.target.closest("[data-color-id]");
     if (!target) {
       return;
@@ -1849,7 +2047,7 @@ function initCatalogItemPage() {
     renderPage();
   });
 
-  methodsNode.addEventListener("click", (event) => {
+  methodsNode?.addEventListener("click", (event) => {
     const target = event.target.closest("[data-method-id]");
     if (!target) {
       return;
@@ -1984,3 +2182,4 @@ initCatalogPage();
 initCompanyPage();
 initCatalogItemPage();
 initOrderModal();
+initCookieNotice();

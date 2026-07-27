@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler/config-schema.json",
+  "name": "comint-autosales-bot",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-21",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "comint-autosales-db",
+      "database_id": "PASTE_D1_DATABASE_ID_HERE",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "UPLOADS",
+      "bucket_name": "comint-autosales-uploads"
+    }
+  ],
+  "vars": {
+    "MANAGER_CHAT_ID": "-5310761443",
+    "MANAGER_USER_IDS": "5343786910"
+  }
+}

@@ -33,11 +33,18 @@ jobs:
             --exclude ".git" \
             --exclude ".github" \
             --exclude "node_modules" \
+            --exclude "api" \
             --exclude "scripts" \
+            --exclude "seo-migration" \
+            --exclude "templates" \
             --exclude "server.js" \
             --exclude "package.json" \
             --exclude "package-lock.json" \
-            --exclude "site-screenshot.png"
+            --exclude "site-screenshot.png" \
+            --exclude "*.zip" \
+            --exclude "cloudflare-bot" \
+            --exclude "tmp-imagegen-logo" \
+            --exclude "comint-cpanel-ready-privacy-cookies"
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3

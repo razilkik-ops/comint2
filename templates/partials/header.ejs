@@ -1,0 +1,64 @@
+    <header class="site-header">
+      <a class="logo" href="/" aria-label="COMINT">
+        <img src="/assets/comint_logo.svg" alt="COMINT - дизайн, реклама, печать" />
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="site-menu" id="site-menu" data-site-menu>
+        <nav class="main-nav" aria-label="Основная навигация">
+          <div class="nav-dropdown" data-nav-group="print">
+            <a class="nav-link" href="/cifrovaya-pechat/" data-nav-trigger<%- activeSection === "print" ? ' aria-current="page"' : "" %>>Полиграфия</a>
+            <div class="nav-dropdown-menu" aria-label="Услуги полиграфии"></div>
+          </div>
+          <div class="nav-dropdown" data-nav-group="souvenirs">
+            <a class="nav-link" href="/suveniryi/" data-nav-trigger<%- activeSection === "souvenirs" ? ' aria-current="page"' : "" %>>Сувенирная продукция</a>
+            <div class="nav-dropdown-menu" aria-label="Услуги сувенирной продукции"></div>
+          </div>
+          <div class="nav-dropdown" data-nav-group="calendar">
+            <a
+              class="nav-link"
+              href="/pechat-i-izgotovlenie-kalendarej/kvartalnye-kalendari/"
+              data-nav-trigger
+            >Календари 2027</a>
+            <div class="nav-dropdown-menu" aria-label="Услуги печати календарей"></div>
+          </div>
+          <div class="nav-dropdown" data-nav-group="wide">
+            <a
+              class="nav-link"
+              href="/shirokoformatnaya-pechat/bannery/"
+              data-nav-trigger
+            >Широкоформатная печать</a>
+            <div class="nav-dropdown-menu" aria-label="Услуги широкоформатной печати"></div>
+          </div>
+          <a href="/company/"<%- activeSection === "company" ? ' aria-current="page"' : "" %>>О нас</a>
+          <a href="/company/#company-videos">Портфолио</a>
+          <a href="/news/"<%- activeSection === "blog" ? ' aria-current="page"' : "" %>>Блог</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+
+        <div class="mobile-submenu" data-mobile-submenu hidden>
+          <div class="mobile-submenu-header">
+            <button class="mobile-submenu-back" type="button" data-mobile-submenu-back aria-label="Назад к меню">
+              <span aria-hidden="true">←</span>
+              Назад
+            </button>
+            <p class="mobile-submenu-title" data-mobile-submenu-title></p>
+          </div>
+          <div class="mobile-submenu-links" data-mobile-submenu-links></div>
+        </div>
+
+        <a class="quick-order" href="<%= hasOrderModal ? "#contacts" : "/#contacts" %>"<%- hasOrderModal ? " data-open-order-modal" : "" %>>Быстрый заказ</a>
+      </div>
+    </header>
