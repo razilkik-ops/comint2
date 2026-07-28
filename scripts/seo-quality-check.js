@@ -3,6 +3,8 @@ const path = require("path");
 
 const root = path.resolve(__dirname, "..");
 const domain = "https://comint.by";
+const testAddressPattern =
+  /(?:razilkik-ops\.github\.io|github\.io\/comint2|^\/comint2(?:\/|$))/i;
 const { getServiceSeoContent, serviceSeoContent } = require("./service-seo-content");
 const migrationMap = require(path.join(root, "seo-migration", "migration-map.json"));
 const legacyProductsAudit = require(path.join(root, "seo-migration", "legacy-products.json"));
@@ -40,8 +42,44 @@ function normalizeText(value) {
     .trim();
 }
 
+function normalizeSeoText(value) {
+  return normalizeText(value)
+    .replace(/&quot;|&#34;/gi, '"')
+    .replace(/&apos;|&#39;/gi, "'")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/[«»“”„]/g, '"')
+    .replace(/[—–]/g, "-")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
 function read(relativePath) {
   return fs.readFileSync(path.join(root, relativePath), "utf8");
+}
+
+function listHtmlFiles(directory = root) {
+  const files = [];
+
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    if (
+      entry.name === ".git" ||
+      entry.name === "node_modules" ||
+      entry.name === ".github-pages" ||
+      entry.name.startsWith("comint-cpanel-ready-")
+    ) {
+      continue;
+    }
+
+    const absolutePath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...listHtmlFiles(absolutePath));
+    } else if (entry.name.endsWith(".html")) {
+      files.push(path.relative(root, absolutePath));
+    }
+  }
+
+  return files;
 }
 
 function assert(condition, message) {
@@ -154,6 +192,13 @@ for (const service of services) {
       ),
     `${file}: не все старые H2 перенесены`,
   );
+  assert(
+    legacyProduct.content.wordCount === 0 ||
+      normalizeSeoText(visibleSeoBlock).includes(
+        normalizeSeoText(legacyProduct.content.text),
+      ),
+    `${file}: старый текстовый контент услуги перенесен не полностью`,
+  );
   assert(!/<section[^>]+data-product-seo-content[^>]+hidden/.test(visibleSeoBlock), `${file}: SEO-текст скрыт`);
   assert(relatedLinks.length === 4, `${file}: должно быть четыре связанные услуги`);
   assert(
@@ -200,7 +245,20 @@ const expectedSitemapCount = expectedSitemapUrls.size;
 
 assert(sitemapUrls.length === expectedSitemapCount, `sitemap.xml: ожидалось ${expectedSitemapCount} URL, найдено ${sitemapUrls.length}`);
 assert(new Set(sitemapUrls).size === sitemapUrls.length, "sitemap.xml: есть повторяющиеся URL");
-assert(sitemapUrls.every((url) => url.startsWith(domain)), "sitemap.xml: найден URL другого домена");
+assert(
+  sitemapUrls.every((url) => {
+    try {
+      return new URL(url).origin === domain;
+    } catch {
+      return false;
+    }
+  }),
+  "sitemap.xml: найден URL другого домена",
+);
+assert(
+  !testAddressPattern.test(sitemap),
+  "sitemap.xml: найдена ссылка на тестовый адрес",
+);
 assert(sitemapUrls.every((url) => !url.includes("?") && !url.endsWith(".html")), "sitemap.xml: найден неканонический URL");
 
 for (const url of serviceUrls) {
@@ -209,6 +267,40 @@ for (const url of serviceUrls) {
 
 for (const url of expectedSitemapUrls) {
   assert(sitemapUrls.includes(url), `sitemap.xml: отсутствует ${url}`);
+}
+
+for (const url of sitemapUrls) {
+  const pathname = new URL(url).pathname;
+  const file =
+    pathname === "/"
+      ? "index.html"
+      : path.join(pathname.replace(/^\/|\/$/g, ""), "index.html");
+  const filePath = path.join(root, file);
+
+  assert(fs.existsSync(filePath), `${file}: URL из sitemap не имеет HTML-файла`);
+  if (!fs.existsSync(filePath)) {
+    continue;
+  }
+
+  const source = read(file);
+  const canonicals = getMatches(
+    source,
+    /<link\s+rel=["']canonical["']\s+href=["']([^"']+)["'][^>]*>/gi,
+  );
+  assert(
+    canonicals.length === 1 && canonicals[0][1] === url,
+    `${file}: canonical не совпадает с URL в sitemap`,
+  );
+  assert(/<title>[^<]+<\/title>/i.test(source), `${file}: отсутствует title`);
+  assert(/<h1(?:\s[^>]*)?>[\s\S]*?<\/h1>/i.test(source), `${file}: отсутствует H1`);
+  assert(
+    /<meta\s+name=["']description["']\s+content=["'][^"']+["']/i.test(source),
+    `${file}: отсутствует meta description`,
+  );
+  assert(
+    /<meta\s+name=["']robots["']\s+content=["']index,follow/i.test(source),
+    `${file}: URL из sitemap не разрешен к индексации`,
+  );
 }
 
 const canonicalCatalogPages = [
@@ -288,7 +380,18 @@ assert(
 const robots = read("robots.txt");
 assert(robots.includes("User-agent: *"), "robots.txt: отсутствует общая секция");
 assert(robots.includes("Allow: /"), "robots.txt: сайт не открыт для обхода");
-assert(robots.includes(`Sitemap: ${domain}/sitemap.xml`), "robots.txt: отсутствует ссылка на sitemap");
+const robotsSitemaps = getMatches(robots, /^Sitemap:\s*(\S+)\s*$/gim).map(
+  (match) => match[1],
+);
+assert(
+  robotsSitemaps.length === 1 &&
+    robotsSitemaps[0] === `${domain}/sitemap.xml`,
+  "robots.txt: sitemap должен вести только на https://comint.by/sitemap.xml",
+);
+assert(
+  !testAddressPattern.test(robots),
+  "robots.txt: найдена ссылка на тестовый адрес",
+);
 
 const publicHtml = [
   ...indexablePages.map(([file]) => read(file)),
@@ -297,6 +400,48 @@ const publicHtml = [
 ].join("\n");
 
 assert(!publicHtml.includes('href="/catalog-item?'), "В HTML остались параметрические ссылки catalog-item");
+
+const htmlFiles = listHtmlFiles();
+for (const file of htmlFiles) {
+  const source = read(file);
+  const isNoindex = /<meta\s+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(
+    source,
+  );
+  const canonicals = getMatches(
+    source,
+    /<link\s+rel=["']canonical["']\s+href=["']([^"']+)["'][^>]*>/gi,
+  );
+  const publicReferences = getMatches(
+    source,
+    /\b(?:href|src|action)=["']([^"']+)["']/gi,
+  ).map((match) => match[1]);
+
+  assert(
+    isNoindex || canonicals.length === 1,
+    `${file}: индексируемая страница должна иметь один canonical`,
+  );
+  assert(
+    canonicals.every((match) => {
+      try {
+        return new URL(match[1]).origin === domain;
+      } catch {
+        return false;
+      }
+    }),
+    `${file}: canonical должен вести на ${domain}`,
+  );
+  assert(
+    publicReferences.every((reference) => !testAddressPattern.test(reference)),
+    `${file}: внутренняя ссылка ведет на тестовый адрес`,
+  );
+}
+
+for (const file of ["script.js", "catalog-data.js", "legacy-url-map.js"]) {
+  assert(
+    !testAddressPattern.test(read(file)),
+    `${file}: публичный JavaScript содержит тестовый адрес`,
+  );
+}
 
 if (errors.length) {
   console.error(errors.map((error) => `ERROR: ${error}`).join("\n"));
