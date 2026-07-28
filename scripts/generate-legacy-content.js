@@ -259,7 +259,7 @@ function writeLegacyPath(legacyPath, source) {
 function fallbackPageContent(page) {
   const fallbacks = {
     "/contacts/": `<h2>Связаться с COMINT</h2>
-<p>Телефоны: <a href="tel:+3752939290094">+375 29 392-90-094</a> (A1) и <a href="tel:+375297007767">+375 29 700-77-67</a> (МТС).</p>
+<p>Телефоны: <a href="tel:+375293929004">+375293929004</a> и <a href="tel:+375297007767">+375 29 700-77-67</a> (МТС).</p>
 <p>Электронная почта: <a href="mailto:zakaz@comint.by">zakaz@comint.by</a>.</p>
 <p>Адрес: 220125, Минск, проспект Независимости, 185, офис 28/1.</p>`,
     "/cases/": `<h2>Примеры работ COMINT</h2>
