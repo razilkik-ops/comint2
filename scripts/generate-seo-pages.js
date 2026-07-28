@@ -91,7 +91,7 @@ function buildSeoBlock(service, legacyProduct, migration) {
     service.catalogKind === "souvenirs"
       ? `${siteUrl}/suveniryi/`
       : `${siteUrl}/cifrovaya-pechat/`;
-  const catalogName = service.catalogKind === "souvenirs" ? "Сувениры" : "Полиграфия";
+  const catalogName = service.catalogKind === "souvenirs" ? "Сувениры" : "Цифровая печать";
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -242,7 +242,7 @@ function buildVisibleSeoContent(service, legacyProduct) {
   const relatedLinks = relatedServices
     .map(
       (item) => `          <a class="product-related-link" href="${servicePath(item)}">
-            <span>${escapeHtml(item.section)}</span>
+            <span>${escapeHtml(item.catalogKind === "print" && item.section === "Полиграфия" ? "Цифровая печать" : item.section)}</span>
             <strong>${escapeHtml(item.title)}</strong>
             <span class="product-related-arrow" aria-hidden="true">→</span>
           </a>`,
@@ -299,7 +299,11 @@ function buildServicePage(service) {
   const imagePath = rootAssetPath(service.image);
   const catalogPath =
     service.catalogKind === "souvenirs" ? "/suveniryi/" : "/cifrovaya-pechat/";
-  const catalogName = service.catalogKind === "souvenirs" ? "Сувениры" : "Полиграфия";
+  const catalogName = service.catalogKind === "souvenirs" ? "Сувениры" : "Цифровая печать";
+  const productTrail =
+    service.catalogKind === "print" && service.section === "Полиграфия"
+      ? "Цифровая печать"
+      : service.section;
   const pageTitle = legacyProduct?.title || service.title;
 
   const page = template
@@ -321,10 +325,10 @@ function buildServicePage(service) {
     .replace(/src="catalog-data\.js"/g, 'src="/catalog-data.js"')
     .replace(/src="script\.js/g, 'src="/script.js')
     .replace(
-      '<a href="/souvenirs" data-product-catalog-link>Сувениры</a>',
+      '<a href="/suveniryi/" data-product-catalog-link>Сувениры</a>',
       `<a href="${catalogPath}" data-product-catalog-link>${catalogName}</a>`,
     )
-    .replace("<span data-product-trail>Ручки</span>", `<span data-product-trail>${escapeHtml(service.section)}</span>`)
+    .replace("<span data-product-trail>Ручки</span>", `<span data-product-trail>${escapeHtml(productTrail)}</span>`)
     .replace(
       /<div class="product-stage-media[^"]*" data-product-stage-media>\s*<img[^>]+data-product-stage-image\s*\/>\s*<\/div>/,
       `<div class="product-stage-media product-frame-custom" data-product-stage-media>
@@ -340,7 +344,7 @@ function buildServicePage(service) {
       '<dl class="product-specs" data-product-specs></dl>',
       `<dl class="product-specs" data-product-specs>
             <dt>Категория</dt><dd>${escapeHtml(service.label)}</dd>
-            <dt>Раздел</dt><dd>${escapeHtml(service.section)}</dd>
+            <dt>Раздел</dt><dd>${escapeHtml(productTrail)}</dd>
           </dl>`,
     )
     .replace(

@@ -216,12 +216,14 @@ const canonicalCatalogPages = [
     file: "cifrovaya-pechat/index.html",
     canonical: `${domain}/cifrovaya-pechat/`,
     title: 'Цифровая печать | Оперативная полиграфия в Минске в типографии "Коминт"',
+    visibleLabel: "Цифровая печать",
     kind: "print",
   },
   {
     file: "suveniryi/index.html",
     canonical: `${domain}/suveniryi/`,
     title: "Сувенирная продукция с логотипом изготовление в Минске",
+    visibleLabel: "Сувениры",
     kind: "souvenirs",
   },
 ];
@@ -247,6 +249,21 @@ for (const catalogPage of canonicalCatalogPages) {
     source.includes(`<link rel="canonical" href="${catalogPage.canonical}" />`),
     `${catalogPage.file}: неверный canonical`,
   );
+  assert(
+    source.includes(`<h1 data-catalog-title>${catalogPage.visibleLabel}</h1>`),
+    `${catalogPage.file}: неверное видимое название каталога`,
+  );
+  assert(
+    !/href="\/(?:polygraphy|souvenirs)(?:\/|["#])/.test(source),
+    `${catalogPage.file}: осталась устаревшая внутренняя ссылка каталога`,
+  );
+  if (catalogPage.kind === "print") {
+    assert(
+      source.includes('class="product-seo-content catalog-seo-content"') &&
+        source.includes("Оперативная цифровая печать для бизнеса"),
+      `${catalogPage.file}: отсутствует видимый SEO-блок цифровой печати`,
+    );
+  }
 }
 
 assert(

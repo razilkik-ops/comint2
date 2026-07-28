@@ -145,16 +145,16 @@
           label: "Промо-аксессуары",
         },
       ],
-      pagePath: "/souvenirs",
+      pagePath: "/suveniryi/",
       searchPlaceholder: "Поиск сувениров",
     },
     print: {
-      label: "Полиграфия",
-      heroTitle: "Полиграфия",
-      heroDescription: "Все услуги по печати, рекламе и оформлению в одном каталоге",
-      allLabel: "Вся полиграфия",
-      pagePath: "/polygraphy",
-      searchPlaceholder: "Поиск услуг полиграфии",
+      label: "Цифровая печать",
+      heroTitle: "Цифровая печать",
+      heroDescription: "Все услуги по цифровой печати, рекламе и оформлению в одном каталоге",
+      allLabel: "Вся цифровая печать",
+      pagePath: "/cifrovaya-pechat/",
+      searchPlaceholder: "Поиск услуг цифровой печати",
     },
   };
 

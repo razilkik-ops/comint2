@@ -1437,7 +1437,7 @@ function buildFallbackService(params) {
     section,
     slug: params.get("slug") || catalogApi?.slugify?.(title) || "usluga",
     catalogKind: kind,
-    label: catalogConfig?.label || (kind === "print" ? "Полиграфия" : "Сувениры"),
+    label: catalogConfig?.label || (kind === "print" ? "Цифровая печать" : "Сувениры"),
     image: kind === "print" ? "assets/service-print.png" : "assets/souvenir-pen.png",
     presetKey: kind === "print" ? "print-flat" : "pen",
     lead:
@@ -1449,6 +1449,12 @@ function buildFallbackService(params) {
 
 function buildProductDescription(service) {
   return service.lead;
+}
+
+function getDisplayServiceSection(service) {
+  return service.catalogKind === "print" && service.section === "Полиграфия"
+    ? "Цифровая печать"
+    : service.section;
 }
 
 function initCompanyPage() {
@@ -1768,7 +1774,7 @@ function initCatalogItemPage() {
     document.title = `${title} в Минске | COMINT`;
   }
   titleNode.textContent = title;
-  trailNode.textContent = service.section;
+  trailNode.textContent = getDisplayServiceSection(service);
   descriptionNode.textContent = buildProductDescription(service);
 
   if (catalogLinkNode && catalogConfig) {
@@ -1949,7 +1955,7 @@ function initCatalogItemPage() {
   function renderSpecs() {
     const specs = [
       ["Категория", service.label],
-      ["Раздел", service.section],
+      ["Раздел", getDisplayServiceSection(service)],
       ...preset.specs,
     ];
 
@@ -2013,7 +2019,7 @@ function initCatalogItemPage() {
       return;
     }
 
-    orderComment.value = `${title}, раздел: ${service.section}, размер тиража: ${state.quantity} ${preset.headings.quantityUnit}`;
+    orderComment.value = `${title}, раздел: ${getDisplayServiceSection(service)}, размер тиража: ${state.quantity} ${preset.headings.quantityUnit}`;
   }
 
   function commitQuantityInput() {
