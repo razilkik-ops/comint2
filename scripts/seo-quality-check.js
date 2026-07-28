@@ -263,6 +263,13 @@ for (const catalogPage of canonicalCatalogPages) {
         source.includes("Оперативная цифровая печать для бизнеса"),
       `${catalogPage.file}: отсутствует видимый SEO-блок цифровой печати`,
     );
+  } else {
+    assert(
+      source.includes('class="product-seo-content catalog-seo-content"') &&
+        source.includes("Готовы печатать с нами?") &&
+        source.includes("Рекламно-сувенирная продукция оптом и в розницу"),
+      `${catalogPage.file}: отсутствует видимый SEO-блок сувениров`,
+    );
   }
 }
 
